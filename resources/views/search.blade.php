@@ -1,18 +1,50 @@
 @extends('layouts.app')
 
 @section('content')
-<section>
-  <div class="jumbotron">
-    <div class="container">
-      <h1 class="display-3">Refer Me</h1>
-      <p>This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
-      <p><a class="btn btn-primary btn-lg" href="search" role="button">Search</a></p>
-    </div>
-  </div>
-</section>
-<section id="team" class="pb-5">
+<section class="pb-5">
     <div class="container">
         <h5 class="section-title h1">OUR DOCTORS</h5>
+        <div class="row pb-4">
+          <div class="col-lg-12">
+            <div class="card">
+              <div class="card-body">
+                <div class="row">
+                  <div class="col searchCol">
+                    <input type="text" name="" value="" class="form-control" placeholder="Doctor's First Name">
+                  </div>
+                  <div class="col searchCol">
+                    <input type="text" name="" value="" class="form-control" placeholder="Doctor's Last Name">
+                  </div>
+                  <div class="col searchCol">
+                    <select class="form-control" id="exampleFormControlSelect1">
+                      <option value="">Select Specialization</option>
+                      <option value="Anesthesiology">Anesthesiology</option>
+                      <option value="Dental Medicine">Dental Medicine</option>
+                      <option value="Dermatology">Dermatology</option>
+                      <option value="Family and Community Medicine">Family and Community Medicine</option>
+                      <option value="Internal Medicine">Internal Medicine</option>
+                      <option value="Laboratory Medicine">Laboratory Medicine</option>
+                      <option value="Legal Medicine">Legal Medicine</option>
+                      <option value="Nuclear Medicine">Nuclear Medicine</option>
+                      <option value="Obstetrics and Gynecology">Obstetrics and Gynecology</option>
+                      <option value="Occupational Medicine">Occupational Medicine</option>
+                      <option value="Ophthalmology">Ophthalmology</option>
+                      <option value="Orthopedics">Orthopedics</option>
+                      <option value="Otorhinolaryngology">Otorhinolaryngology</option>
+                      <option value="Pediatrics">Pediatrics</option>
+                      <option value="Radiology">Radiology</option>
+                      <option value="Rehabilitation Medicine">Rehabilitation Medicine</option>
+                      <option value="Surgery">Surgery</option>
+                    </select>
+                  </div>
+                  <div class="col-lg-2 searchCol">
+                    <button type="button" name="button" class="btn btn-primary" style="width:100%">Search</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
         <div class="row">
             <!-- Team member -->
             <div class="col-xs-12 col-sm-6 col-md-4">
@@ -124,40 +156,26 @@
             <!-- ./Team member -->
 
         </div>
+        <div class="row">
+          <div class="col-lg-12">
+            <nav aria-label="...">
+              <ul class="pagination justify-content-center">
+                <li class="page-item disabled">
+                  <a class="page-link" href="#" tabindex="-1">Previous</a>
+                </li>
+                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                <li class="page-item active">
+                  <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item">
+                  <a class="page-link" href="#">Next</a>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </div>
     </div>
 </section>
-<section class="pb-5">
-  <div class="container">
-            <h5 class="section-title h1">OUR HOSPITALS</h5>
-    <div class="row featurette">
-      <div class="col-md-7">
-        <h2 class="featurette-heading">Manila Doctors Hospital</h2>
-        <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
-      </div>
-      <div class="col-md-5">
-        <img src="https://maniladoctors.com.ph/wp-content/uploads/2018/03/MDH-Today2.jpg" alt="" style="width:100%">
-      </div>
-    </div>
-    <hr class="featurette-divider">
-    <div class="row featurette">
-      <div class="col-md-7 order-md-2">
-        <h2 class="featurette-heading">Our Lady of Lourdes Hospital</h2>
-        <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
-      </div>
-      <div class="col-md-5 order-md-1">
-        <img src="https://images1-fabric.practo.com/our-lady-of-lourdes-hospital-manila-1486012037-5892be85e64e7.jpg" alt="" style="width:100%">
-      </div>
-    </div>
-    <hr class="featurette-divider">
-    <div class="row featurette">
-      <div class="col-md-7">
-        <h2 class="featurette-heading">Mandaluyong City Medical Center </h2>
-        <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
-      </div>
-      <div class="col-md-5">
-        <img src="http://2.bp.blogspot.com/-xftbgFRoFYs/Tjocfm3jP8I/AAAAAAAAByQ/vGZLhVpwpiQ/s1600/hospital%2Btelephone%2Bnumbers%2Bin%2Bmandaluyong%2Bimage.jpg" alt="" style="width:100%">
-      </div>
-    </div>
-  </div>
-</section>
+
 @endsection

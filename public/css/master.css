@@ -1,0 +1,126 @@
+/* FontAwesome for working BootSnippet :> */
+body{
+  background: white;
+}
+#team {
+    background:#f7f7f7 !important;
+}
+
+section {
+    padding: 60px 0;
+}
+
+section .section-title {
+    text-align: center;
+    color: #3490dc;
+    margin-bottom: 50px;
+    text-transform: uppercase;
+    font-weight: bolder;
+}
+
+
+.frontside {
+    position: relative;
+    z-index: 2;
+    margin-bottom: 30px;
+}
+
+
+.frontside .card,
+.backside .card {
+    min-height: 312px;
+}
+
+.frontside .card .card-title {
+    color: #3490dc !important;
+}
+
+.frontside .card .card-body img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+}
+/* MARKETING CONTENT
+-------------------------------------------------- */
+
+/* Center align the text within the three columns below the carousel */
+.marketing .col-lg-4 {
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+.marketing h2 {
+  font-weight: 400;
+}
+.marketing .col-lg-4 p {
+  margin-right: .75rem;
+  margin-left: .75rem;
+}
+
+
+/* Featurettes
+------------------------- */
+
+.featurette-divider {
+  margin: 5rem 0; /* Space out the Bootstrap <hr> more */
+}
+
+/* Thin out the marketing headings */
+.featurette-heading {
+  font-weight: 300;
+  line-height: 1;
+  letter-spacing: -.05rem;
+}
+/* RESPONSIVE CSS
+-------------------------------------------------- */
+.featurette-heading{
+  color: #3490dc;
+}
+@media (min-width: 40em) {
+  .featurette-heading {
+    font-size: 50px;
+  }
+}
+
+@media (min-width: 62em) {
+  .featurette-heading {
+    margin-top: 7rem;
+  }
+
+  /* Footer1 */
+  a:hover{
+      text-decoration:none;
+  }
+  .section-padding {
+  	padding: 60px 0;
+  }
+  .bottom {
+      background-color: #0a1c2e;
+  }
+  .bottom .copyright {
+      color: #e5e5e5;
+      font-weight: 600;
+  }
+  .copyright a {
+      color: #3490dc;
+      margin-left: 3px;
+      padding-right: 3px;
+  }
+  .bottom p {
+      margin-bottom: 0;
+      line-height: 50px;
+      font-size: 16px;
+      font-weight: 400;
+  }
+  .copyright p span {
+      color: #d1caca;
+  }
+  .bottom .copyright p, .bottom .copyright a:hover{
+      color: #6c6d83;
+  }
+.jumbotron{
+  background: white;
+}
+.searchCol{
+  padding-left: 5px;
+  padding-right: 5px;
+}
