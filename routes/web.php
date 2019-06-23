@@ -14,10 +14,29 @@
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('search', function () {
-    return view('search');
+Route::get('/search/hospital','SearchController@hospital')->name('search.hospital');
+Route::get('/search/doctor', 'SearchController@doctor')->name('search.doctor');
+
+Route::get('editProfile', function () {
+    return view('editProfile');
+});
+
+Route::get('changePassword', function () {
+    return view('changePassword');
+});
+
+Route::get('schedule', function () {
+    return view('schedule');
 });
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+
+Route::group(['middleware'=>'auth'],function(){
+
+  Route::resource('user','UserController');
+  Route::resource('schedule','ScheduleController');
+
+});

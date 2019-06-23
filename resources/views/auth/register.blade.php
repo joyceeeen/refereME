@@ -18,20 +18,39 @@
         @csrf
 
         <div class="form-group">
-          <!-- <label for="exampleFormControlSelect1">Select</label> -->
-          <select class="form-control" id="exampleFormControlSelect1">
-            <option>Doctor</option>
-            <option>Hospital</option>
+          <select name="is_hospital" class="form-control" id="exampleFormControlSelect1">
+            <option value="0">Doctor</option>
+            <option value="1">Hospital</option>
           </select>
+
+          @error('is_hospital')
+          <span class="invalid-feedback" role="alert">
+            <strong>{{ $message }}</strong>
+          </span>
+          @enderror
         </div>
         <!-- Email address -->
         <div class="form-group">
 
           <!-- Label -->
-          <label>{{ __('Name') }}</label>
-          <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+          <label>{{ __('First Name') }}</label>
+          <input id="firstname" type="text" class="form-control @error('firstname') is-invalid @enderror" name="firstname" value="{{ old('firstname') }}" required>
 
-          @error('name')
+          @error('firstname')
+          <span class="invalid-feedback" role="alert">
+            <strong>{{ $message }}</strong>
+          </span>
+          @enderror
+
+        </div>
+
+        <div class="form-group">
+
+          <!-- Label -->
+          <label>{{ __('Last Name') }}</label>
+          <input id="lastname" type="text" class="form-control @error('lastname') is-invalid @enderror" name="lastname" value="{{ old('lastname') }}" required>
+
+          @error('lastname')
           <span class="invalid-feedback" role="alert">
             <strong>{{ $message }}</strong>
           </span>
@@ -44,7 +63,7 @@
 
           <!-- Label -->
           <label>{{ __('E-Mail Address') }}</label>
-          <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
+          <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required >
 
           @error('email')
           <span class="invalid-feedback" role="alert">
@@ -70,7 +89,7 @@
           <div class="input-group input-group-merge">
 
             <!-- Input -->
-            <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+            <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required >
 
             @error('password')
             <span class="invalid-feedback" role="alert">
@@ -95,7 +114,7 @@
           <div class="input-group input-group-merge">
 
             <!-- Input -->
-            <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+            <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required >
           </div>
         </div>
         <!-- Submit -->

@@ -1,40 +1,49 @@
-var previousScroll = 0;
+$(function(){
 
-   $(window).scroll(function(){
 
-     var currentScroll = $(this).scrollTop();
 
-     if (currentScroll > 0 && currentScroll < $(document).height() - $(window).height()){
+  var previousScroll = 0;
 
-       if (currentScroll > previousScroll){
-         window.setTimeout(hideNav, 300);
+  $(window).scroll(function(){
 
-       } else if (currentScroll == previousScroll) {
-         window.setTimeout(visibleNav, 300);
-       }
-        else {
-         window.setTimeout(showNav, 300);
-       }
+    var currentScroll = $(this).scrollTop();
 
-       previousScroll = currentScroll;
-     }
+    if (currentScroll > 0 && currentScroll < $(document).height() - $(window).height()){
 
-     /* make the scroll navigation disappear when it is scrolled on top */
+      if (currentScroll > previousScroll){
+        window.setTimeout(hideNav, 300);
 
-     if ($(window).scrollTop() <= 150) {
-         $('#navigation-scroll').css('display', 'none');
-     } else {
-       $('#navigation-scroll').css('display', 'flex');
-     }
+      } else if (currentScroll == previousScroll) {
+        window.setTimeout(visibleNav, 300);
+      }
+      else {
+        window.setTimeout(showNav, 300);
+      }
 
-   });
+      previousScroll = currentScroll;
+    }
 
-   function hideNav() {
-     $(".main-navigation-scroll").removeClass("is-visible").addClass("is-hidden");
-   }
-   function showNav() {
-     $(".main-navigation-scroll").removeClass("is-hidden").addClass("is-visible");
-     $(".main-navigation-scroll").addClass("shadow");
-   }
+    /* make the scroll navigation disappear when it is scrolled on top */
 
- });
+    if ($(window).scrollTop() <= 150) {
+      $('#navigation-scroll').css('display', 'none');
+    } else {
+      $('#navigation-scroll').css('display', 'flex');
+    }
+
+  });
+
+  //EDIT PROFILE
+  //selected specialization
+  $("select[name='specialization']").val($("#specialization_selected").val())
+  //END EDIT PROFILE
+
+});
+
+function hideNav() {
+  $(".main-navigation-scroll").removeClass("is-visible").addClass("is-hidden");
+}
+function showNav() {
+  $(".main-navigation-scroll").removeClass("is-hidden").addClass("is-visible");
+  $(".main-navigation-scroll").addClass("shadow");
+}
