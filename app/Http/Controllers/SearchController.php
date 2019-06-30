@@ -7,29 +7,41 @@ use App\User;
 use App\Schedule;
 class SearchController extends Controller
 {
-    public function hospital(){
-      $hospitals = User::where('is_hospital', 1)->paginate(3);
+  public function hospital(){
+    $hospitals = User::where('is_hospital', 1)->paginate(3);
 
-      return view('search-hospital',compact('hospitals'));
+    return view('search-hospital',compact('hospitals'));
+  }
+
+  public function doctor(Request $request){
+
+    $doctors = User::where('is_hospital', 0);
+
+    if($request->firstname){
+      $doctors->where('firstname','like', '%'.$request->firstname.'%');
+    }
+    if($request->lastname){
+      $doctors->where('lastname', $request->lastname);
     }
 
-    public function doctor(Request $request){
-
-      $doctors = User::where('is_hospital', 0);
-
-      if($request->firstname){
-        $doctors->where('firstname','like', '%'.$request->firstname.'%');
-      }
-      if($request->lastname){
-        $doctors->where('lastname', $request->lastname);
-      }
-
-      if($request->specialization){
-        $doctors->where('specialization', $request->specialization);
-      }
-
-      $doctors = $doctors->with('schedule')->paginate(6);
-
-      return view('search-doctor',compact('doctors'));
+    if($request->specialization){
+      $doctors->where('specialization', $request->specialization);
     }
+
+    $doctors = $doctors->with('schedule')->paginate(6);
+
+    return view('search-doctor',compact('doctors'));
+  }
+
+  public function details($id){
+
+     if(request()->ajax()){
+      $user = User::where('id',$id)->with(['schedule'=>function($query){
+        $query->orderBy('day','asc');
+      }])->first();
+
+      return response()->json($user);
+    }
+  }
+
 }

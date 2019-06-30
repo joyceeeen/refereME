@@ -94,7 +94,7 @@ section .section-title {
   	padding: 60px 0;
   }
   .bottom {
-      background-color: #0a1c2e;
+      background-color: #212529;
   }
   .bottom .copyright {
       color: #e5e5e5;
@@ -131,10 +131,71 @@ section .section-title {
   height: 220px !important;
 }
 .hospital .card{
-  height: 435px;
+  height: 450px;
   max-height: 500px;
 }
 
 .doctor .card{
   height: 350px;
+}
+
+.card {
+    border-radius: 6px;
+    box-shadow: 0 6px 10px -4px rgba(0,0,0,.15);
+    background-color: #fff;
+    color: #252422;
+    margin-bottom: 20px;
+}
+
+.card .card-content {
+    padding: 15px 15px 10px;
+}
+.card, .card .actions, .card .card-content, .card .card-footer, .card .card-title, .card .category, .card .description, .card .social-line, .card .stats, .card a, .card small {
+    position: relative;
+}
+.card-content {
+    min-height: 85px;
+}
+
+.card .icon-big {
+    font-size: 3em;
+}
+
+.icon-warning {
+    color: #f3bb45;
+}
+
+.card .card-footer {
+    padding: 0 15px 15px;
+    background: white;
+}
+
+.card .card-footer hr {
+    margin-top: 0;
+    margin-bottom: 15px;
+}
+
+hr {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border: 0;
+    border-top: 1px solid #eee;
+}
+
+.card .stats {
+    color: #a49e93;
+    font-weight: 300;
+}
+
+.card .numbers {
+    text-align: right;
+    font-size: 2em;
+}
+
+.card .numbers p {
+    margin: 0;
+}
+p {
+    font-size: 16px;
+    line-height: 1.4em;
 }

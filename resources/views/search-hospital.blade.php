@@ -19,6 +19,7 @@
                                     <p class="card-text font-weight-bold mb-0">667 United Nations Ave, Ermita, Manila, 1000 Metro Manila</p>
                                     <p class="card-text mb-0">(02) 558 0888</p>
                                     <p class="card-text font-weight-bold mb-0 text-primary"><i>Open 24 Hours</i></p>
+                                    <button type="button" name="button" class="btn btn-primary mt-2">Refer Client</button>
                                 </div>
                             </div>
                         </div>
@@ -30,21 +31,7 @@
         </div>
         <div class="row">
           <div class="col-lg-12">
-            <nav aria-label="...">
-              <ul class="pagination justify-content-center">
-                <li class="page-item disabled">
-                  <a class="page-link" href="#" tabindex="-1">Previous</a>
-                </li>
-                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                <li class="page-item active">
-                  <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item">
-                  <a class="page-link" href="#">Next</a>
-                </li>
-              </ul>
-            </nav>
+            {{ $hospitals->links() }}
           </div>
         </div>
     </div>

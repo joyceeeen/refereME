@@ -38,7 +38,61 @@ $(function(){
   $("select[name='specialization']").val($("#specialization_selected").val())
   //END EDIT PROFILE
 
+
+  //SEARCH INFO
+  $(".showMoreInfoModal").on('click',function(e){
+    var modal = $("#moreInfoModal");
+    console.log('hey');
+    var id = $(this).data('info');
+    $.ajax({
+      url:'/search/'+id,
+      type:'get',
+      success:function(response){
+
+        console.log(response);
+        manipulateModalInfoResults(response);
+
+
+      },
+      error: function(response){
+        alert("Something is wrong. Please try again.");
+      }
+    });
+    modal.modal('show');
+  });
 });
+
+function manipulateModalInfoResults(data){
+  var modal = $("#moreInfoModal");
+  modal.find("#imgTxt").attr('src','/'+data.avatar);
+  modal.find("#nameTxt").html(data.name);
+  modal.find("#specializationTxt").html(data.specialization);
+  modal.find("#addressTxt").html(data.address);
+  modal.find("#mobileNumberTxt").html(data.contact_number);
+  modal.find("#descriptionTxt").html(data.summary);
+
+  //specialization
+  $.each(data.schedule, function(index, sched) {
+    modal.find("#referButton").attr('href','/refer/create?id='+data.id+'&sched='+);
+
+    var weekdays = ['','monday','tuesday','wednesday','thursday','friday','saturday','sunday'];
+    var titles = ['Clinic/Hospital','Address','Schedule','Contact Number'];
+    var inputs = [sched.hospital,sched.address,sched.schedule,sched.contact_number];
+
+    var tab = $("<div/>",{'class':'tab-pane fade show active','id':weekdays[sched.day],'role':'tabpanel','aria-labelledby':weekdays[sched.day]+'-tab'});
+
+    for(var i = 0; i < titles.length; i++){
+
+      var formGroup = $("<div/>",{'class':'form-group'}).appendTo(tab);
+      var label = $("<label/>",{'class':'col-lg-3 control-label font-weight-bold'}).html(titles[i]).appendTo(formGroup);
+      var div = $("<div/>",{'class':'col-lg-8'}).appendTo(formGroup);
+      var p = $("<p/>").text(inputs[i]).appendTo(div);
+    }
+
+    modal.find("#myTabContent").append(tab);
+
+  });
+}
 
 function hideNav() {
   $(".main-navigation-scroll").removeClass("is-visible").addClass("is-hidden");

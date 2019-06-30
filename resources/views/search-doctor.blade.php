@@ -57,7 +57,7 @@
             <div class="frontside doctor">
               <div class="card">
                 <div class="card-body text-center">
-                  <a href="#" data-toggle="modal" data-target=".bd-example-modal-lg">
+                  <a href="#" data-info="{{$doctor->id}}" class="showMoreInfoModal">
                     <p><img class=" img-fluid" src="{{$doctor->avatar ? '/'.$doctor->avatar : 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAAAAAA6fptVAAAACklEQVQI12O4AQAA2gDZumdc2gAAAABJRU5ErkJggg=='}}" alt="card image"></p>
                     <h4 class="card-title mb-0 font-weight-bold">{{$doctor->name}}</h4>
                     <h5 class="card-title mb-3">{{$doctor->specialization}}</h5>
@@ -82,7 +82,7 @@
   </div>
 </section>
 
-<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+<div class="modal fade bd-example-modal-lg" id="moreInfoModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
@@ -95,16 +95,16 @@
         <div class="frontside">
           <div class="card">
             <div class="card-body text-center">
-              <p><img class=" img-fluid" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGHVK4eyV3wUx9xIB3JOuVE27NpKcXfSb8rVfMYZgRM7U2fCog6w" alt="card image"></p>
-              <h4 class="card-title mb-0 font-weight-bold">Jason Lopez</h4>
-              <h5 class="card-title mb-3">Cardiology</h5>
-              <p class="card-text font-weight-bold mb-0 text-dark">605 Boni Ave, Mandaluyong, 1550 Metro Manila</p>
-              <p class="card-text text-dark">0919 781 7760</p>
+              <p><img class=" img-fluid" id="imgTxt" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGHVK4eyV3wUx9xIB3JOuVE27NpKcXfSb8rVfMYZgRM7U2fCog6w" alt="card image"></p>
+              <h4 class="card-title mb-0 font-weight-bold" id="nameTxt">Jason Lopez</h4>
+              <h5 class="card-title mb-3" id="specializationTxt">Cardiology</h5>
+              <p class="card-text font-weight-bold mb-0 text-dark" id="addressTxt">605 Boni Ave, Mandaluyong, 1550 Metro Manila</p>
+              <p class="card-text text-dark" id="mobileNumberTxt">0919 781 7760</p>
+              <a href="#" id="referButton" name="button" class="btn btn-primary">Refer Client</a>
               <hr>
               <div class="text-justify">
                 <h5 class="text-primary pb-2"><b>More details about me:</b></h5>
-                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                <p class="card-text" id="descriptionTxt">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
               </div>
               <hr>
               <div class="text-justify">
@@ -133,202 +133,7 @@
                   </li>
                 </ul>
                 <div class="tab-content pt-4" id="myTabContent">
-                  <div class="tab-pane fade show active" id="monday" role="tabpanel" aria-labelledby="monday-tab">
-                    <form class="form-horizontal" role="form">
-                      <div class="form-group">
-                        <label class="col-lg-3 control-label font-weight-bold">Clinic/Hospital:</label>
-                        <div class="col-lg-8">
-                          <p>09173032332</p>
-                        </div>
-                      </div>
-                      <div class="form-group">
-                        <label class="col-lg-3 control-label font-weight-bold">Address:</label>
-                        <div class="col-lg-8">
-                          <p>09173032332</p>
-                        </div>
-                      </div>
-                      <div class="form-group">
-                        <label class="col-lg-3 control-label font-weight-bold">Schedule:</label>
-                        <div class="col-lg-8">
-                          <p>12:00 PM - 3:00 PM</p>
-                        </div>
-                      </div>
-                      <div class="form-group">
-                        <label class="col-lg-3 control-label font-weight-bold">Contact Number:</label>
-                        <div class="col-lg-8">
-                          <p>09173032332</p>
-                        </div>
-                      </div>
-                    </form>
-                  </div>
-                  <div class="tab-pane fade" id="tuesday" role="tabpanel" aria-labelledby="tuesday-tab">
-                    <form class="form-horizontal" role="form">
-                      <div class="form-group">
-                        <label class="col-lg-3 control-label font-weight-bold">Clinic/Hospital:</label>
-                        <div class="col-lg-8">
-                          <p>09173032332</p>
-                        </div>
-                      </div>
-                      <div class="form-group">
-                        <label class="col-lg-3 control-label font-weight-bold">Address:</label>
-                        <div class="col-lg-8">
-                          <p>09173032332</p>
-                        </div>
-                      </div>
-                      <div class="form-group">
-                        <label class="col-lg-3 control-label font-weight-bold">Schedule:</label>
-                        <div class="col-lg-8">
-                          <p>12:00 PM - 3:00 PM</p>
-                        </div>
-                      </div>
-                      <div class="form-group">
-                        <label class="col-lg-3 control-label font-weight-bold">Contact Number:</label>
-                        <div class="col-lg-8">
-                          <p>09173032332</p>
-                        </div>
-                      </div>
-                    </form>
-                  </div>
-                  <div class="tab-pane fade" id="wednesday" role="tabpanel" aria-labelledby="wednesday-tab">
-                    <form class="form-horizontal" role="form">
-                      <div class="form-group">
-                        <label class="col-lg-3 control-label font-weight-bold">Clinic/Hospital:</label>
-                        <div class="col-lg-8">
-                          <p>09173032332</p>
-                        </div>
-                      </div>
-                      <div class="form-group">
-                        <label class="col-lg-3 control-label font-weight-bold">Address:</label>
-                        <div class="col-lg-8">
-                          <p>09173032332</p>
-                        </div>
-                      </div>
-                      <div class="form-group">
-                        <label class="col-lg-3 control-label font-weight-bold">Schedule:</label>
-                        <div class="col-lg-8">
-                          <p>12:00 PM - 3:00 PM</p>
-                        </div>
-                      </div>
-                      <div class="form-group">
-                        <label class="col-lg-3 control-label font-weight-bold">Contact Number:</label>
-                        <div class="col-lg-8">
-                          <p>09173032332</p>
-                        </div>
-                      </div>
-                    </form>
-                  </div>
-                  <div class="tab-pane fade" id="thursday" role="tabpanel" aria-labelledby="thursday-tab">
-                    <form class="form-horizontal" role="form">
-                      <div class="form-group">
-                        <label class="col-lg-3 control-label font-weight-bold">Clinic/Hospital:</label>
-                        <div class="col-lg-8">
-                          <p>09173032332</p>
-                        </div>
-                      </div>
-                      <div class="form-group">
-                        <label class="col-lg-3 control-label font-weight-bold">Address:</label>
-                        <div class="col-lg-8">
-                          <p>09173032332</p>
-                        </div>
-                      </div>
-                      <div class="form-group">
-                        <label class="col-lg-3 control-label font-weight-bold">Schedule:</label>
-                        <div class="col-lg-8">
-                          <p>12:00 PM - 3:00 PM</p>
-                        </div>
-                      </div>
-                      <div class="form-group">
-                        <label class="col-lg-3 control-label font-weight-bold">Contact Number:</label>
-                        <div class="col-lg-8">
-                          <p>09173032332</p>
-                        </div>
-                      </div>
-                    </form>
-                  </div>
-                  <div class="tab-pane fade" id="friday" role="tabpanel" aria-labelledby="friday-tab">
-                    <form class="form-horizontal" role="form">
-                      <div class="form-group">
-                        <label class="col-lg-3 control-label font-weight-bold">Clinic/Hospital:</label>
-                        <div class="col-lg-8">
-                          <p>09173032332</p>
-                        </div>
-                      </div>
-                      <div class="form-group">
-                        <label class="col-lg-3 control-label font-weight-bold">Address:</label>
-                        <div class="col-lg-8">
-                          <p>09173032332</p>
-                        </div>
-                      </div>
-                      <div class="form-group">
-                        <label class="col-lg-3 control-label font-weight-bold">Schedule:</label>
-                        <div class="col-lg-8">
-                          <p>12:00 PM - 3:00 PM</p>
-                        </div>
-                      </div>
-                      <div class="form-group">
-                        <label class="col-lg-3 control-label font-weight-bold">Contact Number:</label>
-                        <div class="col-lg-8">
-                          <p>09173032332</p>
-                        </div>
-                      </div>
-                    </form>
-                  </div>
-                  <div class="tab-pane fade" id="saturday" role="tabpanel" aria-labelledby="saturday-tab">
-                    <form class="form-horizontal" role="form">
-                      <div class="form-group">
-                        <label class="col-lg-3 control-label font-weight-bold">Clinic/Hospital:</label>
-                        <div class="col-lg-8">
-                          <p>OLLH</p>
-                        </div>
-                      </div>
-                      <div class="form-group">
-                        <label class="col-lg-3 control-label font-weight-bold">Address:</label>
-                        <div class="col-lg-8">
-                          <p>09173032332</p>
-                        </div>
-                      </div>
-                      <div class="form-group">
-                        <label class="col-lg-3 control-label font-weight-bold">Schedule:</label>
-                        <div class="col-lg-8">
-                          <p>12:00 PM - 3:00 PM</p>
-                        </div>
-                      </div>
-                      <div class="form-group">
-                        <label class="col-lg-3 control-label font-weight-bold">Contact Number:</label>
-                        <div class="col-lg-8">
-                          <p>09173032332</p>
-                        </div>
-                      </div>
-                    </form>
-                  </div>
-                  <div class="tab-pane fade" id="sunday" role="tabpanel" aria-labelledby="sunday-tab">
-                    <form class="form-horizontal" role="form">
-                      <div class="form-group">
-                        <label class="col-lg-3 control-label font-weight-bold">Clinic/Hospital:</label>
-                        <div class="col-lg-8">
-                          <p>09173032332</p>
-                        </div>
-                      </div>
-                      <div class="form-group">
-                        <label class="col-lg-3 control-label font-weight-bold">Address:</label>
-                        <div class="col-lg-8">
-                          <p>09173032332</p>
-                        </div>
-                      </div>
-                      <div class="form-group">
-                        <label class="col-lg-3 control-label font-weight-bold">Schedule:</label>
-                        <div class="col-lg-8">
-                          <p>12:00 PM - 3:00 PM</p>
-                        </div>
-                      </div>
-                      <div class="form-group">
-                        <label class="col-lg-3 control-label font-weight-bold">Contact Number:</label>
-                        <div class="col-lg-8">
-                          <p>09173032332</p>
-                        </div>
-                      </div>
-                    </form>
-                  </div>
+    
                 </div>
 
               </div>
