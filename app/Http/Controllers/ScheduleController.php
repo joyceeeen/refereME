@@ -14,23 +14,19 @@ class ScheduleController extends Controller
   */
   public function index()
   {
+    
     $user = auth()->user();
     $schedule = $user->schedule;
 
-    if($schedule->isEmpty()){
-      return view('user.schedule',compact('user'));
-    }else{
+    $sched1 = $schedule->where('day',1)->first();
+    $sched2 = $schedule->where('day',2)->first();
+    $sched3 = $schedule->where('day',3)->first();
+    $sched4 = $schedule->where('day',4)->first();
+    $sched5 = $schedule->where('day',5)->first();
+    $sched6 = $schedule->where('day',6)->first();
+    $sched7 = $schedule->where('day',7)->first();
 
-      $sched1 = $schedule->where('day',1)->first();
-      $sched2 = $schedule->where('day',2)->first();
-      $sched3 = $schedule->where('day',3)->first();
-      $sched4 = $schedule->where('day',4)->first();
-      $sched5 = $schedule->where('day',5)->first();
-      $sched6 = $schedule->where('day',6)->first();
-      $sched7 = $schedule->where('day',7)->first();
-
-      return view('user.schedule',compact('user','schedule','sched1','sched2','sched3','sched4','sched5','sched6','sched7'));
-    }
+    return view('user.schedule',compact('user','schedule','sched1','sched2','sched3','sched4','sched5','sched6','sched7'));
   }
 
   /**
