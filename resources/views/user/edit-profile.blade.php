@@ -38,12 +38,21 @@
               <input class="form-control" name="firstname" type="text" value="{{$user->firstname}}">
             </div>
           </div>
+
           <div class="form-group">
             <label class="col-lg-3 control-label">Last name:</label>
             <div class="col-lg-8">
               <input class="form-control" name="lastname" type="text" value="{{$user->lastname}}">
             </div>
           </div>
+          @if(auth()->user()->is_hospital)
+          <div class="form-group">
+            <label class="col-lg-3 control-label">Hospital Name:</label>
+            <div class="col-lg-8">
+              <input class="form-control" name="hospital_name" type="text" value="{{$user->hospital_name}}">
+            </div>
+          </div>
+          @endif
           <div class="form-group">
             <label class="col-lg-3 control-label">Address:</label>
             <div class="col-lg-8">

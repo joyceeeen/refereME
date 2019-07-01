@@ -10,5 +10,9 @@ class Patient extends Model
       'firstname','middlename','lastname','birthday','gender'
   ];
 
+  public function getNameAttribute()
+  {
+    return ucwords($this->firstname.' '.$this->lastname);
+  }
 
 }

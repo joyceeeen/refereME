@@ -20,6 +20,7 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->string('email')->unique();
             $table->boolean('is_hospital');
+            $table->string('hospital_name')->nullable();
             $table->string('address')->nullable();
             $table->string('contact_number')->nullable();
             $table->string('specialization')->nullable();

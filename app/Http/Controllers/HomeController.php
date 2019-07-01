@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\User;
+use App\Schedule;
+use App\Referrals;
 class HomeController extends Controller
 {
     /**
@@ -23,6 +25,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $id = auth()->user()->id;
+        $clients = User::whereId($id)->with('referrals.patient')->first();
+        
+        return view('home',compact('clients'));
     }
 }

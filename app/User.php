@@ -16,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'firstname','lastname','is_hospital','address','contact_number','specialization','summary' ,'email', 'avatar','password',
+        'firstname','lastname','is_hospital','hospital_name','address','contact_number','specialization','summary' ,'email', 'avatar','password',
     ];
 
     /**
@@ -45,6 +45,11 @@ class User extends Authenticatable
 
     public function schedule(){
       return $this->hasMany('App\Schedule','user_id','id');
+    }
+
+    public function referrals(){
+      return $this->hasMany('App\Referrals','user_id','id');
+
     }
 
 }

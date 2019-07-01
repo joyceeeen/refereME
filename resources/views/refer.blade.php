@@ -7,9 +7,9 @@
     <div class="card">
       <div class="card-body">
         <div class="text-center">
-          <p><img class=" img-fluid" src="{{$doctor->avatar ? '/'.$doctor->avatar : 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAAAAAA6fptVAAAACklEQVQI12O4AQAA2gDZumdc2gAAAABJRU5ErkJggg=='}}" alt="card image"></p>
-          <h4 class="card-title mb-0 font-weight-bold">{{$doctor->name}}</h4>
-          <h5 class="card-title mb-3">{{$doctor->specialization}}</h5>
+          <p><img class="imgRefer img-fluid" src="{{$doctor->avatar ? '/'.$doctor->avatar : 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAAAAAA6fptVAAAACklEQVQI12O4AQAA2gDZumdc2gAAAABJRU5ErkJggg=='}}" alt="card image"></p>
+          <h4 class="card-title mb-0 font-weight-bold">{{$doctor->is_hospital ? $doctor->hospital_name : $doctor->name}}</h4>
+          <h5 class="card-title mb-3">{{$doctor->is_hospital ? '' : $doctor->specialization }}</h5>
           <p class="card-text font-weight-bold mb-0 text-dark">{{$doctor->address}}</p>
           <p class="card-text text-dark">{{$doctor->contact_number}}</p>
         </div>

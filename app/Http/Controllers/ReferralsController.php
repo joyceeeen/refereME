@@ -110,9 +110,13 @@ class ReferralsController extends Controller
   * @param  \App\Referrals  $referrals
   * @return \Illuminate\Http\Response
   */
-  public function update(Request $request, Referrals $referrals)
+  public function update(Request $request, $id)
   {
-    //
+    $referral = Referrals::find($id);
+
+    $referral->is_accepted = $request->action;
+    $referral->save();
+    return redirect()->back()->with('success',"Referral has been updated");
   }
 
   /**

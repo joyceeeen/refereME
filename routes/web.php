@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
 Route::get('/search/hospital','SearchController@hospital')->name('search.hospital');
 Route::get('/search/doctor', 'SearchController@doctor')->name('search.doctor');
 Route::get('/search/{id}', 'SearchController@details')->name('search.info');
@@ -36,10 +34,12 @@ Route::get('schedule', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
 
 
 Route::group(['middleware'=>'auth'],function(){
+
+
+  Route::get('/', 'HomeController@index')->name('home');
 
   Route::resource('refer','ReferralsController');
 

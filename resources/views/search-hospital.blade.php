@@ -14,12 +14,13 @@
                         <div class="frontside hospital">
                             <div class="card">
                                 <div class="card-body text-center">
-                                    <p><img class="imgHospital  img-fluid" src="https://maniladoctors.com.ph/wp-content/uploads/2018/03/MDH-Today2.jpg" alt="card image"></p>
-                                    <h4 class="card-title">Manila Doctors Hospital</h4>
-                                    <p class="card-text font-weight-bold mb-0">667 United Nations Ave, Ermita, Manila, 1000 Metro Manila</p>
-                                    <p class="card-text mb-0">(02) 558 0888</p>
+                                    <p><img class="imgHospital img-fluid" src="{{$hospital->avatar ? '/'.$hospital->avatar : 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAAAAAA6fptVAAAACklEQVQI12O4AQAA2gDZumdc2gAAAABJRU5ErkJggg=='}}" alt="card image"></p>
+                                    <h4 class="card-title">{{$hospital->hospital_name}}</h4>
+                                    <p class="card-text font-weight-bold mb-0">{{$hospital->address}}</p>
+                                    <p class="card-text mb-0">{{$hospital->contact_number}}</p>
                                     <p class="card-text font-weight-bold mb-0 text-primary"><i>Open 24 Hours</i></p>
-                                    <button type="button" name="button" class="btn btn-primary mt-2">Refer Client</button>
+                                    <a href="{{route('refer.create',['id'=>$hospital->id])}}" name="button" class="btn btn-primary mt-2">Refer Client</a>
+
                                 </div>
                             </div>
                         </div>

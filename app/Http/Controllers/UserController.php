@@ -115,6 +115,7 @@ class UserController extends Controller
       $user->contact_number = $request->contact_number;
       $user->specialization = $request->specialization;
       $user->summary = $request->summary;
+      $user->hospital_name = $request->hospital_name;
 
       //Upload Image
 

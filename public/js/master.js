@@ -73,7 +73,7 @@ function manipulateModalInfoResults(data){
 
   //specialization
   $.each(data.schedule, function(index, sched) {
-    modal.find("#referButton").attr('href','/refer/create?id='+data.id+'&sched='+);
+    modal.find("#referButton").attr('href','/refer/create?id='+data.id);
 
     var weekdays = ['','monday','tuesday','wednesday','thursday','friday','saturday','sunday'];
     var titles = ['Clinic/Hospital','Address','Schedule','Contact Number'];
