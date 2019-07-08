@@ -21,19 +21,19 @@
             <div class="col-lg-4">
               <div class="form-group">
                 <h5 class="text-primary pb-2"><b>Last Name:</b></h5>
-                <input type="text" name="lastname" class="form-control" placeholder="Aridedon" id="lName">
+                <input type="text" name="lastname" required class="form-control" placeholder="Aridedon" id="lName">
               </div>
             </div>
             <div class="col-lg-4">
               <div class="form-group">
                 <h5 class="text-primary pb-2"><b>First Name:</b></h5>
-                <input type="text"  name="firstname"  class="form-control" placeholder="Yancy" id="fName">
+                <input type="text"  name="firstname" required  class="form-control" placeholder="Yancy" id="fName">
               </div>
             </div>
             <div class="col-lg-4">
               <div class="form-group">
                 <h5 class="text-primary pb-2"><b>Middle Name:</b></h5>
-                <input type="text" name="middlename" class="form-control" placeholder="Yans" id="mName">
+                <input type="text" name="middlename" required class="form-control" placeholder="Yans" id="mName">
               </div>
             </div>
           </div>
@@ -42,19 +42,19 @@
             <div class="col-lg-4">
               <div class="form-group">
                 <h5 class="text-primary pb-2"><b>Date of Birth:</b></h5>
-                <input type="date" name="birthday" class="form-control" id="fName">
+                <input type="date" name="birthday" required class="form-control" id="fName">
               </div>
             </div>
             <div class="col-lg-4">
               <div class="form-group">
                 <h5 class="text-primary pb-2"><b>Contact Number:</b></h5>
-                <input type="text" name="contact_number" class="form-control" id="contactNo" placeholder="09172390989">
+                <input type="text" name="contact_number" required class="form-control" id="contactNo" placeholder="09172390989">
               </div>
             </div>
             <div class="col-lg-4">
               <div class="form-group">
                 <h5 class="text-primary pb-2"><b>Email Address:</b></h5>
-                <input type="email" name="email_address" class="form-control" id="emailAd" placeholder="test@email.com">
+                <input type="email" name="email_address" required class="form-control" id="emailAd" placeholder="test@email.com">
               </div>
             </div>
             <div class="col-lg-4">
@@ -73,7 +73,7 @@
           <div class="text-justify">
             <h3 class="text-primary pb-2"><b>Reason for Referral</b></h3>
             <h5 class="text-primary pb-2"><b>Report:</b></h5>
-            <textarea name="report" rows="8" cols="80" class="form-control"></textarea>
+            <textarea name="report" rows="8" required cols="80" class="form-control"></textarea>
           </div>
           <input type="hidden" name="doctor_id" value="{{request()->id}}"/>
           <hr>

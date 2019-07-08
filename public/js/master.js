@@ -126,10 +126,12 @@ function manipulateModalPatientInfo(data){
   modal.find("#emailTxt").html(data.patient.email_address);
   modal.find("#descriptionTxt").html(data.report);
 
+  $("#attachments").empty();
+
   var div = $("#attachments");
 
   for(var i = 0; i< data.attachments.length; i++){
-    div.append($("<li/>").html('<a target="_blank" href="attachment/'+data.attachments[i].id+'">Attachment #'+(i+1)+'</a>'));
+    div.append($("<li/>").html('<a href="/attachment/'+data.attachments[i].id+'">Attachment #'+(i+1)+'</a>'));
   }
 }
 
