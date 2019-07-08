@@ -46,6 +46,18 @@
               </div>
             </div>
             <div class="col-lg-4">
+              <div class="form-group">
+                <h5 class="text-primary pb-2"><b>Contact Number:</b></h5>
+                <input type="text" name="contact_number" class="form-control" id="contactNo" placeholder="09172390989">
+              </div>
+            </div>
+            <div class="col-lg-4">
+              <div class="form-group">
+                <h5 class="text-primary pb-2"><b>Email Address:</b></h5>
+                <input type="email" name="email_address" class="form-control" id="emailAd" placeholder="test@email.com">
+              </div>
+            </div>
+            <div class="col-lg-4">
               <h5 class="text-primary pb-2"><b>Sex:</b></h5>
               <div class="custom-control custom-radio custom-control-inline">
                 <input type="radio" class="custom-control-input" id="customRadio" name="gender" value="0" checked>

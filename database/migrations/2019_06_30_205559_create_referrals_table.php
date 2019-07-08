@@ -15,14 +15,15 @@ class CreateReferralsTable extends Migration
     {
         Schema::create('referrals', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('referrer_id');
+            $table->unsignedBigInteger('doctor_id');
             $table->unsignedBigInteger('patient_id');
             $table->text('report');
-            
+
             $table->boolean('is_accepted')->nullable();
 
-
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('referrer_id')->references('id')->on('users');
+            $table->foreign('doctor_id')->references('id')->on('users');
             $table->foreign('patient_id')->references('id')->on('patients');
 
             $table->timestamps();

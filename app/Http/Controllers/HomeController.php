@@ -26,8 +26,8 @@ class HomeController extends Controller
     public function index()
     {
         $id = auth()->user()->id;
-        $clients = User::whereId($id)->with('referrals.patient')->first();
-        
+        $clients = User::whereId($id)->with(['referrals.patient','referralRequests.patient'])->first();
+
         return view('home',compact('clients'));
     }
 }

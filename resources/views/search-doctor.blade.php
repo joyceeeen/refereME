@@ -49,6 +49,43 @@
       </div>
     </div>
     <div class="row">
+      <div class="col-lg-12">
+        <h5 class="text-primary font-weight-bold">NEAREST</h5>
+      </div>
+    </div>
+    <div class="row">
+
+      <!-- Team member -->
+      @foreach($doctors as $doctor)
+      <div class="col-xs-12 col-sm-6 col-md-4">
+        <div class="image-flip">
+          <div class="mainflip">
+            <div class="frontside doctor">
+              <div class="card">
+                <div class="card-body text-center">
+                  <a href="#" data-info="{{$doctor->id}}" class="showMoreInfoModal">
+                    <p><img class=" img-fluid" src="{{$doctor->avatar ? '/'.$doctor->avatar : 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAAAAAA6fptVAAAACklEQVQI12O4AQAA2gDZumdc2gAAAABJRU5ErkJggg=='}}" alt="card image"></p>
+                    <h4 class="card-title mb-0 font-weight-bold">{{$doctor->name}}</h4>
+                    <h5 class="card-title mb-3">{{$doctor->specialization}}</h5>
+                    <p class="card-text font-weight-bold mb-0 text-dark">{{$doctor->address}}</p>
+                    <p class="card-text mb-0 text-dark">{{$doctor->contact_number}}</p>
+                    <p class="card-text font-weight-bold mb-0 text-primary"><i>Open 24 Hours</i></p>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      @endforeach
+
+    </div>
+    <div class="row">
+      <div class="col-lg-12">
+        <h5 class="text-primary font-weight-bold">DOCTORS</h5>
+      </div>
+    </div>
+    <div class="row">
       <!-- Team member -->
       @foreach($doctors as $doctor)
       <div class="col-xs-12 col-sm-6 col-md-4">
@@ -133,7 +170,7 @@
                   </li>
                 </ul>
                 <div class="tab-content pt-4" id="myTabContent">
-    
+
                 </div>
 
               </div>

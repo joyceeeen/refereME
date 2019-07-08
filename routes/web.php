@@ -38,10 +38,12 @@ Auth::routes();
 
 Route::group(['middleware'=>'auth'],function(){
 
+  Route::resource('patient', 'PatientController');
 
   Route::get('/', 'HomeController@index')->name('home');
 
   Route::resource('refer','ReferralsController');
+  Route::resource('attachment','AttachmentsController');
 
   Route::resource('user','UserController');
   Route::resource('schedule','ScheduleController');

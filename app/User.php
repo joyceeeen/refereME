@@ -46,10 +46,16 @@ class User extends Authenticatable
     public function schedule(){
       return $this->hasMany('App\Schedule','user_id','id');
     }
-
+    //MY REFERRALS
     public function referrals(){
-      return $this->hasMany('App\Referrals','user_id','id');
-
+      return $this->hasMany('App\Referrals','referrer_id','id');
     }
+
+
+    //REFERED TO ME
+    public function referralRequests(){
+      return $this->hasMany('App\Referrals','doctor_id','id');
+    }
+
 
 }

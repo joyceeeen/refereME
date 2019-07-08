@@ -46,12 +46,17 @@ class ReferralsController extends Controller
     $patient->lastname = $request->lastname;
     $patient->gender = $request->gender;
     $patient->birthday = $request->birthday;
+    $patient->contact_number = $request->contact_number;
+    $patient->email_address = $request->email_address;
+
     $patient->save();
 
 
     $referral = new Referrals();
     $referral->patient_id = $patient->id;
-    $referral->user_id = $request->doctor_id;
+    $referral->doctor_id = $request->doctor_id;
+    $referral->referrer_id = auth()->user()->id;
+
     $referral->report = $request->report;
     $referral->save();
 
@@ -72,7 +77,7 @@ class ReferralsController extends Controller
         $filename = $originalPath.time().uniqid().'.'.$file->getClientOriginalExtension();
         $thumbnailImage->save($filename);
 
-        array_push($data,["referrals_id"=>$referral->id,"path"=>$filename]);
+        array_push($data,["referrals_id"=>$referral->id,"path"=>$filename,"filename"=>time().uniqid().'.'.$file->getClientOriginalExtension()]);
       }
       Attachments::insert($data);
 
@@ -87,9 +92,13 @@ class ReferralsController extends Controller
   * @param  \App\Referrals  $referrals
   * @return \Illuminate\Http\Response
   */
-  public function show(Referrals $referrals)
+  public function show($id)
   {
-    //
+    if(request()->ajax()){
+      $patient = Referrals::whereId($id)->with(['patient','attachments'])->first();
+
+      return response()->json($patient);
+   }
   }
 
   /**

@@ -17,6 +17,8 @@ class CreateAttachmentsTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('referrals_id');
             $table->string('path');
+            $table->string('filename');
+
             $table->foreign('referrals_id')->references('id')->on('referrals');
 
             $table->timestamps();

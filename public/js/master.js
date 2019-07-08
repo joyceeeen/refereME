@@ -48,11 +48,7 @@ $(function(){
       url:'/search/'+id,
       type:'get',
       success:function(response){
-
-        console.log(response);
         manipulateModalInfoResults(response);
-
-
       },
       error: function(response){
         alert("Something is wrong. Please try again.");
@@ -60,10 +56,37 @@ $(function(){
     });
     modal.modal('show');
   });
+
+  //SEARCH INFO
+  $(".patientDetailsModal").on('click',function(e){
+    var modal = $("#patientDetailsModal");
+    var id = $(this).data('id');
+    $.ajax({
+      url:'/refer/'+id,
+      type:'get',
+      success:function(response){
+        console.log(response);
+
+        manipulateModalPatientInfo(response);
+      },
+      error: function(response){
+        alert("Something is wrong. Please try again.");
+      }
+    });
+    modal.modal('show');
+  });
+
+  if($("#my-referrals-row").length){
+
+    $(".status-Accepted").addClass("bg-success");
+    $(".status-Declined").addClass("bg-danger");
+
+  }
 });
 
 function manipulateModalInfoResults(data){
   var modal = $("#moreInfoModal");
+
   modal.find("#imgTxt").attr('src','/'+data.avatar);
   modal.find("#nameTxt").html(data.name);
   modal.find("#specializationTxt").html(data.specialization);
@@ -89,10 +112,27 @@ function manipulateModalInfoResults(data){
       var p = $("<p/>").text(inputs[i]).appendTo(div);
     }
 
-    modal.find("#myTabContent").append(tab);
+    modal.find("#myTabContent").empty().append(tab);
 
   });
 }
+
+function manipulateModalPatientInfo(data){
+  var modal = $("#patientDetailsModal");
+
+  modal.find("#nameTxt").html(data.patient.name);
+  modal.find("#birthdayTxt").html(data.patient.birthday);
+  modal.find("#mobileNumberTxt").html(data.patient.mobile_number);
+  modal.find("#emailTxt").html(data.patient.email_address);
+  modal.find("#descriptionTxt").html(data.report);
+
+  var div = $("#attachments");
+
+  for(var i = 0; i< data.attachments.length; i++){
+    div.append($("<li/>").html('<a target="_blank" href="attachment/'+data.attachments[i].id+'">Attachment #'+(i+1)+'</a>'));
+  }
+}
+
 
 function hideNav() {
   $(".main-navigation-scroll").removeClass("is-visible").addClass("is-hidden");
