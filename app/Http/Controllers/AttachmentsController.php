@@ -46,7 +46,8 @@ class AttachmentsController extends Controller
     public function show($id)
     {
         $download = Attachments::find($id)->first();
-        return response()->download($download->path, $download->filename);
+        $path = public_path($download->path);
+        return response()->download($path, $download->filename);
     }
 
     /**
