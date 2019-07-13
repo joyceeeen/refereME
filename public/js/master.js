@@ -143,3 +143,15 @@ function showNav() {
   $(".main-navigation-scroll").removeClass("is-hidden").addClass("is-visible");
   $(".main-navigation-scroll").addClass("shadow");
 }
+
+$("#radio_others").click(function() {
+  if ($("#otherForm").attr('disabled')) {
+                $("#otherForm").removeAttr('disabled');
+            }
+});
+$(".radio_common").click(function() {
+    $("#otherForm").attr({
+        'disabled': 'disabled'
+    });
+
+});

@@ -5,6 +5,12 @@
 
 <div class="container-fluid">
   <div class="row align-items-center justify-content-center">
+    <div class="col-12 col-md-7 col-lg-6 col-xl-8 d-none d-lg-block no-padding">
+
+      <!-- Image -->
+      <div class="bg-cover vh-100 mt-n1 mr-n3" style="background-image: url('https://images.pexels.com/photos/1282308/pexels-photo-1282308.jpeg?auto=format%2Ccompress&cs=tinysrgb&dpr=2&h=650&w=940');"></div>
+
+    </div>
     <div class="col-12 col-md-5 col-lg-4" style="padding:60px">
 
       <!-- Heading -->
@@ -84,12 +90,7 @@
       </form>
 
     </div>
-    <div class="col-12 col-md-7 col-lg-6 col-xl-8 d-none d-lg-block">
 
-      <!-- Image -->
-      <div class="bg-cover vh-100 mt-n1 mr-n3" style="background-image: url('https://images.pexels.com/photos/1282308/pexels-photo-1282308.jpeg?auto=format%2Ccompress&cs=tinysrgb&dpr=2&h=650&w=940');"></div>
-
-    </div>
   </div> <!-- / .row -->
 </div>
 @endsection

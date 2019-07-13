@@ -93,6 +93,12 @@
 
           </div>
           <div class="form-group">
+            <label class="col-lg-3 control-label">License Number:</label>
+            <div class="col-lg-8">
+              <input class="form-control" name="address" type="text" value="License Number">
+            </div>
+          </div>
+          <div class="form-group">
             <label class="col-lg-3 control-label">Summary:</label>
             <div class="col-lg-8">
               <textarea name="summary" class="form-control" rows="8" value="" cols="80">{{$user->summary}}</textarea>

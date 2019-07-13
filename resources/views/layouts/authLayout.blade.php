@@ -84,6 +84,9 @@ body,html{
   padding: 0px;
   margin: 0px;
 }
+.no-padding{
+  padding: 0px;
+}
   </style>
 </head>
 <body class="d-flex align-items-center bg-auth border-top border-top-2 border-primary">
