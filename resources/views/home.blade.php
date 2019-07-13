@@ -3,7 +3,7 @@
 @section('content')
 <section class="pb-5">
   <div class="container-fluid" style="padding-left:8rem;padding-right:8rem;">
-    <div class="row pb-5">
+    <div class="row ">
       <div class="col-lg-3 col-sm-6">
         <div class="card">
           <div class="card-content">
@@ -107,7 +107,57 @@
         </div>
       </div>
     </div>
+    <div class="row pb-5">
+      <div class="col-lg-12">
+        <div class="card">
+          <div class="card-body">
+            <h4 class="text-primary"><b>Line Chart</b></h4>
+            <div id="linechart-div">
+            </div>
+          </div>
+        </div>
+        <?= Lava::render('LineChart','LineIMDB','linechart-div') ?>
+      </div>
+      <div class="col-lg-12">
+        <div class="card">
+          <div class="card-body">
+            <h4 class="text-primary"><b>Bar Chart</b></h4>
+            <div id="chart-div"></div>
+          </div>
+        </div>
+        <?= Lava::render('BarChart', 'IMDB', 'chart-div') ?>
+      </div>
+      <div class="col-lg-4">
+        <div class="card">
+          <div class="card-body">
+            <h4 class="text-primary"><b>Pie Chart</b></h4>
 
+            <div id="piechart-div"></div>
+          </div>
+        </div>
+        <?= Lava::render('PieChart', 'IMDB', 'piechart-div') ?>
+      </div>
+      <div class="col-lg-4">
+        <div class="card">
+          <div class="card-body">
+            <h4 class="text-primary"><b>Pie 2 Chart</b></h4>
+
+            <div id="piechart2-div"></div>
+          </div>
+        </div>
+        <?= Lava::render('PieChart', 'IMDB2', 'piechart2-div') ?>
+      </div>
+      <div class="col-lg-4">
+        <div class="card">
+          <div class="card-body">
+            <h4 class="text-primary"><b>Pie 3 Chart</b></h4>
+
+            <div id="piechart3-div"></div>
+          </div>
+        </div>
+        <?= Lava::render('PieChart', 'IMDB3', 'piechart3-div') ?>
+      </div>
+    </div>
     <!-- <div class="row pb-5">
       <div class="col-lg-12">
         <h5 class="section-title h1">Referral Requests</h5>
