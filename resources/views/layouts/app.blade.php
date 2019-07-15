@@ -66,10 +66,10 @@
               </a>
 
               <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="{{ route('schedule.index') }}">
+                <a class="dropdown-item" href="{{ route('referral.requests') }}">
                   Referral Requests
                 </a>
-                <a class="dropdown-item" href="{{ route('user.index') }}">
+                <a class="dropdown-item" href="{{ route('my.referrals') }}">
                   My Referrals
                 </a>
 

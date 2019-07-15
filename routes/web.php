@@ -37,6 +37,8 @@ Auth::routes();
 
 
 Route::group(['middleware'=>'auth'],function(){
+  Route::get('report-referral-requests', 'ReferralsController@requests')->name('referral.requests');
+  Route::get('report-my-referrals', 'ReferralsController@referrals')->name('my.referrals');
 
   Route::resource('patient', 'PatientController');
 

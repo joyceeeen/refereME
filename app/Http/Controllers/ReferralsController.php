@@ -32,6 +32,23 @@ class ReferralsController extends Controller
     return view('refer',compact('doctor'));
   }
 
+
+
+  public function referrals(Request $request)
+  {
+    $id = auth()->user()->id;
+
+    $clients = User::whereId($id)->with(['referrals.patient','referralRequests.patient'])->first();
+    return view('my-referrals',compact('clients'));
+  }
+
+  public function requests(Request $request)
+  {
+    $id = auth()->user()->id;
+
+    $clients = User::whereId($id)->with(['referrals.patient','referralRequests.patient'])->first();
+    return view('referral-requests',compact('clients'));
+  }
   /**
   * Store a newly created resource in storage.
   *
