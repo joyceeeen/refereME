@@ -78,10 +78,23 @@
           <input type="hidden" name="doctor_id" value="{{request()->id}}"/>
           <hr>
           <!-- Button trigger modal -->
-          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
-            Urinalysis Report
-          </button>
-
+          <div class="row">
+            <div class="checkbox col-lg-4">
+              <label><input type="checkbox" value=""> Urinalysis Report</label>
+            </div>
+            <div class="checkbox col-lg-4">
+              <label><input type="checkbox" value=""> Fecalysis Report</label>
+            </div>
+            <div class="checkbox col-lg-4">
+              <label><input type="checkbox" value=""> CBC</label>
+            </div>
+            <div class="checkbox col-lg-4">
+              <label><input type="checkbox" value=""> Physical Exam Result</label>
+            </div>
+            <div class="checkbox col-lg-4">
+              <label><input type="checkbox" value=""> Chest Xray Result</label>
+            </div>
+          </div>
           <!-- Modal -->
           <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
