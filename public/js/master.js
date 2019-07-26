@@ -1,7 +1,4 @@
 $(function(){
-
-
-
   var previousScroll = 0;
 
   $(window).scroll(function(){

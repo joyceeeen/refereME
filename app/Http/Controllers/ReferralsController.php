@@ -6,6 +6,8 @@ use App\Referrals;
 use App\User;
 use App\Patient;
 use App\Attachments;
+use App\ReportsReference;
+use App\ReferralReports;
 use Illuminate\Http\Request;
 use Image;
 use File;
@@ -29,7 +31,8 @@ class ReferralsController extends Controller
   public function create(Request $request)
   {
     $doctor = User::findOrFail($request->id);
-    return view('refer',compact('doctor'));
+    $reports = ReportsReference::get();
+    return view('refer',compact('doctor','reports'));
   }
 
 
@@ -57,26 +60,43 @@ class ReferralsController extends Controller
   */
   public function store(Request $request)
   {
-    $patient = new Patient();
-    $patient->firstname = $request->firstname;
-    $patient->middlename = $request->middlename;
-    $patient->lastname = $request->lastname;
-    $patient->gender = $request->gender;
-    $patient->birthday = $request->birthday;
-    $patient->contact_number = $request->contact_number;
-    $patient->email_address = $request->email_address;
+    $existingPatient = Patient::where('firstname',$request->firstname)->where('middlename',$request->middlename)->where('lastname',$request->firstname)->where('birthday',$request->birthday)->first();
+    $patientId = null;
 
-    $patient->save();
+    if($existingPatient){
+      $patientId = $existingPatient->id;
+
+    }else{
+      $patient = new Patient();
+      $patient->firstname = $request->firstname;
+      $patient->middlename = $request->middlename;
+      $patient->lastname = $request->lastname;
+      $patient->gender = $request->gender;
+      $patient->birthday = $request->birthday;
+      $patient->contact_number = $request->contact_number;
+      $patient->email_address = $request->email_address;
+      $patient->save();
+      $patientId = $patient->id;
+    }
 
 
     $referral = new Referrals();
-    $referral->patient_id = $patient->id;
+    $referral->patient_id = $patientId;
     $referral->doctor_id = $request->doctor_id;
     $referral->referrer_id = auth()->user()->id;
-
     $referral->report = $request->report;
     $referral->save();
 
+    //ADD reports DATA
+    $reportsData = [];
+    foreach ($request->reports as $key => $value) {
+      array_push($reportsData,['reports_references_id'=>$value,'referrals_id'=>$referral->id]);
+    }
+    $reports = ReferralReports::insert($reportsData);
+    //END reports DATA
+
+
+    //ADD FILES DATA
     if($request->hasFile('attachments')){
 
       $data = [];
@@ -99,9 +119,15 @@ class ReferralsController extends Controller
       Attachments::insert($data);
 
     }
+    //ADD FILES DATA
 
-    return redirect()->back()->with('success','Referral has been submitted');
+    //return redirect()->back()->with('success','Referral has been submitted');
+    return redirect()->route('report-forms.create',['id'=>$referral->id]);
   }
+
+
+
+
 
   /**
   * Display the specified resource.

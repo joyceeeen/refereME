@@ -32,31 +32,16 @@ Route::get('schedule', function () {
     return view('schedule');
 });
 
-Route::get('urinalysis', function () {
-    return view('urinalysis');
-});
 
-Route::get('chest', function () {
-    return view('chest');
-});
-
-Route::get('physical', function () {
-    return view('physical');
-});
-
-Route::get('fecalysis', function () {
-    return view('fecalysis');
-});
-
-Route::get('cbc', function () {
-    return view('cbc');
-});
 
 Auth::routes();
 
 
 
 Route::group(['middleware'=>'auth'],function(){
+
+  Route::resource('report-forms','ReferralReportsController');
+
   Route::get('report-referral-requests', 'ReferralsController@requests')->name('referral.requests');
   Route::get('report-my-referrals', 'ReferralsController@referrals')->name('my.referrals');
 

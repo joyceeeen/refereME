@@ -25,5 +25,7 @@ class Referrals extends Model
     return $this->hasMany('App\Attachments','referrals_id','id');
   }
 
-
+  public function reports(){
+    return $this->hasMany('App\Attachments','referrals_id','id');
+  }
 }
