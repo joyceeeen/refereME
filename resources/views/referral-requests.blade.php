@@ -32,7 +32,7 @@
                 <td>{{$client->patient->birthday}}</td>
 
                 <td>{{$client->report}}</td>
-                <td><a <a href="#patientDetailsModal" data-toggle="modal"  data-target="#patientDetailsModal" class="patientDetailsModal" data-id="{{$client->id}}">View More</a></td>
+                <td><a <a href="#" data-toggle="modal"  class="patientDetailsModal" data-id="{{$client->id}}">View More</a></td>
                 <td align="center">
                   <form action="{{route('refer.update',['id'=>$client->id])}}" method="post">
                     @csrf

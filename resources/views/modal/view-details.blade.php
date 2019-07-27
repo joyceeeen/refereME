@@ -1,5 +1,3 @@
-@extends('layouts.modalLayout')
-@section('content')
 
 <section class="pb-5">
   <div class="container">
@@ -91,4 +89,3 @@
     </div>
   </div>
 </section>
-@endsection

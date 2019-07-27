@@ -29,7 +29,7 @@
               <td>{{$client->patient->middlename}}</td>
               <td>{{$client->patient->birthday}}</td>
               <td>{{$client->patient->contact_number}}</td>
-              <td><a href="#patientDetailsModal" data-toggle="modal"  data-target="#patientDetailsModal" class="patientDetailsModal" data-id="{{$client->id}}" >View More</a></td>
+              <td><a href="#" data-toggle="modal" class="patientDetailsModal"  data-id="{{$client->id}}" >View More</a></td>
             </tr>
             @endforeach
 

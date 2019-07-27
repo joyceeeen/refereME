@@ -55,13 +55,17 @@ $(function(){
   });
 
   //SEARCH INFO
-  $("#patientDetailsModal").on('show.bs.modal',function(e){
-
-    var id = $('.patientDetailsModal').data('id');
+  $(".patientDetailsModal").on('click',function(e){
+    var id = $(this).data('id');
     var href = "/refer/details?id="+id;
-    $(this).find('.modal-body').load(href);
+    $("#patientDetailsModal").find('.modal-body').load(href);
+    $("#patientDetailsModal").modal('show');
   });
 
+
+  $("#patientDetailsModal").on('hidden.bs.modal',function(e){
+    $(this).find('.modal-body').empty();
+  });
 
   if($("#my-referrals-row").length){
 
