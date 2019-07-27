@@ -25,14 +25,15 @@ class ReferralReportsController extends Controller
     public function create(Request $request)
     {
       $reports = ReferralReports::where('referrals_id',$request->id)->whereDoesntHave('details')->first();
-      $referral = $reports->referral;
-    
-      $view = 'reports.'.$reports->reference->view;
       if($reports){
+
+        $referral = $reports->referral;
+        $view = 'reports.'.$reports->reference->view;
+
         return view($view,compact('referral','reports'));
       }
 
-      return redirect()->route('refer.create',['id'=>$referral->doctor_id])->with('success','Patient has been referred.');
+      return redirect()->route('refer.index',['id'=>$request->id])->with('success','Patient has been referred.');
 
     }
 
@@ -44,8 +45,13 @@ class ReferralReportsController extends Controller
      */
     public function store(Request $request)
     {
+      $items = $request->except(['_token','button','id','referral_id']);
       $details = new ReportsDetails();
-    //  $details->referral_reports_id =
+      $details->referral_reports_id = $request->id;
+      $details->details = json_encode($items);
+      $details->save();
+
+      return redirect()->route('report-forms.create',['id'=>$request->referral_id]);
     }
 
     /**

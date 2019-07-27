@@ -18,9 +18,17 @@ class ReferralsController extends Controller
   *
   * @return \Illuminate\Http\Response
   */
-  public function index()
+  public function index(Request $request)
   {
-    return view('refer');
+    $referral = Referrals::with(['patient','reports','tests.reference','tests.details'])->find($request->id);
+    return view('success-referral',compact('referral'));
+  }
+
+  public function modalDetails(Request $request){
+
+    $referral = Referrals::with(['patient','reports','tests.reference','tests.details'])->find($request->id);
+
+    return view('modal.view-details',compact('referral'));
   }
 
   /**
@@ -68,9 +76,9 @@ class ReferralsController extends Controller
 
     }else{
       $patient = new Patient();
-      $patient->firstname = $request->firstname;
-      $patient->middlename = $request->middlename;
-      $patient->lastname = $request->lastname;
+      $patient->firstname = ucwords($request->firstname);
+      $patient->middlename = ucwords($request->middlename);
+      $patient->lastname = ucwords($request->lastname);
       $patient->gender = $request->gender;
       $patient->birthday = $request->birthday;
       $patient->contact_number = $request->contact_number;

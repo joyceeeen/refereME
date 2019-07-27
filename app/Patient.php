@@ -9,11 +9,16 @@ class Patient extends Model
   protected $fillable = [
       'firstname','middlename','lastname','birthday','gender','email_address','contact_number'
   ];
-      protected $appends = ['name'];
+  protected $appends = ['name'];
 
   public function getNameAttribute()
   {
     return ucwords($this->firstname.' '.$this->lastname);
+  }
+
+  public function getGenderAttribute($value)
+  {
+    return $value == 0 ? "Male" : "Female";
   }
 
 }

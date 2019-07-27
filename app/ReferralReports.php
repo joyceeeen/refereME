@@ -21,5 +21,4 @@ class ReferralReports extends Model
   public function referral(){
     return $this->hasOne('App\Referrals','id','referrals_id');
   }
-
 }

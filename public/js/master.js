@@ -55,23 +55,13 @@ $(function(){
   });
 
   //SEARCH INFO
-  $(".patientDetailsModal").on('click',function(e){
-    var modal = $("#patientDetailsModal");
-    var id = $(this).data('id');
-    $.ajax({
-      url:'/refer/'+id,
-      type:'get',
-      success:function(response){
-        console.log(response);
+  $("#patientDetailsModal").on('show.bs.modal',function(e){
 
-        manipulateModalPatientInfo(response);
-      },
-      error: function(response){
-        alert("Something is wrong. Please try again.");
-      }
-    });
-    modal.modal('show');
+    var id = $('.patientDetailsModal').data('id');
+    var href = "/refer/details?id="+id;
+    $(this).find('.modal-body').load(href);
   });
+
 
   if($("#my-referrals-row").length){
 
@@ -79,6 +69,30 @@ $(function(){
     $(".status-Declined").addClass("bg-danger");
 
   }
+  // $(".patientDetailsModal").on('click',function(e){
+  //   var modal = $("#patientDetailsModal");
+  //   var id = $(this).data('id');
+  //   $.ajax({
+  //     url:'/refer/'+id,
+  //     type:'get',
+  //     success:function(response){
+  //       console.log(response);
+  //
+  //       manipulateModalPatientInfo(response);
+  //     },
+  //     error: function(response){
+  //       alert("Something is wrong. Please try again.");
+  //     }
+  //   });
+  //   modal.modal('show');
+  // });
+  //
+  // if($("#my-referrals-row").length){
+  //
+  //   $(".status-Accepted").addClass("bg-success");
+  //   $(".status-Declined").addClass("bg-danger");
+  //
+  // }
 });
 
 function manipulateModalInfoResults(data){

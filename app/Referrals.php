@@ -28,4 +28,8 @@ class Referrals extends Model
   public function reports(){
     return $this->hasMany('App\Attachments','referrals_id','id');
   }
+
+  public function tests(){
+    return $this->hasMany('App\ReferralReports','referrals_id','id');
+  }
 }

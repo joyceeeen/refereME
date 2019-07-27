@@ -29,7 +29,7 @@
               <td>{{$client->patient->middlename}}</td>
               <td>{{$client->patient->birthday}}</td>
               <td>{{$client->patient->contact_number}}</td>
-              <td><a href="#"  class="patientDetailsModal"  data-id="{{$client->id}}" >View More</a></td>
+              <td><a href="#patientDetailsModal" data-toggle="modal"  data-target="#patientDetailsModal" class="patientDetailsModal" data-id="{{$client->id}}" >View More</a></td>
             </tr>
             @endforeach
 
@@ -52,28 +52,7 @@
         </button>
       </div>
       <div class="modal-body">
-        <div class="frontside">
-          <div class="card">
-            <div class="card-body text-center">
-              <h4 class="card-title mb-3 font-weight-bold" id="nameTxt">Jason Lopez</h4>
-              <h5 class="card-title mb-3" id="birthdayTxt">02/23/1992</h5>
-              <p class="card-text text-dark mb-0 " id="mobileNumberTxt">0919 781 7760</p>
-              <p class="card-text text-dark" id="emailTxt">test@gmail.com</p>
 
-              <hr>
-              <div class="text-justify">
-                <h5 class="text-primary pb-2"><b>Report:</b></h5>
-                <p class="card-text" id="descriptionTxt">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-              </div>
-              <hr>
-              <div class="text-justify">
-                <h5 class="text-primary pb-2"><b>Attachments:</b></h5>
-                  <ul id="attachments">
-                  </ul>
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
     </div>
   </div>
