@@ -14,7 +14,7 @@ class ScheduleController extends Controller
   */
   public function index()
   {
-    
+
     $user = auth()->user();
     $schedule = $user->schedule;
 
@@ -49,11 +49,11 @@ class ScheduleController extends Controller
 
 
     $sched = new Schedule();
-
+    $availability = ['from'=>$request->from,'to'=>$request->to];
     $sched->day = $request->day;
     $sched->hospital = $request->hospital;
     $sched->address = $request->address;
-    $sched->schedule = $request->schedule;
+    $sched->schedule = json_encode($availability);
     $sched->contact_number = $request->contact_number;
     $sched->user_id = auth()->user()->id;
     $sched->save();

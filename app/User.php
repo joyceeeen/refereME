@@ -5,7 +5,7 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-
+use Carbon\Carbon;
 class User extends Authenticatable
 {
     use Notifiable;
@@ -57,5 +57,9 @@ class User extends Authenticatable
       return $this->hasMany('App\Referrals','doctor_id','id');
     }
 
+    public function schedToday(){
+      return $this->hasOne('App\Schedule','user_id','id')->where('day',Carbon::now()->format('N'));
+      
+    }
 
 }

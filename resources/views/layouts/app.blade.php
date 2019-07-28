@@ -44,10 +44,10 @@
             <!-- Authentication Links -->
 
             <li class="nav-item">
-              <a class="nav-link" href="{{ route('search.doctor') }}">{{ __('Seach Doctor') }}</a>
+              <a class="nav-link" href="{{ route('search.doctor') }}">{{ __('Search Doctor') }}</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{{ route('search.hospital') }}">{{ __('Seach Hospital') }}</a>
+              <a class="nav-link" href="{{ route('search.hospital') }}">{{ __('Search Hospital') }}</a>
             </li>
 
             @guest

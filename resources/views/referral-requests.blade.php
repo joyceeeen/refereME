@@ -32,7 +32,7 @@
                 <td>{{$client->patient->birthday}}</td>
 
                 <td>{{$client->report}}</td>
-                <td><a <a href="#" data-toggle="modal"  class="patientDetailsModal" data-id="{{$client->id}}">View More</a></td>
+                <td><a href="#" data-toggle="modal"  class="patientDetailsModal" data-id="{{$client->id}}">View More</a></td>
                 <td align="center">
                   <form action="{{route('refer.update',['id'=>$client->id])}}" method="post">
                     @csrf
@@ -63,7 +63,7 @@
 </section>
 
 <div class="modal fade bd-example-modal-lg" id="patientDetailsModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg">
+  <div class="modal-dialog modal-lg" style="width:1200px;">
     <div class="modal-content">
       <div class="modal-header">
         <h4 class="modal-title" id="myLargeModalLabel"></h4>

@@ -69,7 +69,7 @@
                     <h5 class="card-title mb-3">{{$doctor->specialization}}</h5>
                     <p class="card-text font-weight-bold mb-0 text-dark">{{$doctor->address}}</p>
                     <p class="card-text mb-0 text-dark">{{$doctor->contact_number}}</p>
-                    <p class="card-text font-weight-bold mb-0 text-primary"><i>Open 24 Hours</i></p>
+                    <p class="card-text font-weight-bold mb-0 text-primary"><i>{{$doctor->schedToday ?  $doctor->schedToday->from.' - '. $doctor->schedToday->to : "No Schedule Today"}}</i></p>
                   </a>
                 </div>
               </div>
@@ -80,14 +80,15 @@
       @endforeach
 
     </div>
+    @foreach($doctors->groupBy('specialization') as $key => $special)
     <div class="row">
       <div class="col-lg-12">
-        <h5 class="text-primary font-weight-bold">DOCTORS</h5>
+        <h5 class="text-primary font-weight-bold">{{$key}}</h5>
       </div>
     </div>
     <div class="row">
       <!-- Team member -->
-      @foreach($doctors as $doctor)
+      @foreach($special as $doctor)
       <div class="col-xs-12 col-sm-6 col-md-4">
         <div class="image-flip">
           <div class="mainflip">
@@ -100,7 +101,7 @@
                     <h5 class="card-title mb-3">{{$doctor->specialization}}</h5>
                     <p class="card-text font-weight-bold mb-0 text-dark">{{$doctor->address}}</p>
                     <p class="card-text mb-0 text-dark">{{$doctor->contact_number}}</p>
-                    <p class="card-text font-weight-bold mb-0 text-primary"><i>Open 24 Hours</i></p>
+                    <p class="card-text font-weight-bold mb-0 text-primary"><i>{{$doctor->schedToday ? $doctor->schedToday->from.' - '. $doctor->schedToday->to : "No Schedule Today"}}</i></p>
                   </a>
                 </div>
               </div>
@@ -111,6 +112,7 @@
       @endforeach
 
     </div>
+    @endforeach
     <div class="row">
       <div class="col-lg-12">
         {{ $doctors->links() }}
