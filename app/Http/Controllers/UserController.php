@@ -57,7 +57,7 @@ class UserController extends Controller
       $user = User::whereId($id)->with('schedule',function($query){
         $query->orderBy('day','asc');
       })->get();
-
+  
       return response()->json($user);
     }
 

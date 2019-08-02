@@ -10,9 +10,9 @@ $(function(){
       if (currentScroll > previousScroll){
         window.setTimeout(hideNav, 300);
 
-      } else if (currentScroll == previousScroll) {
-        window.setTimeout(visibleNav, 300);
-      }
+      // } else if (currentScroll == previousScroll) {
+      //   window.setTimeout(visibleNav, 300);
+       }
       else {
         window.setTimeout(showNav, 300);
       }
@@ -39,7 +39,6 @@ $(function(){
   //SEARCH INFO
   $(".showMoreInfoModal").on('click',function(e){
     var modal = $("#moreInfoModal");
-    console.log('hey');
     var id = $(this).data('info');
     $.ajax({
       url:'/search/'+id,
@@ -115,9 +114,14 @@ function manipulateModalInfoResults(data){
 
     var weekdays = ['','monday','tuesday','wednesday','thursday','friday','saturday','sunday'];
     var titles = ['Clinic/Hospital','Address','Schedule','Contact Number'];
-    var inputs = [sched.hospital,sched.address,sched.schedule,sched.contact_number];
+    var schedules = sched.schedule.from+" - "+ sched.schedule.to;
 
-    var tab = $("<div/>",{'class':'tab-pane fade show active','id':weekdays[sched.day],'role':'tabpanel','aria-labelledby':weekdays[sched.day]+'-tab'});
+    var inputs = [sched.hospital,sched.address,schedules,sched.contact_number];
+    if(index == 0){
+      var tab = $("<div/>",{'class':'tab-pane fade show active','id':weekdays[sched.day],'role':'tabpanel','aria-labelledby':weekdays[sched.day]+'-tab'});
+    }else{
+      var tab = $("<div/>",{'class':'tab-pane fade show','id':weekdays[sched.day],'role':'tabpanel','aria-labelledby':weekdays[sched.day]+'-tab'});
+    }
 
     for(var i = 0; i < titles.length; i++){
 
@@ -127,10 +131,20 @@ function manipulateModalInfoResults(data){
       var p = $("<p/>").text(inputs[i]).appendTo(div);
     }
 
-    modal.find("#myTabContent").empty().append(tab);
+
+    modal.find("#myTabContent").append(tab);
+    $("#myTab").find("#"+weekdays[sched.day]+"-tab").removeClass("disableTab");
 
   });
+  $("#myTab .nav-link:not('.disableTab'):first").addClass("active");
 }
+
+
+$('#moreInfoModal').on('hidden.bs.modal', function () {
+
+    $(this).find("#myTabContent").empty();
+    $(this).find("#myTab .nav-link").removeClass("active");
+});
 
 function manipulateModalPatientInfo(data){
   var modal = $("#patientDetailsModal");

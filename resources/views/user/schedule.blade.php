@@ -67,7 +67,7 @@
                   <label class="col-lg-3 control-label">Schedule:</label>
                   <div class="col-lg-8">
                     <label>From</label>
-                    <input type="time" class="form-control" name="from" value="{{ $sched1 ? $sched1->from : ''}} ">
+                    <input type="time" class="form-control" name="from" value="{{ $sched1 ? $sched1->from : ''}}">
                     <label>To </label>
                     <input type="time" class="form-control" name="to" value="{{ $sched1 ? $sched1->to : ''}}">
 
@@ -114,7 +114,7 @@
                   <label class="col-lg-3 control-label">Schedule:</label>
                   <div class="col-lg-8">
                     <label>From</label>
-                    <input type="time" class="form-control" name="from" value="{{ $sched2 ? $sched2->from : ''}} ">
+                    <input type="time" class="form-control" name="from" value="{{ $sched2 ? $sched2->from : ''}}">
                     <label>To </label>
                     <input type="time" class="form-control" name="to" value="{{ $sched2 ? $sched2->to : ''}}">
 
@@ -161,7 +161,7 @@
                   <label class="col-lg-3 control-label">Schedule:</label>
                   <div class="col-lg-8">
                     <label>From</label>
-                    <input type="time" class="form-control" name="from" value="{{ $sched3 ? $sched3->from : ''}} ">
+                    <input type="time" class="form-control" name="from" value="{{ $sched3 ? $sched3->from : ''}}">
                     <label>To </label>
                     <input type="time" class="form-control" name="to" value="{{ $sched3 ? $sched3->to : ''}}">
 
@@ -209,7 +209,7 @@
                   <label class="col-lg-3 control-label">Schedule:</label>
                   <div class="col-lg-8">
                     <label>From</label>
-                    <input type="time" class="form-control" name="from" value="{{ $sched4 ? $sched4->from : ''}} ">
+                    <input type="time" class="form-control" name="from" value="{{ $sched4 ? $sched4->from : ''}}">
                     <label>To </label>
                     <input type="time" class="form-control" name="to" value="{{ $sched4 ? $sched4->to : ''}}">
                   </div>
@@ -256,7 +256,7 @@
                   <div class="col-lg-8">
 
                     <label>From</label>
-                    <input type="time" class="form-control" name="from" value="{{ $sched5 ? $sched5->from : ''}} ">
+                    <input type="time" class="form-control" name="from" value="{{ $sched5 ? $sched5->from : ''}}">
                     <label>To </label>
                     <input type="time" class="form-control" name="to" value="{{ $sched5 ? $sched5->to : ''}}">
 
@@ -304,7 +304,7 @@
                   <div class="col-lg-8">
 
                     <label>From</label>
-                    <input type="time" class="form-control" name="from" value="{{ $sched6 ? $sche6->from : ''}} ">
+                    <input type="time" class="form-control" name="from" value="{{ $sched6 ? $sche6->from : ''}}">
                     <label>To </label>
                     <input type="time" class="form-control" name="to" value="{{ $sched6 ? $sched6->to : ''}}">
 
@@ -344,16 +344,16 @@
                 <div class="form-group">
                   <label class="col-lg-3 control-label">Address:</label>
                   <div class="col-lg-8">
-                    <label>From</label>
-                    <input type="time" class="form-control" name="from" value="{{ $sched7 ? $sched7->from : ''}} ">
-                    <label>To </label>
-                    <input type="time" class="form-control" name="to" value="{{ $sched7 ? $sched7->to : ''}}">
+                    <input name="address" value="{{$sched7 ? $sched7->address : ''}}" class="form-control" type="text">
                   </div>
                 </div>
                 <div class="form-group">
                   <label class="col-lg-3 control-label">Schedule:</label>
                   <div class="col-lg-8">
-                    <textarea name="schedule" name="name" rows="8" cols="80" class="form-control" >{{$sched7 ? $sched7->schedule : ''}}</textarea>
+                    <label>From</label>
+                    <input type="time" class="form-control" name="from" value="{{ $sched7 ? $sched7->from : ''}}">
+                    <label>To </label>
+                    <input type="time" class="form-control" name="to" value="{{ $sched7 ? $sched7->to : ''}}">
                   </div>
                 </div>
                 <div class="form-group">

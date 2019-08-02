@@ -19,6 +19,12 @@ section .section-title {
 }
 
 
+.disableTab
+{
+    pointer-events: none;
+    opacity: .65;
+}
+
 .frontside {
     position: relative;
     z-index: 2;
