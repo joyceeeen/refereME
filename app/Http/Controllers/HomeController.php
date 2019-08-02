@@ -26,6 +26,10 @@ class HomeController extends Controller
   */
   public function index()
   {
+    if(auth()->user()->is_admin){
+      return redirect('/admin');
+    }
+    
     $id = auth()->user()->id;
     $clients = User::whereId($id)->with(['referrals.patient','referralRequests.patient'])->first();
 

@@ -20,6 +20,7 @@ Route::get('refer', function () {
     return view('refer');
 });
 
+
 Route::get('editProfile', function () {
     return view('editProfile');
 });
@@ -32,14 +33,16 @@ Route::get('schedule', function () {
     return view('schedule');
 });
 
+Route::middleware(['auth','admin'])->group(function(){
+  Route::get('/admin', 'UserController@admin');
+  Route::post('/delete', 'UserController@delete')->name('delete');
+});
 
 
 Auth::routes();
 
 
-
 Route::group(['middleware'=>'auth'],function(){
-
   Route::resource('report-forms','ReferralReportsController');
 
   Route::get('report-referral-requests', 'ReferralsController@requests')->name('referral.requests');

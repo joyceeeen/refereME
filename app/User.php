@@ -5,10 +5,12 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Database\Eloquent\SoftDeletes;
+
 use Carbon\Carbon;
 class User extends Authenticatable
 {
-    use Notifiable;
+    use Notifiable, SoftDeletes;
 
     /**
      * The attributes that are mass assignable.
@@ -16,7 +18,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'firstname','lastname','is_hospital','hospital_name','address','contact_number','specialization','summary' ,'email', 'avatar','password',
+        'firstname','lastname','is_admin','is_hospital','hospital_name','address','contact_number','specialization','summary' ,'email', 'avatar','password',
     ];
 
     /**
@@ -25,7 +27,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'password', 'remember_token'
     ];
 
     protected $appends = ['name'];
@@ -35,7 +37,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $casts = [
-        'email_verified_at' => 'datetime',
+        'email_verified_at' => 'datetime'
     ];
 
     public function getNameAttribute()
@@ -51,6 +53,9 @@ class User extends Authenticatable
       return $this->hasMany('App\Referrals','referrer_id','id');
     }
 
+    public function hospital(){
+      return $this->hasOne('App\HospitalDetails','hospital_id','id');
+    }
 
     //REFERED TO ME
     public function referralRequests(){
@@ -59,7 +64,7 @@ class User extends Authenticatable
 
     public function schedToday(){
       return $this->hasOne('App\Schedule','user_id','id')->where('day',Carbon::now()->format('N'));
-      
+
     }
 
 }

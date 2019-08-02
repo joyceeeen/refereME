@@ -20,6 +20,7 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->string('email')->unique();
             $table->boolean('is_hospital');
+            $table->boolean('is_admin');
             $table->string('hospital_name')->nullable();
             $table->string('address')->nullable();
             $table->string('contact_number')->nullable();
@@ -29,6 +30,8 @@ class CreateUsersTable extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();
             $table->timestamps();
+            $table->softDeletes();
+
         });
     }
 

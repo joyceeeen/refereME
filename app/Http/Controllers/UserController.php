@@ -45,6 +45,16 @@ class UserController extends Controller
     //
   }
 
+
+  public function admin(){
+    $users = User::all();
+    return view('admin',compact('users'));
+  }
+
+  public function delete(Request $request){
+    $users = User::where('id',$request->user)->delete();
+    return redirect()->back();
+  }
   /**
   * Display the specified resource.
   *
@@ -57,7 +67,7 @@ class UserController extends Controller
       $user = User::whereId($id)->with('schedule',function($query){
         $query->orderBy('day','asc');
       })->get();
-  
+
       return response()->json($user);
     }
 

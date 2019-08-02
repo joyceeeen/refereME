@@ -45,7 +45,7 @@
                 <td align="center">
                   <form action="{{route('refer.update',['id'=>$client->id])}}" method="post">
                     @csrf
-                      @method('PUT')
+                    @method('PUT')
                     <input type="hidden" name="action" value="2"/>
                     <button type="submit" name="button" class="btn btn-danger">Decline</button>
                   </form>
