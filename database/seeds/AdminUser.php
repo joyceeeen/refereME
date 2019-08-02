@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use Hash;
+use Illuminate\Support\Facades\Hash;
 class AdminUser extends Seeder
 {
     /**
