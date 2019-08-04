@@ -48,6 +48,7 @@
         </div>
       </div>
     </div>
+    @if($nearest)
     <div class="row">
       <div class="col-lg-12">
         <h5 class="text-primary font-weight-bold">NEAREST</h5>
@@ -56,7 +57,7 @@
     <div class="row">
 
       <!-- Team member -->
-      @foreach($doctors as $doctor)
+      @foreach($nearest as $doctor)
       <div class="col-xs-12 col-sm-6 col-md-4">
         <div class="image-flip">
           <div class="mainflip">
@@ -80,6 +81,7 @@
       @endforeach
 
     </div>
+    @endif
     @foreach($doctors->groupBy('specialization') as $key => $special)
     <div class="row">
       <div class="col-lg-12">

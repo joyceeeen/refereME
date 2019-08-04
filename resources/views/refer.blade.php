@@ -8,10 +8,42 @@
       <div class="card-body">
         <div class="text-center">
           <p><img class="imgRefer img-fluid" src="{{$doctor->avatar ? '/'.$doctor->avatar : 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAAAAAA6fptVAAAACklEQVQI12O4AQAA2gDZumdc2gAAAABJRU5ErkJggg=='}}" alt="card image"></p>
-          <h4 class="card-title mb-0 font-weight-bold">{{$doctor->is_hospital ? $doctor->hospital_name : $doctor->name}}</h4>
-          <h5 class="card-title mb-3">{{$doctor->is_hospital ? '' : $doctor->specialization }}</h5>
+          @if($doctor->user_type == 2 && $doctor->hospital)
+          <h4 class="card-title mb-0 font-weight-bold">{{$doctor->hospital->hospital_name}}</h4>
+          <p class="card-text font-weight-bold mb-0 text-dark">{{$doctor->hospital->location}}</p>
+          <p class="card-text text-dark">{{$doctor->contact_number}}</p>
+          <p><a href="#detailsModal" data-toggle="modal" data-target="#detailsModal" class="card-title mb-3">More Details</a></p>
+
+          <div class="modal fade" id="detailsModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">More Details</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <h5>Emergency</h5>
+                  <p>{{$doctor->hospital->ambulance}}</p>
+                  <hr>
+                  <h5>Facilities</h5>
+                  <p>{{$doctor->hospital->facilities}}</p>
+                  <hr>
+                  <h5>Services</h5>
+                  <p>{{$doctor->hospital->services}}</p>
+                  <hr>
+                </div>
+
+              </div>
+            </div>
+          </div>
+          @else
+          <h4 class="card-title mb-0 font-weight-bold">{{ $doctor->name}}</h4>
+          <h5 class="card-title mb-3">{{ $doctor->specialization }}</h5>
           <p class="card-text font-weight-bold mb-0 text-dark">{{$doctor->address}}</p>
           <p class="card-text text-dark">{{$doctor->contact_number}}</p>
+          @endif
         </div>
         <hr>
         <form method="post" action="{{route('refer.store')}}" enctype="multipart/form-data">
@@ -103,6 +135,8 @@
       </div>
     </div>
   </div>
+
+
 </section>
 
 @endsection

@@ -7,6 +7,7 @@ use App\User;
 use Image;
 use File;
 use Hash;
+use App\HospitalDetails;
 class UserController extends Controller
 {
   /**
@@ -47,7 +48,7 @@ class UserController extends Controller
 
 
   public function admin(){
-    $users = User::all();
+    $users = User::where('user_type','<>',3)->get();
     return view('admin',compact('users'));
   }
 
@@ -116,7 +117,8 @@ class UserController extends Controller
         'lastname' => ['required', 'string', 'max:191'],
         'address' => ['string', 'max:191'],
         'contact_number' => ['string', 'max:15'],
-        'specialization' => ['string']
+        'specialization' => ['string'],
+        'license_number' => ['string']
       ]);
 
       $user->firstname = $request->firstname;
@@ -125,7 +127,7 @@ class UserController extends Controller
       $user->contact_number = $request->contact_number;
       $user->specialization = $request->specialization;
       $user->summary = $request->summary;
-      $user->hospital_name = $request->hospital_name;
+      $user->license_number = $request->license_number;
 
       //Upload Image
 
@@ -146,6 +148,18 @@ class UserController extends Controller
         $user->avatar = $filename;
       }
       //End Upload image
+
+      if($request->hospital_name){
+        $hospital = new HospitalDetails();
+        $hospital->hospital_name = $request->hospital_name;
+        $hospital->user_id = $user->id;
+        $hospital->ambulance = $request->ambulance;
+        $hospital->facilities = $request->facilities;
+        $hospital->services = $request->services;
+        $hospital->location = $request->location;
+
+        $hospital->save();
+      }
     }
 
 

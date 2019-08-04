@@ -49,7 +49,7 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'is_hospital' => ['required','boolean'],
+
             'firstname' => ['required', 'string', 'max:191'],
             'lastname' => ['required', 'string', 'max:191'],
             'email' => ['required', 'string', 'email', 'max:191', 'unique:users'],
@@ -67,7 +67,7 @@ class RegisterController extends Controller
     {
 
         return User::create([
-            'is_hospital' => $data['is_hospital'],
+            'user_type' => $data['user_type'],
             'firstname' => ucwords($data['firstname']),
             'lastname' => ucwords($data['lastname']),
             'email' => $data['email'],

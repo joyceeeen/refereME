@@ -12,26 +12,9 @@
 */
 
 
-Route::get('/search/hospital','SearchController@hospital')->name('search.hospital');
-Route::get('/search/doctor', 'SearchController@doctor')->name('search.doctor');
-Route::get('/search/{id}', 'SearchController@details')->name('search.info');
-
-Route::get('refer', function () {
-    return view('refer');
-});
 
 
-Route::get('editProfile', function () {
-    return view('editProfile');
-});
 
-Route::get('changePassword', function () {
-    return view('changePassword');
-});
-
-Route::get('schedule', function () {
-    return view('schedule');
-});
 
 Route::middleware(['auth','admin'])->group(function(){
   Route::get('/admin', 'UserController@admin');
@@ -43,6 +26,28 @@ Auth::routes();
 
 
 Route::group(['middleware'=>'auth'],function(){
+  
+  Route::get('refer', function () {
+      return view('refer');
+  });
+
+
+  Route::get('editProfile', function () {
+      return view('editProfile');
+  });
+
+  Route::get('changePassword', function () {
+      return view('changePassword');
+  });
+
+  Route::get('schedule', function () {
+      return view('schedule');
+  });
+
+  Route::get('/search/hospital','SearchController@hospital')->name('search.hospital');
+  Route::get('/search/doctor', 'SearchController@doctor')->name('search.doctor');
+  Route::get('/search/{id}', 'SearchController@details')->name('search.info');
+
   Route::resource('report-forms','ReferralReportsController');
 
   Route::get('report-referral-requests', 'ReferralsController@requests')->name('referral.requests');

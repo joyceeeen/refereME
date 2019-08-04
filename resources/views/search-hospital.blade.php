@@ -4,6 +4,7 @@
 <section class="pb-5">
     <div class="container">
         <h5 class="section-title h1">OUR HOSPITALS</h5>
+        @if($nearest)
         <div class="row">
           <div class="col-lg-12">
             <h5 class="text-primary font-weight-bold">NEAREST</h5>
@@ -11,7 +12,7 @@
         </div>
         <div class="row">
 
-          @foreach($hospitals as $hospital)
+          @foreach($nearest as $hospital)
             <!-- hospital member -->
             <div class="col-xs-12 col-sm-6 col-md-4">
                 <div class="image-flip">
@@ -35,6 +36,7 @@
             <!-- ./hospital member -->
           @endforeach
         </div>
+        @endif
         <div class="row">
           <div class="col-lg-12">
             <h5 class="text-primary font-weight-bold">HOSPITALS</h5>

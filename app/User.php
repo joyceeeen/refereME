@@ -18,7 +18,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'firstname','lastname','is_admin','is_hospital','hospital_name','address','contact_number','specialization','summary' ,'email', 'avatar','password',
+        'firstname','lastname','is_admin','user_type','address','license_number','contact_number','specialization','summary' ,'email', 'avatar','password',
     ];
 
     /**
@@ -54,7 +54,7 @@ class User extends Authenticatable
     }
 
     public function hospital(){
-      return $this->hasOne('App\HospitalDetails','hospital_id','id');
+      return $this->hasOne('App\HospitalDetails','user_id','id');
     }
 
     //REFERED TO ME

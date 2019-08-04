@@ -26,10 +26,10 @@ class HomeController extends Controller
   */
   public function index()
   {
-    if(auth()->user()->is_admin){
+    if(auth()->user()->user_type == 3){
       return redirect('/admin');
     }
-    
+
     $id = auth()->user()->id;
     $clients = User::whereId($id)->with(['referrals.patient','referralRequests.patient'])->first();
 

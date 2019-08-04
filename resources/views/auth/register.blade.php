@@ -25,12 +25,12 @@
         @csrf
 
         <div class="form-group">
-          <select name="is_hospital" class="form-control" id="exampleFormControlSelect1">
-            <option value="0">Doctor</option>
-            <option value="1">Hospital</option>
+          <select name="user_type" class="form-control" id="exampleFormControlSelect1">
+            <option value="1">Doctor</option>
+            <option value="2">Hospital</option>
           </select>
 
-          @error('is_hospital')
+          @error('user_type')
           <span class="invalid-feedback" role="alert">
             <strong>{{ $message }}</strong>
           </span>

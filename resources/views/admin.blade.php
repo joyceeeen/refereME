@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.adminApp')
 
 @section('content')
 
@@ -43,7 +43,7 @@
                   <td>{{$user->email}}</td>
                   <td>{{$user->address}}</td>
                   <td>{{$user->specialization}}</td>
-                  <td>{{$user->is_hospital ? "Hospital" : "Doctor"}}</td>
+                  <td>{{$user->user_type == 2 ? "Hospital" : "Doctor"}}</td>
 
 
 
