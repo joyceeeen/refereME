@@ -25,7 +25,6 @@ class ScheduleController extends Controller
     $sched5 = $schedule->where('day',5)->first();
     $sched6 = $schedule->where('day',6)->first();
     $sched7 = $schedule->where('day',7)->first();
-
     return view('user.schedule',compact('user','schedule','sched1','sched2','sched3','sched4','sched5','sched6','sched7'));
   }
 

@@ -37,7 +37,7 @@
                     <option value="Rehabilitation Medicine">Rehabilitation Medicine</option>
                     <option value="Surgery">Surgery</option>
                   </select>
-                    <input type="hidden" id="specialization_selected" value="{{ request()->specialization  }}" class="form-control">
+                  <input type="hidden" id="specialization_selected" value="{{ request()->specialization  }}" class="form-control">
                 </div>
                 <div class="col-lg-2 searchCol">
                   <button type="submit" name="button" class="btn btn-primary" style="width:100%">Search</button>
@@ -64,7 +64,7 @@
             <div class="frontside doctor">
               <div class="card">
                 <div class="card-body text-center">
-                  <a href="#" data-info="{{$doctor->id}}" class="showMoreInfoModal">
+                  <a href="#"  @if(request()->client) data-client="{{request()->client}}" @endif data-info="{{$doctor->id}}" class="showMoreInfoModal">
                     <p><img class=" img-fluid" src="{{$doctor->avatar ? '/'.$doctor->avatar : 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAAAAAA6fptVAAAACklEQVQI12O4AQAA2gDZumdc2gAAAABJRU5ErkJggg=='}}" alt="card image"></p>
                     <h4 class="card-title mb-0 font-weight-bold">{{$doctor->name}}</h4>
                     <h5 class="card-title mb-3">{{$doctor->specialization}}</h5>
@@ -97,7 +97,7 @@
             <div class="frontside doctor">
               <div class="card">
                 <div class="card-body text-center">
-                  <a href="#" data-info="{{$doctor->id}}" class="showMoreInfoModal">
+                  <a href="#" @if(request()->client) data-client="{{request()->client}}" @endif data-info="{{$doctor->id}}" class="showMoreInfoModal">
                     <p><img class=" img-fluid" src="{{$doctor->avatar ? '/'.$doctor->avatar : 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAAAAAA6fptVAAAACklEQVQI12O4AQAA2gDZumdc2gAAAABJRU5ErkJggg=='}}" alt="card image"></p>
                     <h4 class="card-title mb-0 font-weight-bold">{{$doctor->name}}</h4>
                     <h5 class="card-title mb-3">{{$doctor->specialization}}</h5>
@@ -141,7 +141,17 @@
               <h5 class="card-title mb-3" id="specializationTxt">Cardiology</h5>
               <p class="card-text font-weight-bold mb-0 text-dark" id="addressTxt">605 Boni Ave, Mandaluyong, 1550 Metro Manila</p>
               <p class="card-text text-dark" id="mobileNumberTxt">0919 781 7760</p>
+              <div id="referAgainDiv" style="display:none">
+                <form id="referAgain-form" action="#" method="post">
+                  @csrf
+                  @method('put')
+                  <input type="hidden" name="referAgain" value="1"/>
+                  <input type="hidden" id="hospitalId" name="hospital" value=""/>
+                  <button type="submit" class="btn btn-primary mt-2">Refer</button>
+                </form>
+              </div>
               <a href="#" id="referButton" name="button" class="btn btn-primary">Refer Client</a>
+
               <hr>
               <div class="text-justify">
                 <h5 class="text-primary pb-2"><b>More details about me:</b></h5>

@@ -16,6 +16,14 @@ class Referrals extends Model
     return $this->hasOne('App\Patient','id','patient_id');
   }
 
+  public function referredTo(){
+    return $this->hasOne('App\User','id','doctor_id');
+  }
+
+  public function referredBy(){
+    return $this->hasOne('App\User','id','referrer_id');
+  }
+
   public function getStatusAttribute()
   {
     return $this->is_accepted == 1 ? "Accepted" : ($this->is_accepted == 2 ? "Declined" : "Pending" );

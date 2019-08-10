@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\HospitalDetails;
 use Illuminate\Http\Request;
-
+use App\User;
 class HospitalDetailsController extends Controller
 {
     /**
@@ -44,9 +44,11 @@ class HospitalDetailsController extends Controller
      * @param  \App\HospitalDetails  $hospitalDetails
      * @return \Illuminate\Http\Response
      */
-    public function show(HospitalDetails $hospitalDetails)
+    public function show($id)
     {
-        //
+        $user = User::with('hospital')->find($id);
+        $hospital = $user->hospital;
+        return view('modal.hospital-more-details',compact('hospital'));
     }
 
     /**

@@ -20,13 +20,15 @@ class ReferralsController extends Controller
   */
   public function index(Request $request)
   {
-    $referral = Referrals::with(['patient','reports','tests.reference','tests.details'])->find($request->id);
+    $referral = Referrals::with(['patient','reports','tests.reference','tests.details','referredTo','referredBy'])->find($request->id);
     return view('success-referral',compact('referral'));
   }
 
+//
+
   public function modalDetails(Request $request){
 
-    $referral = Referrals::with(['patient','reports','tests.reference','tests.details'])->find($request->id);
+    $referral = Referrals::with(['patient','reports','tests.reference','tests.details','referredTo','referredBy'])->find($request->id);
 
     return view('modal.view-details',compact('referral'));
   }
@@ -173,10 +175,17 @@ class ReferralsController extends Controller
   public function update(Request $request, $id)
   {
     $referral = Referrals::find($id);
+    if($request->referAgain){
+      $referral->doctor_id = $request->hospital;
+      $referral->is_accepted = 0;
+      $referral->save();
+      return redirect()->route('my.referrals')->with('success',"Referral has referred to another Doctor/Hospital.");;
+    }else{
+      $referral->is_accepted = $request->action;
+      $referral->save();
+      return redirect()->back()->with('success',"Referral has been updated");
+    }
 
-    $referral->is_accepted = $request->action;
-    $referral->save();
-    return redirect()->back()->with('success',"Referral has been updated");
   }
 
   /**

@@ -40,11 +40,12 @@ $(function(){
   $(".showMoreInfoModal").on('click',function(e){
     var modal = $("#moreInfoModal");
     var id = $(this).data('info');
+    var eventBtn = $(this);
     $.ajax({
       url:'/search/'+id,
       type:'get',
       success:function(response){
-        manipulateModalInfoResults(response);
+        manipulateModalInfoResults(response,eventBtn);
       },
       error: function(response){
         alert("Something is wrong. Please try again.");
@@ -72,6 +73,25 @@ $(function(){
     $(".status-Declined").addClass("bg-danger");
 
   }
+
+  $(".referAgainModal").on('click',function(e){
+    var id = $(this).data('id');
+    var modal = $("#referAgainModal");
+    modal.find("#doctor-link").attr("href",'/search/doctor?client='+id);
+    modal.find("#hospital-link").attr("href",'/search/hospital?client='+id);
+    modal.modal('show');
+  });
+
+
+  $(".moreDetailsModal").on('click',function(e){
+    var id = $(this).data('id');
+    var modal = $("#moreDetailsModal");
+
+    var href = "/hospital/"+id;
+
+    modal.find('.modal-body').load(href);
+    modal.modal('show');
+  });
   // $(".patientDetailsModal").on('click',function(e){
   //   var modal = $("#patientDetailsModal");
   //   var id = $(this).data('id');
@@ -98,7 +118,7 @@ $(function(){
   // }
 });
 
-function manipulateModalInfoResults(data){
+function manipulateModalInfoResults(data,item){
   var modal = $("#moreInfoModal");
 
   modal.find("#imgTxt").attr('src','/'+data.avatar);
@@ -109,8 +129,18 @@ function manipulateModalInfoResults(data){
   modal.find("#descriptionTxt").html(data.summary);
 
   //specialization
+
+  modal.find("#referButton").attr('href','/refer/create?id='+data.id);
+
+  if (typeof item.data('client') !== 'undefined')
+  {
+    $("#referAgainDiv").show();
+    $("#referAgainDiv").find("#referAgain-form").attr("action",'/refer/'+item.data('client'));
+    $("#referAgainDiv").find("#hospitalId").val(data.id);
+    $("#referButton").hide();
+  }
+
   $.each(data.schedule, function(index, sched) {
-    modal.find("#referButton").attr('href','/refer/create?id='+data.id);
 
     var weekdays = ['','monday','tuesday','wednesday','thursday','friday','saturday','sunday'];
     var titles = ['Clinic/Hospital','Address','Schedule','Contact Number'];

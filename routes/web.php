@@ -26,11 +26,10 @@ Auth::routes();
 
 
 Route::group(['middleware'=>'auth'],function(){
-  
+
   Route::get('refer', function () {
       return view('refer');
   });
-
 
   Route::get('editProfile', function () {
       return view('editProfile');
@@ -48,6 +47,7 @@ Route::group(['middleware'=>'auth'],function(){
   Route::get('/search/doctor', 'SearchController@doctor')->name('search.doctor');
   Route::get('/search/{id}', 'SearchController@details')->name('search.info');
 
+
   Route::resource('report-forms','ReferralReportsController');
 
   Route::get('report-referral-requests', 'ReferralsController@requests')->name('referral.requests');
@@ -59,7 +59,7 @@ Route::group(['middleware'=>'auth'],function(){
   Route::get('/refer/details','ReferralsController@modalDetails');
 
   Route::resource('refer','ReferralsController');
-
+  Route::resource('hospital','HospitalDetailsController');
   Route::resource('attachment','AttachmentsController');
 
   Route::resource('user','UserController');

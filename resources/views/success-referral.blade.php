@@ -1,9 +1,34 @@
 @extends('layouts.app')
-
 @section('content')
 <section class="pb-5">
   <div class="container">
     <h5 class="section-title h1">Referred Patient Details</h5>
+    <div class="card">
+      <div class="card-body">
+        <div class="row">
+          <div class="col-lg-4">
+            <div class="form-group">
+              <h4 class="text-primary pb-2"><b>Referred By:</b></h4>
+              @if($referral->referredBy->user_type == 2)
+              {{$referral->referredBy->hospital->hospital_name}}
+              @else
+              {{$referral->referredBy->name}}
+              @endif
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="form-group">
+              <h4 class="text-primary pb-2"><b>Referred To:</b></h4>
+              @if($referral->referredTo->user_type == 2)
+              {{$referral->referredTo->hospital->hospital_name}}
+              @else
+              {{$referral->referredTo ->name}}
+              @endif
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
     <div class="card">
       <div class="card-body">
         <div class="row">

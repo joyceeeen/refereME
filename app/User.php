@@ -18,7 +18,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'firstname','lastname','is_admin','user_type','address','license_number','contact_number','specialization','summary' ,'email', 'avatar','password',
+        'firstname','lastname','user_type','address','license_number','contact_number','specialization','summary' ,'email', 'avatar','password',
     ];
 
     /**
@@ -64,7 +64,6 @@ class User extends Authenticatable
 
     public function schedToday(){
       return $this->hasOne('App\Schedule','user_id','id')->where('day',Carbon::now()->format('N'));
-
     }
 
 }

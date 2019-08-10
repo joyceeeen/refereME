@@ -304,7 +304,7 @@
                   <div class="col-lg-8">
 
                     <label>From</label>
-                    <input type="time" class="form-control" name="from" value="{{ $sched6 ? $sche6->from : ''}}">
+                    <input type="time" class="form-control" name="from" value="{{ $sched6 ? $sched6->from : ''}}">
                     <label>To </label>
                     <input type="time" class="form-control" name="to" value="{{ $sched6 ? $sched6->to : ''}}">
 

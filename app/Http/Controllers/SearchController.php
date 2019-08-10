@@ -9,7 +9,7 @@ use Location;
 class SearchController extends Controller
 {
 
-  public function hospital(){
+  public function hospital(Request $request){
 
     $ip = request()->ip();
     $location = Location::get($ip);
@@ -20,9 +20,6 @@ class SearchController extends Controller
     }
 
     $hospitals = User::where('user_type', 2)->inRandomOrder()->paginate(9);
-
-
-
 
     return view('search-hospital',compact('hospitals','nearest'));
   }
@@ -55,6 +52,10 @@ class SearchController extends Controller
     return view('search-doctor',compact('doctors','nearest'));
   }
 
+
+
+
+
   public function details($id){
 
      if(request()->ajax()){
@@ -65,5 +66,4 @@ class SearchController extends Controller
       return response()->json($user);
     }
   }
-
 }

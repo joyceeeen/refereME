@@ -24,7 +24,9 @@ class ReferralReportsController extends Controller
      */
     public function create(Request $request)
     {
+
       $reports = ReferralReports::where('referrals_id',$request->id)->whereDoesntHave('details')->first();
+        
       if($reports){
 
         $referral = $reports->referral;
