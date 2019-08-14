@@ -8,21 +8,25 @@
       <div class="col-lg-12">
         <h5 class="section-title h1">My Referrals</h5>
         <div class="table-responsive">
-          <table class="table table-bordered">
+          <table class="datatable table table-bordered" data-title="My Referrals">
             <thead class="thead-dark">
               <tr>
+                <th scope="col">#</th>
+                <th scope="col">Referred To</th>
                 <th scope="col">Status</th>
                 <th scope="col">Last Name</th>
                 <th scope="col">First Name</th>
                 <th scope="col">Middle Name</th>
                 <th scope="col">Date of Birth</th>
                 <th scope="col">Contact #</th>
-                <th scope="col">View More</th>
+                <th scope="col" class="noExport">View More</th>
               </tr>
             </thead>
             <tbody>
               @foreach($clients->referrals as $client)
               <tr id="my-referrals-row" class="status-{{$client->status}}">
+                <td>{{$client->id}}</td>
+                <td>{{$client->referredTo->name}}</td>
                 <td>{{$client->status}}</td>
                 <td>{{$client->patient->lastname}}</td>
                 <td>{{$client->patient->firstname}}</td>

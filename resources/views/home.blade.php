@@ -4,7 +4,7 @@
 <section class="pb-5">
   <div class="container-fluid" style="padding-left:8rem;padding-right:8rem;">
     <div class="row ">
-      <div class="col-lg-3 col-sm-6">
+      <div class="col-lg-4 col-sm-6">
         <div class="card">
           <div class="card-content">
             <div class="row">
@@ -30,7 +30,7 @@
           </div>
         </div>
       </div>
-      <div class="col-lg-3 col-sm-6">
+      <div class="col-lg-4 col-sm-6">
         <div class="card">
           <div class="card-content">
             <div class="row">
@@ -54,33 +54,8 @@
           </div>
         </div>
       </div>
-      <div class="col-lg-3 col-sm-6">
-        <div class="card">
-          <div class="card-content">
-            <div class="row">
-              <div class="col-sm-5">
-                <div class="icon-big text-center text-danger">
-                  <i class="fa fa-times"></i>
-                </div>
-              </div>
-              <div class="col-sm-7">
-                <div class="numbers">
-                  <p>Declined Referrals</p>
-                  {{$clients->referrals->where('is_accepted',2)->count()}}
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="card-footer">
-            <hr>
-            <div class="stats">
-              <i class="ti-timer"></i>
-              Total
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-3 col-sm-6">
+
+      <div class="col-lg-4 col-sm-6">
         <div class="card">
           <div class="card-content">
             <div class="row">

@@ -66,23 +66,23 @@
                 <div class="col-lg-8">
                   <select class="form-control" name="specialization" id="exampleFormControlSelect1">
                     <option value="">Select Specialization</option>
-                    <option value="Anesthesiology">Anesthesiology</option>
-                    <option value="Dental Medicine">Dental Medicine</option>
-                    <option value="Dermatology">Dermatology</option>
-                    <option value="Family and Community Medicine">Family and Community Medicine</option>
-                    <option value="Internal Medicine">Internal Medicine</option>
-                    <option value="Laboratory Medicine">Laboratory Medicine</option>
-                    <option value="Legal Medicine">Legal Medicine</option>
-                    <option value="Nuclear Medicine">Nuclear Medicine</option>
-                    <option value="Obstetrics and Gynecology">Obstetrics and Gynecology</option>
-                    <option value="Occupational Medicine">Occupational Medicine</option>
-                    <option value="Ophthalmology">Ophthalmology</option>
-                    <option value="Orthopedics">Orthopedics</option>
-                    <option value="Otorhinolaryngology">Otorhinolaryngology</option>
-                    <option value="Pediatrics">Pediatrics</option>
-                    <option value="Radiology">Radiology</option>
-                    <option value="Rehabilitation Medicine">Rehabilitation Medicine</option>
-                    <option value="Surgery">Surgery</option>
+                    <option value="1">Anesthesiology</option>
+                    <option value="2">Dental Medicine</option>
+                    <option value="3">Dermatology</option>
+                    <option value="4">Family and Community Medicine</option>
+                    <option value="5">Internal Medicine</option>
+                    <option value="6">Laboratory Medicine</option>
+                    <option value="7">Legal Medicine</option>
+                    <option value="8">Nuclear Medicine</option>
+                    <option value="9">Obstetrics and Gynecology</option>
+                    <option value="10">Occupational Medicine</option>
+                    <option value="11">Ophthalmology</option>
+                    <option value="12">Orthopedics</option>
+                    <option value="13">Otorhinolaryngology</option>
+                    <option value="14">Pediatrics</option>
+                    <option value="15">Radiology</option>
+                    <option value="16">Rehabilitation Medicine</option>
+                    <option value="17">Surgery</option>
                   </select>
                 </div>
                 <input type="hidden" id="specialization_selected" value="{{$user->specialization}}"/>

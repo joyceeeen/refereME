@@ -100,11 +100,60 @@
                 <label class="custom-control-label" for="customRadio2">Female</label>
               </div>
             </div>
+            <div class="col-lg-4">
+              <h5 class="text-primary pb-2"><b>PWD:</b></h5>
+              <div class="custom-control custom-radio custom-control-inline">
+                <input type="radio" class="custom-control-input" id="yes" name="yes" value="yes" checked>
+                <label class="custom-control-label" for="yes">Yes</label>
+              </div>
+              <div class="custom-control custom-radio custom-control-inline">
+                <input type="radio" class="custom-control-input" id="no" name="yes" value="no">
+                <label class="custom-control-label" for="no">No</label>
+              </div>
+            </div>
           </div>
           <hr>
+          <div class="row">
+            <div class="col-lg-12">
+              <h3 class="text-primary pb-2"><b>Reason for Referral</b></h3>
+
+            </div>
+            <div class="col-lg-4">
+              <div class="form-group">
+                <h5 class="text-primary pb-2"><b>Diseases:</b></h5>
+                <select class="form-control">
+                  <option value="Diabetes">Diabetes</option>
+                  <option value="Sclerosis">Multiple Sclerosis</option>
+                  <option value="Colitis">Crohn's & Colitis</option>
+                  <option value="Lupus">Lupus</option>
+                  <option value="Arthritis">Arthritis</option>
+                  <option value="Asthma">Allergies & Asthma</option>
+                  <option value="Celiac">Celiac Disease</option>
+                  <option value="Polychondritis">Relapsing Polychondritis</option>
+                  <option value="Scleroderma">Scleroderma</option>
+                  <option value="Liver">Liver Disease</option>
+                  <option value="Infectious">Infectious Diseases</option>
+                  <option value="Cancer">Cancer</option>
+                  <option value="Heart">Heart Disease</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-lg-4">
+              <div class="form-group">
+                <h5 class="text-primary pb-2"><b>Priority Level:</b></h5>
+                <select class="form-control">
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                </select>
+              </div>
+            </div>
+          </div>
           <div class="text-justify">
-            <h3 class="text-primary pb-2"><b>Reason for Referral</b></h3>
             <h5 class="text-primary pb-2"><b>Report:</b></h5>
+
             <textarea name="report" rows="8" required cols="80" class="form-control"></textarea>
           </div>
           <input type="hidden" name="doctor_id" value="{{request()->id}}"/>

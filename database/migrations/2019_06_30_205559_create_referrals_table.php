@@ -19,9 +19,9 @@ class CreateReferralsTable extends Migration
             $table->unsignedBigInteger('doctor_id');
             $table->unsignedBigInteger('patient_id');
             $table->text('report');
-
+            $table->string('disease')->nullable();;
+            $table->tinyInteger('level')->nullable();;
             $table->boolean('is_accepted')->nullable();
-
             $table->foreign('referrer_id')->references('id')->on('users');
             $table->foreign('doctor_id')->references('id')->on('users');
             $table->foreign('patient_id')->references('id')->on('patients');

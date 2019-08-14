@@ -10,9 +10,9 @@ $(function(){
       if (currentScroll > previousScroll){
         window.setTimeout(hideNav, 300);
 
-      // } else if (currentScroll == previousScroll) {
-      //   window.setTimeout(visibleNav, 300);
-       }
+        // } else if (currentScroll == previousScroll) {
+        //   window.setTimeout(visibleNav, 300);
+      }
       else {
         window.setTimeout(showNav, 300);
       }
@@ -116,6 +116,20 @@ $(function(){
   //   $(".status-Declined").addClass("bg-danger");
   //
   // }
+  var table = $('.datatable');
+  table.DataTable({
+    dom: 'Bfrtip',
+    buttons: [
+      {
+        extend: 'pdf',
+        title: table.data('title')+' - '+moment().format('YYYYMMDDHmm'),
+        exportOptions: {
+          columns: "thead th:not(.noExport)"
+        },
+
+      }
+    ]
+  });
 });
 
 function manipulateModalInfoResults(data,item){
@@ -172,8 +186,8 @@ function manipulateModalInfoResults(data,item){
 
 $('#moreInfoModal').on('hidden.bs.modal', function () {
 
-    $(this).find("#myTabContent").empty();
-    $(this).find("#myTab .nav-link").removeClass("active");
+  $(this).find("#myTabContent").empty();
+  $(this).find("#myTab .nav-link").removeClass("active");
 });
 
 function manipulateModalPatientInfo(data){
@@ -205,12 +219,12 @@ function showNav() {
 
 $("#radio_others").click(function() {
   if ($("#otherForm").attr('disabled')) {
-                $("#otherForm").removeAttr('disabled');
-            }
+    $("#otherForm").removeAttr('disabled');
+  }
 });
 $(".radio_common").click(function() {
-    $("#otherForm").attr({
-        'disabled': 'disabled'
-    });
+  $("#otherForm").attr({
+    'disabled': 'disabled'
+  });
 
 });

@@ -9,23 +9,26 @@
       <div class="col-lg-12">
         <h5 class="section-title h1">Referral Requests</h5>
         <div class="table-responsive">
-          <table class="table table-bordered">
+          <table class="datatable table table-bordered" data-title="Referral Requests">
             <thead class="thead-dark">
               <tr>
-
+                <th scope="col">#</th>
+                <th scope="col">Referred By</th>
                 <th scope="col">Last Name</th>
                 <th scope="col">First Name</th>
                 <th scope="col">Middle Name</th>
                 <th scope="col">Date of Birth</th>
                 <th scope="col">Contact #</th>
-                <th scope="col">View More</th>
-                <th scope="col">Accept</th>
-                <th scope="col">Decline</th>
+                <th scope="col" class="noExport">View More</th>
+                <th scope="col" class="noExport">Accept</th>
+                <th scope="col" class="noExport">Decline</th>
               </tr>
             </thead>
             <tbody>
               @foreach($clients->referralRequests->where('is_accepted',0) as $client)
               <tr>
+                <td>{{$client->id}}</td>
+                <td>{{$client->referredBy->name}}</td>
                 <td>{{$client->patient->lastname}}</td>
                 <td>{{$client->patient->firstname}}</td>
                 <td>{{$client->patient->middlename}}</td>
