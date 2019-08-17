@@ -12,6 +12,7 @@
             <thead class="thead-dark">
               <tr>
                 <th scope="col">#</th>
+                <th scope="col">Priority Level</th>
                 <th scope="col">Referred To</th>
                 <th scope="col">Status</th>
                 <th scope="col">Last Name</th>
@@ -23,9 +24,11 @@
               </tr>
             </thead>
             <tbody>
-              @foreach($clients->referrals as $client)
+              @foreach($clients->referrals->sortBy('level') as $client)
               <tr id="my-referrals-row" class="status-{{$client->status}}">
                 <td>{{$client->id}}</td>
+                <td>{{ceil($client->level)}}</td>
+
                 <td>{{$client->referredTo->name}}</td>
                 <td>{{$client->status}}</td>
                 <td>{{$client->patient->lastname}}</td>

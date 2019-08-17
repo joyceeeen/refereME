@@ -24,6 +24,12 @@
               @endif
             </div>
           </div>
+          <div class="col-lg-4">
+            <div class="form-group">
+              <h4 class="text-primary pb-2"><b>Priority Level:</b></h4>
+              {{ceil($referral->level)}}
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -72,15 +78,48 @@
             </div>
           </div>
           <div class="col-lg-4">
-            <h5 class="text-primary pb-2"><b>Sex:</b></h5>
-            {{$referral->patient->gender}}
+            <div class="form-group">
+              <h5 class="text-primary pb-2"><b>Sex:</b></h5>
+              {{$referral->patient->gender}}
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="form-group">
+              <h5 class="text-primary pb-2"><b>Heart Disease?</b></h5>
+              {{$referral->patient->heart_disease}}
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="form-group">
+              <h5 class="text-primary pb-2"><b>Stroke?</b></h5>
+              {{$referral->patient->stroke}}
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="form-group">
+              <h5 class="text-primary pb-2"><b>PWD:</b></h5>
+              {{$referral->patient->pwd}}
+            </div>
           </div>
         </div>
         <hr>
         <div class="text-justify">
           <h3 class="text-primary pb-2"><b>Reason for Referral</b></h3>
-          <h5 class="text-primary pb-2"><b>Report:</b></h5>
-          {{$referral->report}}
+
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="form-group">
+                <h5 class="text-primary pb-2"><b>Disease:</b></h5>
+                {{$referral->disease->title}}
+              </div>
+            </div>
+            <div class="col-lg-12">
+              <div class="form-group">
+                <h5 class="text-primary pb-2"><b>Report:</b></h5>
+                {{$referral->report}}
+              </div>
+            </div>
+          </div>
         </div>
         <hr>
 

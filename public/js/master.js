@@ -53,6 +53,20 @@ $(function(){
     });
     modal.modal('show');
   });
+  if($("#disease-list").length){
+
+    $.ajax({
+      url: '/disease',
+      type:'get',
+      success:function(response){
+      addDiseaseList(response);
+      },
+      error:function(response){
+        console.log(response);
+      }
+
+    })
+  }
 
   //SEARCH INFO
   $(".patientDetailsModal").on('click',function(e){
@@ -128,7 +142,8 @@ $(function(){
         },
 
       }
-    ]
+    ],
+     "aaSorting": []
   });
 });
 
@@ -206,6 +221,16 @@ function manipulateModalPatientInfo(data){
   for(var i = 0; i< data.attachments.length; i++){
     div.append($("<li/>").html('<a href="/attachment/'+data.attachments[i].id+'">Attachment #'+(i+1)+'</a>'));
   }
+}
+
+function addDiseaseList(data){
+  var select = $("#disease-list");
+    $.each(data, function(index, value) {
+      select.append($('<option>', {
+            value: value.id,
+            text : value.title
+        }));
+    });
 }
 
 

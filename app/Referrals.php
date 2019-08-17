@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Referrals extends Model
 {
   protected $fillable = [
-    'referrer_id','doctor_id','patient_id','report','is_accepted'
+    'referrer_id','doctor_id','patient_id','disease_id','report','is_accepted'
   ];
 
   protected $appends = ['status'];
@@ -22,6 +22,10 @@ class Referrals extends Model
 
   public function referredBy(){
     return $this->hasOne('App\User','id','referrer_id');
+  }
+
+  public function disease(){
+    return $this->hasOne('App\Diseases','id','disease_id');
   }
 
   public function getStatusAttribute()

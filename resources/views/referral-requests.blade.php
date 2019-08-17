@@ -13,6 +13,8 @@
             <thead class="thead-dark">
               <tr>
                 <th scope="col">#</th>
+                <th scope="col">Priority Level</th>
+
                 <th scope="col">Referred By</th>
                 <th scope="col">Last Name</th>
                 <th scope="col">First Name</th>
@@ -25,9 +27,10 @@
               </tr>
             </thead>
             <tbody>
-              @foreach($clients->referralRequests->where('is_accepted',0) as $client)
+              @foreach($clients->referralRequests->where('is_accepted',0)->sortBy('level') as $client)
               <tr>
                 <td>{{$client->id}}</td>
+                <td>{{ceil($client->level)}}</td>
                 <td>{{$client->referredBy->name}}</td>
                 <td>{{$client->patient->lastname}}</td>
                 <td>{{$client->patient->firstname}}</td>

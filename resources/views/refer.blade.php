@@ -47,8 +47,8 @@
         </div>
         <hr>
         <form method="post" action="{{route('refer.store')}}" enctype="multipart/form-data">
-        @include('partials.flash-message')
-        @csrf
+          @include('partials.flash-message')
+          @csrf
           <div class="row">
             <div class="col-lg-4">
               <div class="form-group">
@@ -90,27 +90,36 @@
               </div>
             </div>
             <div class="col-lg-4">
-              <h5 class="text-primary pb-2"><b>Sex:</b></h5>
-              <div class="custom-control custom-radio custom-control-inline">
-                <input type="radio" class="custom-control-input" id="customRadio" name="gender" value="0" checked>
-                <label class="custom-control-label" for="customRadio">Male</label>
-              </div>
-              <div class="custom-control custom-radio custom-control-inline">
-                <input type="radio" class="custom-control-input" id="customRadio2" name="gender" value="1">
-                <label class="custom-control-label" for="customRadio2">Female</label>
+              <div class="form-group">
+
+                <h5 class="text-primary pb-2"><b>Sex:</b></h5>
+                <div class="custom-control custom-radio custom-control-inline">
+                  <input type="radio" class="custom-control-input" id="customRadio" name="gender" value="0">
+                  <label class="custom-control-label" for="customRadio">Male</label>
+                </div>
+                <div class="custom-control custom-radio custom-control-inline">
+                  <input type="radio" class="custom-control-input" id="customRadio2" name="gender" value="1">
+                  <label class="custom-control-label" for="customRadio2">Female</label>
+                </div>
               </div>
             </div>
             <div class="col-lg-4">
-              <h5 class="text-primary pb-2"><b>PWD:</b></h5>
-              <div class="custom-control custom-radio custom-control-inline">
-                <input type="radio" class="custom-control-input" id="yes" name="yes" value="yes" checked>
-                <label class="custom-control-label" for="yes">Yes</label>
-              </div>
-              <div class="custom-control custom-radio custom-control-inline">
-                <input type="radio" class="custom-control-input" id="no" name="yes" value="no">
-                <label class="custom-control-label" for="no">No</label>
+              <div class="form-group">
+
+                <h5 class="text-primary pb-2"><b>PWD:</b></h5>
+                <div class="custom-control custom-radio custom-control-inline">
+                  <input type="radio" class="custom-control-input" id="pwd_yes" name="pwd" value="1">
+                  <label class="custom-control-label" for="pwd_yes">Yes</label>
+                </div>
+                <div class="custom-control custom-radio custom-control-inline">
+                  <input type="radio" class="custom-control-input" id="pwd_no" name="pwd" value="0">
+                  <label class="custom-control-label" for="pwd_no">No</label>
+                </div>
               </div>
             </div>
+
+
+
           </div>
           <hr>
           <div class="row">
@@ -120,34 +129,39 @@
             </div>
             <div class="col-lg-4">
               <div class="form-group">
-                <h5 class="text-primary pb-2"><b>Diseases:</b></h5>
-                <select class="form-control">
-                  <option value="Diabetes">Diabetes</option>
-                  <option value="Sclerosis">Multiple Sclerosis</option>
-                  <option value="Colitis">Crohn's & Colitis</option>
-                  <option value="Lupus">Lupus</option>
-                  <option value="Arthritis">Arthritis</option>
-                  <option value="Asthma">Allergies & Asthma</option>
-                  <option value="Celiac">Celiac Disease</option>
-                  <option value="Polychondritis">Relapsing Polychondritis</option>
-                  <option value="Scleroderma">Scleroderma</option>
-                  <option value="Liver">Liver Disease</option>
-                  <option value="Infectious">Infectious Diseases</option>
-                  <option value="Cancer">Cancer</option>
-                  <option value="Heart">Heart Disease</option>
+                <h5 class="text-primary pb-2"><b>Disease:</b></h5>
+                <select id="disease-list" name="disease" class="form-control" required>
+                  <option value="" selected disabled>Select Disease</option>
                 </select>
               </div>
             </div>
             <div class="col-lg-4">
               <div class="form-group">
-                <h5 class="text-primary pb-2"><b>Priority Level:</b></h5>
-                <select class="form-control">
-                  <option value="1">1</option>
-                  <option value="2">2</option>
-                  <option value="3">3</option>
-                  <option value="4">4</option>
-                  <option value="5">5</option>
-                </select>
+
+                <h5 class="text-primary pb-2"><b>Heart Disease:</b></h5>
+                <div class="custom-control custom-radio custom-control-inline">
+                  <input type="radio" class="custom-control-input" id="heart_yes" name="heart" value="1">
+                  <label class="custom-control-label" for="heart_yes">Yes</label>
+                </div>
+                <div class="custom-control custom-radio custom-control-inline">
+                  <input type="radio" class="custom-control-input" id="heart_no" name="heart" value="0">
+                  <label class="custom-control-label" for="heart_no">No</label>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-4">
+              <div class="form-group">
+
+                <h5 class="text-primary pb-2"><b>Stroke:</b></h5>
+                <div class="custom-control custom-radio custom-control-inline">
+                  <input type="radio" class="custom-control-input" id="stroke_yes" name="stroke" value="1">
+                  <label class="custom-control-label" for="stroke_yes">Yes</label>
+                </div>
+                <div class="custom-control custom-radio custom-control-inline">
+                  <input type="radio" class="custom-control-input" id="stroke_no" name="stroke" value="0">
+                  <label class="custom-control-label" for="stroke_no">No</label>
+                </div>
               </div>
             </div>
           </div>

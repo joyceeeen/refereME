@@ -8,8 +8,11 @@ use App\Patient;
 use App\Attachments;
 use App\ReportsReference;
 use App\ReferralReports;
+use GuzzleHttp\Exception\GuzzleException;
+use GuzzleHttp\Client;
 use Illuminate\Http\Request;
 use Image;
+use Carbon\Carbon;
 use File;
 class ReferralsController extends Controller
 {
@@ -83,18 +86,38 @@ class ReferralsController extends Controller
       $patient->lastname = ucwords($request->lastname);
       $patient->gender = $request->gender;
       $patient->birthday = $request->birthday;
+      $patient->stroke = $request->stroke;
+      $patient->pwd = $request->pwd;
+      $patient->heart_disease = $request->heart;
       $patient->contact_number = $request->contact_number;
       $patient->email_address = $request->email_address;
       $patient->save();
       $patientId = $patient->id;
     }
 
+    //GET PRIORITY
+    $client = new Client(); //GuzzleHttp\Client
+    $result = $client->post('http://gangg5539.pythonanywhere.com/predict', [
+      'form_params' => [
+        'disease'=> $request->disease,
+        'stroke'=> $request->stroke,
+        'heart_disease'=> $request->heart,
+        'PWD'=> $request->pwd,
+        'age'=> Carbon::parse($request->birthday)->age
+      ]
+    ]);
+
+    $responseJSON = json_decode($result->getBody(), true);
+    $priority = $responseJSON['class'];
+    //END GET PRIORITY
 
     $referral = new Referrals();
     $referral->patient_id = $patientId;
     $referral->doctor_id = $request->doctor_id;
     $referral->referrer_id = auth()->user()->id;
+    $referral->disease_id = $request->disease;
     $referral->report = $request->report;
+    $referral->level = $priority;
     $referral->save();
 
     //ADD reports DATA
