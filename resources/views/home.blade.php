@@ -86,51 +86,41 @@
       <div class="col-lg-12">
         <div class="card">
           <div class="card-body">
-            <h4 class="text-primary"><b>Line Chart</b></h4>
-            <div id="linechart-div">
-            </div>
-          </div>
-        </div>
-        <?= Lava::render('LineChart','LineIMDB','linechart-div') ?>
-      </div>
-      <div class="col-lg-12">
-        <div class="card">
-          <div class="card-body">
-            <h4 class="text-primary"><b>Bar Chart</b></h4>
+            <h4 class="text-primary"><b>Disease</b></h4>
             <div id="chart-div"></div>
           </div>
         </div>
-        <?= Lava::render('BarChart', 'IMDB', 'chart-div') ?>
+        <?= Lava::render('BarChart', 'Disease', 'chart-div') ?>
       </div>
       <div class="col-lg-4">
         <div class="card">
           <div class="card-body">
-            <h4 class="text-primary"><b>Pie Chart</b></h4>
+            <h4 class="text-primary"><b>No. of Doctors and No. of Hospitals</b></h4>
 
             <div id="piechart-div"></div>
           </div>
         </div>
-        <?= Lava::render('PieChart', 'IMDB', 'piechart-div') ?>
+        <?= Lava::render('PieChart', 'doctorVhospital', 'piechart-div') ?>
       </div>
       <div class="col-lg-4">
         <div class="card">
           <div class="card-body">
-            <h4 class="text-primary"><b>Pie 2 Chart</b></h4>
+            <h4 class="text-primary"><b>Top 5 Specialization</b></h4>
 
             <div id="piechart2-div"></div>
           </div>
         </div>
-        <?= Lava::render('PieChart', 'IMDB2', 'piechart2-div') ?>
+        <?= Lava::render('PieChart', 'specialization', 'piechart2-div') ?>
       </div>
       <div class="col-lg-4">
         <div class="card">
           <div class="card-body">
-            <h4 class="text-primary"><b>Pie 3 Chart</b></h4>
+            <h4 class="text-primary"><b>Breakdown of Priority Levels</b></h4>
 
             <div id="piechart3-div"></div>
           </div>
         </div>
-        <?= Lava::render('PieChart', 'IMDB3', 'piechart3-div') ?>
+        <?= Lava::render('PieChart', 'priority', 'piechart3-div') ?>
       </div>
     </div>
     <!-- <div class="row pb-5">

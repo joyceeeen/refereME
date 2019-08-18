@@ -32,39 +32,54 @@ class HomeController extends Controller
 
     $id = auth()->user()->id;
     $clients = User::whereId($id)->with(['referrals.patient','referralRequests.patient'])->first();
+    $top10 = Referrals::selectRaw("disease_id,count(id) as count")->with('disease')->groupBy('disease_id')->orderBy('count','DESC')->limit(10)->get();
+    $breakDown = Referrals::selectRaw("ceil(level) as priority, count(id) as count")->groupBy('priority')->orderBy('count','desc')->get();
+    $specialization = User::selectRaw("specialization,count(id) as count")->groupBy('specialization')->orderBy('count','DESC')->limit(5)->get();
 
-    $reasons = \Lava::DataTable();
+    $doctorCount = User::where('user_type',1)->count();
+    $hospitalCount = User::where('user_type',2)->count();
 
-    $reasons->addStringColumn('Reasons')
-    ->addNumberColumn('Percent')
-    ->addRow(array('Check Reviews', 5))
-    ->addRow(array('Watch Trailers', 2))
-    ->addRow(array('See Actors Other Work', 4))
-    ->addRow(array('Settle Argument', 89));
+    $top10Chart = \Lava::DataTable()->addStringColumn('Disease')->addNumberColumn('Count');
+    $doctorVhospital = \Lava::DataTable()->addStringColumn('User Type')->addNumberColumn('Count')->addRow(['Doctor',$doctorCount])->addRow(['Hospital',$hospitalCount]);
+    $topSpecialization = \Lava::DataTable()->addStringColumn('Specialization')->addNumberColumn('Count');
+    $breakDownChart =  \Lava::DataTable()->addStringColumn('Priority Level')->addNumberColumn('Count');
 
-    $linechart = \Lava::LineChart('LineIMDB', $reasons, [
+    foreach ($top10 as $key => $value) {
+      $top10Chart->addRow([$value->disease->title,$value->count]);
+    }
+
+
+    foreach ($specialization as $key => $value) {
+      $topSpecialization->addRow([$value->specialization,$value->count]);
+    }
+
+    foreach ($breakDown as $key => $value) {
+      $breakDownChart->addRow([$value->priority,$value->count]);
+    }
+
+    // $linechart = \Lava::LineChart('LineIMDB', $reasons, [
+    //   'width' => '100%',
+    //   'legend' => [
+    //       'position' => 'none'
+    //   ]
+    // ]);
+    $donutchart = \Lava::BarChart('Disease', $top10Chart, [
       'width' => '100%',
       'legend' => [
           'position' => 'none'
       ]
     ]);
-    $donutchart = \Lava::BarChart('IMDB', $reasons, [
-      'width' => '100%',
+    $piechart = \Lava::PieChart('doctorVhospital', $doctorVhospital, [
       'legend' => [
           'position' => 'none'
       ]
     ]);
-    $piechart = \Lava::PieChart('IMDB', $reasons, [
+    $piechart2 = \Lava::PieChart('specialization', $topSpecialization, [
       'legend' => [
           'position' => 'none'
       ]
     ]);
-    $piechart2 = \Lava::PieChart('IMDB2', $reasons, [
-      'legend' => [
-          'position' => 'none'
-      ]
-    ]);
-    $piechart3 = \Lava::PieChart('IMDB3', $reasons, [
+    $piechart3 = \Lava::PieChart('priority', $breakDownChart, [
       'legend' => [
           'position' => 'none'
       ]
