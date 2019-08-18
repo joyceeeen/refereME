@@ -70,7 +70,7 @@
                     <h5 class="card-title mb-3">{{$doctor->specialization}}</h5>
                     <p class="card-text font-weight-bold mb-0 text-dark">{{$doctor->address}}</p>
                     <p class="card-text mb-0 text-dark">{{$doctor->contact_number}}</p>
-                    <p class="card-text font-weight-bold mb-0 text-primary"><i>{{$doctor->schedToday ?  $doctor->schedToday->from.' - '. $doctor->schedToday->to : "No Schedule Today"}}</i></p>
+                    <p class="card-text font-weight-bold mb-0 text-primary"><i>{{$doctor->schedToday ?  \Carbon\Carbon::parse($doctor->schedToday->from)->format("h:i A").' - '. \Carbon\Carbon::parse($doctor->schedToday->to)->format("h:i A") : "No Schedule Today"}}</i></p>
                   </a>
                 </div>
               </div>
@@ -103,7 +103,7 @@
                     <h5 class="card-title mb-3">{{$doctor->specialization}}</h5>
                     <p class="card-text font-weight-bold mb-0 text-dark">{{$doctor->address}}</p>
                     <p class="card-text mb-0 text-dark">{{$doctor->contact_number}}</p>
-                    <p class="card-text font-weight-bold mb-0 text-primary"><i>{{$doctor->schedToday ? $doctor->schedToday->from.' - '. $doctor->schedToday->to : "No Schedule Today"}}</i></p>
+                    <p class="card-text font-weight-bold mb-0 text-primary"><i>{{$doctor->schedToday ?  \Carbon\Carbon::parse($doctor->schedToday->from)->format("h:i A").' - '. \Carbon\Carbon::parse($doctor->schedToday->to)->format("h:i A") : "No Schedule Today"}}</i></p>
                   </a>
                 </div>
               </div>

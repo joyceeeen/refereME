@@ -95,7 +95,7 @@
       <div class="col-lg-4">
         <div class="card">
           <div class="card-body">
-            <h4 class="text-primary"><b>No. of Doctors and No. of Hospitals</b></h4>
+            <h4 class="text-primary"><b>Top 5 Hospital With Most Referrals</b></h4>
 
             <div id="piechart-div"></div>
           </div>

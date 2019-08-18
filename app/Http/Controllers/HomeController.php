@@ -35,12 +35,10 @@ class HomeController extends Controller
     $top10 = Referrals::selectRaw("disease_id,count(id) as count")->with('disease')->groupBy('disease_id')->orderBy('count','DESC')->limit(10)->get();
     $breakDown = Referrals::selectRaw("ceil(level) as priority, count(id) as count")->groupBy('priority')->orderBy('count','desc')->get();
     $specialization = User::selectRaw("specialization,count(id) as count")->groupBy('specialization')->orderBy('count','DESC')->limit(5)->get();
-
-    $doctorCount = User::where('user_type',1)->count();
-    $hospitalCount = User::where('user_type',2)->count();
+    $top5Hospitals = User::where('user_type',2)->with('hospital')->withCount("referralRequests")->orderBy('referral_requests_count','desc')->limit(5)->get();
 
     $top10Chart = \Lava::DataTable()->addStringColumn('Disease')->addNumberColumn('Count');
-    $doctorVhospital = \Lava::DataTable()->addStringColumn('User Type')->addNumberColumn('Count')->addRow(['Doctor',$doctorCount])->addRow(['Hospital',$hospitalCount]);
+    $hospitals = \Lava::DataTable()->addStringColumn('Hospital')->addNumberColumn('Count');
     $topSpecialization = \Lava::DataTable()->addStringColumn('Specialization')->addNumberColumn('Count');
     $breakDownChart =  \Lava::DataTable()->addStringColumn('Priority Level')->addNumberColumn('Count');
 
@@ -48,6 +46,10 @@ class HomeController extends Controller
       $top10Chart->addRow([$value->disease->title,$value->count]);
     }
 
+
+    foreach ($top5Hospitals as $key => $value) {
+      $hospitals->addRow([$value->hospital->hospital_name,$value->referral_requests_count]);
+    }
 
     foreach ($specialization as $key => $value) {
       $topSpecialization->addRow([$value->specialization,$value->count]);
@@ -66,24 +68,24 @@ class HomeController extends Controller
     $donutchart = \Lava::BarChart('Disease', $top10Chart, [
       'width' => '100%',
       'legend' => [
-          'position' => 'none'
+        'position' => 'none'
       ]
     ]);
-    $piechart = \Lava::PieChart('doctorVhospital', $doctorVhospital, [
+    $piechart = \Lava::PieChart('doctorVhospital', $hospitals, [
       'legend' => [
-          'position' => 'none'
+        'position' => 'none'
       ]
     ]);
     $piechart2 = \Lava::PieChart('specialization', $topSpecialization, [
       'legend' => [
-          'position' => 'none'
+        'position' => 'none'
       ]
     ]);
     $piechart3 = \Lava::PieChart('priority', $breakDownChart, [
       'legend' => [
-          'position' => 'none'
+        'position' => 'none'
       ]
-      ]);
+    ]);
 
     return view('home',compact('clients'));
   }

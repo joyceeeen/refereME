@@ -21,11 +21,11 @@
               <div class="card">
                 <div class="card-body text-center">
                   <p><img class="imgHospital img-fluid" src="{{$hospital->avatar ? '/'.$hospital->avatar : 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAAAAAA6fptVAAAACklEQVQI12O4AQAA2gDZumdc2gAAAABJRU5ErkJggg=='}}" alt="card image"></p>
-                  <h4 class="card-title">{{$hospital->hospital_name}}</h4>
-                  <p class="card-text font-weight-bold mb-0">{{$hospital->address}}</p>
+                  <h4 class="card-title">{{$hospital->hospital->hospital_name}}</h4>
+                  <p class="card-text font-weight-bold mb-0">{{$hospital->hospital->location}}</p>
                   <p class="card-text mb-0">{{$hospital->contact_number}}</p>
                   <p><a href="#" data-toggle="modal" data-id="{{$hospital->id}}" class="moreDetailsModal card-title mb-3">More Details</a></p>
-                  <br>
+
                   <p class="card-text font-weight-bold mb-0 text-primary"><i>Open 24 Hours</i></p>
 
                   @if(request()->client)
@@ -65,12 +65,10 @@
               <div class="card">
                 <div class="card-body text-center">
                   <p><img class="imgHospital img-fluid" src="{{$hospital->avatar ? '/'.$hospital->avatar : 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAAAAAA6fptVAAAACklEQVQI12O4AQAA2gDZumdc2gAAAABJRU5ErkJggg=='}}" alt="card image"></p>
-                  <h4 class="card-title">{{$hospital->hospital_name}}</h4>
-                  <p class="card-text font-weight-bold mb-0">{{$hospital->address}}</p>
+                  <h4 class="card-title">{{$hospital->hospital->hospital_name}}</h4>
+                  <p class="card-text font-weight-bold mb-0">{{$hospital->hospital->location}}</p>
                   <p class="card-text mb-0">{{$hospital->contact_number}}</p>
                   <p><a href="#" data-toggle="modal" data-id="{{$hospital->id}}" class="moreDetailsModal card-title mb-3">More Details</a></p>
-
-                  <br>
                   <p class="card-text font-weight-bold mb-0 text-primary"><i>Open 24 Hours</i></p>
                   @if(request()->client)
                   <form class="" action="{{route('refer.update',['id'=>request()->client])}}" method="post">

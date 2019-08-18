@@ -62,7 +62,6 @@ $(function(){
       addDiseaseList(response);
       },
       error:function(response){
-        console.log(response);
       }
 
     })
@@ -135,15 +134,17 @@ $(function(){
     dom: 'Bfrtip',
     buttons: [
       {
-        extend: 'pdf',
+        extend: 'pdfHtml5',
         title: table.data('title')+' - '+moment().format('YYYYMMDDHmm'),
         exportOptions: {
           columns: "thead th:not(.noExport)"
         },
+         orientation: 'landscape',
 
       }
     ],
-     "aaSorting": []
+     "aaSorting": [],
+     "bSort" : false
   });
 });
 
@@ -158,8 +159,12 @@ function manipulateModalInfoResults(data,item){
   modal.find("#descriptionTxt").html(data.summary);
 
   //specialization
+  if(data.schedule.length > 0){
+    modal.find("#referButton").attr('href','/refer/create?id='+data.id).removeClass("disableTab");
+  }else{
+      modal.find("#referButton").addClass("disableTab");
+  }
 
-  modal.find("#referButton").attr('href','/refer/create?id='+data.id);
 
   if (typeof item.data('client') !== 'undefined')
   {
@@ -169,11 +174,12 @@ function manipulateModalInfoResults(data,item){
     $("#referButton").hide();
   }
 
+
   $.each(data.schedule, function(index, sched) {
 
     var weekdays = ['','monday','tuesday','wednesday','thursday','friday','saturday','sunday'];
     var titles = ['Clinic/Hospital','Address','Schedule','Contact Number'];
-    var schedules = sched.schedule.from+" - "+ sched.schedule.to;
+    var schedules = moment(sched.schedule.from, ["HH:mm"]).format('hh:mm A')+" - "+ moment(sched.schedule.to,["HH:mm"]).format('hh:mm A');
 
     var inputs = [sched.hospital,sched.address,schedules,sched.contact_number];
     if(index == 0){
@@ -195,6 +201,7 @@ function manipulateModalInfoResults(data,item){
     $("#myTab").find("#"+weekdays[sched.day]+"-tab").removeClass("disableTab");
 
   });
+
   $("#myTab .nav-link:not('.disableTab'):first").addClass("active");
 }
 
