@@ -20,7 +20,7 @@ class CreateReferralsTable extends Migration
             $table->unsignedBigInteger('patient_id');
             $table->unsignedBigInteger('disease_id');
             $table->text('report');
-            $table->float('level',1,6)->nullable();
+            $table->float('level',8,6)->nullable();
             $table->boolean('is_accepted')->nullable();
             $table->foreign('referrer_id')->references('id')->on('users');
             $table->foreign('doctor_id')->references('id')->on('users');
