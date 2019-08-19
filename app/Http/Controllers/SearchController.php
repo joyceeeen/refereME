@@ -15,12 +15,12 @@ class SearchController extends Controller
     $location = Location::get($ip);
     $nearest = null;
     $user = auth()->user();
-    
+
     if($location->cityName){
-      $nearest = User::where('user_type', 2)->where('id','<>',$user->id)->where('address','like','%'.$location->cityName.'%')->inRandomOrder()->paginate(3);
+      $nearest = User::where('user_type', 2)->whereHas('hospital')->where('id','<>',$user->id)->where('address','like','%'.$location->cityName.'%')->inRandomOrder()->paginate(3);
     }
 
-    $hospitals = User::where('user_type', 2)->where('id','<>',$user->id)->inRandomOrder()->paginate(9);
+    $hospitals = User::where('user_type', 2)->whereHas('hospital')->where('id','<>',$user->id)->inRandomOrder()->paginate(9);
 
     return view('search-hospital',compact('hospitals','nearest'));
   }
