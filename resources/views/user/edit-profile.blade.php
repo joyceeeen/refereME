@@ -113,6 +113,8 @@
                 <label class="col-lg-4 control-label">Hospital Name:</label>
                 <div class="col-lg-8">
                   <input class="form-control" name="hospital_name" type="text" value="{{$user->hospital ?  $user->hospital->hospital_name :''}}" required>
+                  <input class="form-control" name="hospital_id" type="hidden" value="{{$user->hospital ?  $user->hospital->id :''}}">
+
                 </div>
               </div>
               <div class="form-group">

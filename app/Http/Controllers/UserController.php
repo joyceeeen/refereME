@@ -150,7 +150,12 @@ class UserController extends Controller
       //End Upload image
 
       if($request->hospital_name){
-        $hospital = new HospitalDetails();
+        $hospital = null;
+        if($request->hospital_id){
+          $hospital = HospitalDetails::find($request->hospital_id);
+        }else{
+          $hospital =  new HospitalDetails();
+        }
         $hospital->hospital_name = $request->hospital_name;
         $hospital->user_id = $user->id;
         $hospital->ambulance = $request->ambulance;
