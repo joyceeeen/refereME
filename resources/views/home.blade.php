@@ -90,7 +90,7 @@
             <div id="chart-div"></div>
           </div>
         </div>
-        <?= Lava::render('BarChart', 'Disease', 'chart-div') ?>
+        <?= Lava::render('ColumnChart', 'Disease', 'chart-div') ?>
       </div>
       <div class="col-lg-4">
         <div class="card">

@@ -36,6 +36,7 @@ class HomeController extends Controller
     $breakDown = Referrals::selectRaw("ceil(level) as priority, count(id) as count")->groupBy('priority')->orderBy('count','desc')->get();
     $specialization = User::selectRaw("specialization,count(id) as count")->groupBy('specialization')->orderBy('count','DESC')->limit(5)->get();
     $top5Hospitals = User::where('user_type',2)->whereHas('hospital')->with('hospital')->withCount("referralRequests")->orderBy('referral_requests_count','desc')->limit(5)->get();
+
     $top10Chart = \Lava::DataTable()->addStringColumn('Disease')->addNumberColumn('Count');
     $hospitals = \Lava::DataTable()->addStringColumn('Hospital')->addNumberColumn('Count');
     $topSpecialization = \Lava::DataTable()->addStringColumn('Specialization')->addNumberColumn('Count');
@@ -64,7 +65,7 @@ class HomeController extends Controller
     //       'position' => 'none'
     //   ]
     // ]);
-    $donutchart = \Lava::BarChart('Disease', $top10Chart, [
+    $donutchart = \Lava::ColumnChart('Disease', $top10Chart, [
       'width' => '100%',
       'legend' => [
         'position' => 'none'

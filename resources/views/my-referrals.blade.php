@@ -24,11 +24,10 @@
               </tr>
             </thead>
             <tbody>
-              @foreach($clients->referrals->sortBy('level') as $client)
+              @foreach($clients->referrals->sortBy('level') as $key=>$client)
               <tr id="my-referrals-row" class="status-{{$client->status}}">
-                <td>{{$client->id}}</td>
+                <td>{{$key + 1}}</td>
                 <td>{{ceil($client->level)}}</td>
-
                 <td>{{$client->referredTo->name}}</td>
                 <td>{{$client->status}}</td>
                 <td>{{$client->patient->lastname}}</td>

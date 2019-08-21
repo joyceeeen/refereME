@@ -27,9 +27,9 @@
               </tr>
             </thead>
             <tbody>
-              @foreach($clients->referralRequests->where('is_accepted',0)->sortBy('level') as $client)
+              @foreach($clients->referralRequests->where('is_accepted',0)->sortBy('level') as $key=>$client)
               <tr>
-                <td>{{$client->id}}</td>
+                <td>{{$key + 1}}</td>
                 <td>{{ceil($client->level)}}</td>
                 <td>{{$client->referredBy->name}}</td>
                 <td>{{$client->patient->lastname}}</td>
@@ -37,7 +37,7 @@
                 <td>{{$client->patient->middlename}}</td>
                 <td>{{$client->patient->birthday}}</td>
 
-                <td>{{$client->report}}</td>
+                <td>{{$client->patient->contact_number}}</td>
                 <td><a href="#" data-toggle="modal"  class="patientDetailsModal" data-id="{{$client->id}}">View More</a></td>
                 <td align="center">
                   <form action="{{route('refer.update',['id'=>$client->id])}}" method="post">
