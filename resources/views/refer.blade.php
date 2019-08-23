@@ -77,6 +77,18 @@
                 <input type="date" name="birthday" required class="form-control" id="fName">
               </div>
             </div>
+
+            <div class="col-lg-4">
+              <h5 class="text-primary pb-2"><b>Height:</b></h5>
+              <div class="input-group mb-3">
+
+                <input type="text" class="form-control" name="height" aria-label=""/>
+                <div class="input-group-append">
+                  <span class="input-group-text">cm</span>
+                </div>
+              </div>
+            </div>
+
             <div class="col-lg-4">
               <div class="form-group">
                 <h5 class="text-primary pb-2"><b>Contact Number:</b></h5>

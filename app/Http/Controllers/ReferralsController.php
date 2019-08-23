@@ -91,6 +91,7 @@ class ReferralsController extends Controller
       $patient->heart_disease = $request->heart;
       $patient->contact_number = $request->contact_number;
       $patient->email_address = $request->email_address;
+      $patient->height = $request->height;
       $patient->save();
       $patientId = $patient->id;
     }

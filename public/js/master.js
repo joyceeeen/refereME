@@ -157,7 +157,7 @@ function manipulateModalInfoResults(data,item){
   modal.find("#addressTxt").html(data.address);
   modal.find("#mobileNumberTxt").html(data.contact_number);
   modal.find("#descriptionTxt").html(data.summary);
-
+  modal.find("#license_number").html(data.license_number);
   //specialization
   if(data.schedule.length > 0){
     modal.find("#referButton").attr('href','/refer/create?id='+data.id).removeClass("disableTab");

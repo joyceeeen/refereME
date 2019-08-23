@@ -22,6 +22,7 @@ class CreatePatientsTable extends Migration
             $table->boolean('stroke')->nullable();
             $table->boolean('PWD')->nullable();
             $table->string('contact_number');
+            $table->string('height');
             $table->string('email_address');
             $table->date('birthday');
             $table->tinyInteger('gender');

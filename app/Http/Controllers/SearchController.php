@@ -17,11 +17,19 @@ class SearchController extends Controller
     $user = auth()->user();
 
     if($location->cityName){
-      $nearest = User::where('user_type', 2)->whereHas('hospital')->where('id','<>',$user->id)->where('address','like','%'.$location->cityName.'%')->inRandomOrder()->paginate(3);
+      $nearest = User::where('user_type', 2)->whereHas('hospital')->where('id','<>',$user->id)->where('address','like','%'.$location->cityName.'%')->inRandomOrder('1234')->paginate(3);
+    }
+    $hospitals = null;
+
+    if($request->hospital_query){
+      $hospitals = User::where('user_type', 2)->whereHas('hospital', function($query) use($request){
+        $query->where('hospital_name','like','%'.$request->hospital_query.'%');
+      });
+    }else{
+      $hospitals = User::where('user_type', 2)->whereHas('hospital');
     }
 
-    $hospitals = User::where('user_type', 2)->whereHas('hospital')->where('id','<>',$user->id)->inRandomOrder()->paginate(9);
-
+    $hospitals = $hospitals->where('id','<>',$user->id)->inRandomOrder('1234')->paginate(9);
     return view('search-hospital',compact('hospitals','nearest'));
   }
 
@@ -45,10 +53,10 @@ class SearchController extends Controller
     $nearest = null;
 
     if($location->cityName){
-      $nearest = $doctors->with('schedToday')->where('address','like','%'.$location->cityName.'%')->inRandomOrder()->paginate(3);
+      $nearest = $doctors->with('schedToday')->where('address','like','%'.$location->cityName.'%')->inRandomOrder('1234')->paginate(3);
     }
 
-    $doctors = $doctors->with('schedToday')->inRandomOrder()->paginate(6);
+    $doctors = $doctors->with('schedToday')->inRandomOrder('1234')->paginate(6);
 
     return view('search-doctor',compact('doctors','nearest'));
   }

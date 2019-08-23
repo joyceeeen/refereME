@@ -11,10 +11,10 @@
             <form method="get" action="{{route('search.doctor')}}">
               <div class="row">
                 <div class="col searchCol">
-                  <input type="text" name="firstname" value="{{ request()->firstname }}" class="form-control" placeholder="Doctor's First Name">
+                  <input type="text" name="firstname" autocomplete="off" value="{{ request()->firstname }}" class="form-control" placeholder="Doctor's First Name">
                 </div>
                 <div class="col searchCol">
-                  <input type="text" name="lastname" value="{{ request()->lastname  }}" class="form-control" placeholder="Doctor's Last Name">
+                  <input type="text" name="lastname" autocomplete="off" value="{{ request()->lastname  }}" class="form-control" placeholder="Doctor's Last Name">
                 </div>
                 <div class="col searchCol">
                   <select name="specialization" class="form-control" id="exampleFormControlSelect1">
@@ -67,6 +67,7 @@
                   <a href="#"  @if(request()->client) data-client="{{request()->client}}" @endif data-info="{{$doctor->id}}" class="showMoreInfoModal">
                     <p><img class=" img-fluid" src="{{$doctor->avatar ? '/'.$doctor->avatar : 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAAAAAA6fptVAAAACklEQVQI12O4AQAA2gDZumdc2gAAAABJRU5ErkJggg=='}}" alt="card image"></p>
                     <h4 class="card-title mb-0 font-weight-bold">{{$doctor->name}}</h4>
+                    <p class="card-title mb-0 font-weight-bold">{{$doctor->license_number}}</p>
                     <h5 class="card-title mb-3">{{$doctor->specialization}}</h5>
                     <p class="card-text font-weight-bold mb-0 text-dark">{{$doctor->address}}</p>
                     <p class="card-text mb-0 text-dark">{{$doctor->contact_number}}</p>
@@ -100,6 +101,7 @@
                   <a href="#" @if(request()->client) data-client="{{request()->client}}" @endif data-info="{{$doctor->id}}" class="showMoreInfoModal">
                     <p><img class=" img-fluid" src="{{$doctor->avatar ? '/'.$doctor->avatar : 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAAAAAA6fptVAAAACklEQVQI12O4AQAA2gDZumdc2gAAAABJRU5ErkJggg=='}}" alt="card image"></p>
                     <h4 class="card-title mb-0 font-weight-bold">{{$doctor->name}}</h4>
+                    <p class="card-title mb-0 font-weight-bold">{{$doctor->license_number}}</p>
                     <h5 class="card-title mb-3">{{$doctor->specialization}}</h5>
                     <p class="card-text font-weight-bold mb-0 text-dark">{{$doctor->address}}</p>
                     <p class="card-text mb-0 text-dark">{{$doctor->contact_number}}</p>
@@ -138,6 +140,8 @@
             <div class="card-body text-center">
               <p><img class=" img-fluid" id="imgTxt" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGHVK4eyV3wUx9xIB3JOuVE27NpKcXfSb8rVfMYZgRM7U2fCog6w" alt="card image"></p>
               <h4 class="card-title mb-0 font-weight-bold" id="nameTxt">Jason Lopez</h4>
+              <p id="license_number" class="card-title mb-0 font-weight-bold">Taylor Swift</p>
+
               <h5 class="card-title mb-3" id="specializationTxt">Cardiology</h5>
               <p class="card-text font-weight-bold mb-0 text-dark" id="addressTxt">605 Boni Ave, Mandaluyong, 1550 Metro Manila</p>
               <p class="card-text text-dark" id="mobileNumberTxt">0919 781 7760</p>
