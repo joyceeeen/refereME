@@ -41,7 +41,7 @@
 
           <!-- Label -->
           <label>{{ __('First Name') }}</label>
-          <input id="firstname" type="text" class="form-control @error('firstname') is-invalid @enderror" name="firstname" value="{{ old('firstname') }}" required>
+          <input id="firstname" type="text" class="form-control @error('firstname') is-invalid @enderror" autocomplete="off" name="firstname" value="{{ old('firstname') }}" required>
 
           @error('firstname')
           <span class="invalid-feedback" role="alert">
@@ -55,7 +55,7 @@
 
           <!-- Label -->
           <label>{{ __('Last Name') }}</label>
-          <input id="lastname" type="text" class="form-control @error('lastname') is-invalid @enderror" name="lastname" value="{{ old('lastname') }}" required>
+          <input id="lastname" type="text" class="form-control @error('lastname') is-invalid @enderror"  autocomplete="off"  name="lastname" value="{{ old('lastname') }}" required>
 
           @error('lastname')
           <span class="invalid-feedback" role="alert">
@@ -70,7 +70,7 @@
 
           <!-- Label -->
           <label>{{ __('E-Mail Address') }}</label>
-          <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required >
+          <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" autocomplete="off"  name="email" value="{{ old('email') }}" required >
 
           @error('email')
           <span class="invalid-feedback" role="alert">
@@ -96,7 +96,7 @@
           <div class="input-group input-group-merge">
 
             <!-- Input -->
-            <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required >
+            <input id="password" type="password" class="form-control @error('password') is-invalid @enderror"  autocomplete="off"  name="password" required >
 
             @error('password')
             <span class="invalid-feedback" role="alert">
@@ -121,7 +121,7 @@
           <div class="input-group input-group-merge">
 
             <!-- Input -->
-            <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required >
+            <input id="password-confirm" type="password" class="form-control" name="password_confirmation"  autocomplete="off"  required >
           </div>
         </div>
         <!-- Submit -->
