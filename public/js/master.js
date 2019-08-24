@@ -154,12 +154,11 @@ $(function(){
     var results = new RegExp('[\?&]' + name + '=([^&#]*)')
     .exec(window.location.search);
 
-    return (results !== null) ? results[1] || 0 : false;
+    return (results !== null) ? results[1] || 0 : '';
   }
 
   if($("#month-disease")){
     var query = $.urlParam('month');
-
     $("#month-disease").val(query);
   }
 });

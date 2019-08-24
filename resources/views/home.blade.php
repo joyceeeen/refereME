@@ -117,35 +117,37 @@
       </div>
       <?= Lava::render('ColumnChart', 'Disease', 'chart-div') ?>
     </div>
-    <div class="col-lg-4">
-      <div class="card">
-        <div class="card-body">
-          <h4 class="text-primary"><b>Top 5 Hospital With Most Referrals</b></h4>
+    <div class="row">
+      <div class="col-lg-4">
+        <div class="card">
+          <div class="card-body">
+            <h4 class="text-primary"><b>Top 5 Hospital With Most Referrals</b></h4>
 
-          <div id="piechart-div"></div>
+            <div id="piechart-div"></div>
+          </div>
         </div>
+        <?= Lava::render('PieChart', 'doctorVhospital', 'piechart-div') ?>
       </div>
-      <?= Lava::render('PieChart', 'doctorVhospital', 'piechart-div') ?>
-    </div>
-    <div class="col-lg-4">
-      <div class="card">
-        <div class="card-body">
-          <h4 class="text-primary"><b>Top 5 Specialization</b></h4>
+      <div class="col-lg-4">
+        <div class="card">
+          <div class="card-body">
+            <h4 class="text-primary"><b>Top 5 Specialization</b></h4>
 
-          <div id="piechart2-div"></div>
+            <div id="piechart2-div"></div>
+          </div>
         </div>
+        <?= Lava::render('PieChart', 'specialization', 'piechart2-div') ?>
       </div>
-      <?= Lava::render('PieChart', 'specialization', 'piechart2-div') ?>
-    </div>
-    <div class="col-lg-4">
-      <div class="card">
-        <div class="card-body">
-          <h4 class="text-primary"><b>Breakdown of Priority Levels</b></h4>
+      <div class="col-lg-4">
+        <div class="card">
+          <div class="card-body">
+            <h4 class="text-primary"><b>Breakdown of Priority Levels</b></h4>
 
-          <div id="piechart3-div"></div>
+            <div id="piechart3-div"></div>
+          </div>
         </div>
+        <?= Lava::render('PieChart', 'priority', 'piechart3-div') ?>
       </div>
-      <?= Lava::render('PieChart', 'priority', 'piechart3-div') ?>
     </div>
   </div>
   <!-- <div class="row pb-5">
