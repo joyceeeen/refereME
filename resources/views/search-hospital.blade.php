@@ -124,7 +124,7 @@
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalLabel">More Details</h5>
-          <p id="license_number" class="card-title mb-0 font-weight-bold">Taylor Swift</p>
+          <p id="license_number" class="card-title mb-0 font-weight-bold"></p>
 
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
