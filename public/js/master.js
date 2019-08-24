@@ -59,7 +59,7 @@ $(function(){
       url: '/disease',
       type:'get',
       success:function(response){
-      addDiseaseList(response);
+        addDiseaseList(response);
       },
       error:function(response){
       }
@@ -139,13 +139,27 @@ $(function(){
         exportOptions: {
           columns: "thead th:not(.noExport)"
         },
-         orientation: 'landscape',
+        orientation: 'landscape',
 
       }
     ],
-     "aaSorting": [],
-     "bSort" : false
+    "aaSorting": [],
+    "bSort" : false
   });
+
+
+  $.urlParam = function (name) {
+    var results = new RegExp('[\?&]' + name + '=([^&#]*)')
+    .exec(window.location.search);
+
+    return (results !== null) ? results[1] || 0 : false;
+  }
+
+  if($("#month-disease")){
+    var query = $.urlParam('month');
+
+    $("#month-disease").val(query);
+  }
 });
 
 function manipulateModalInfoResults(data,item){
@@ -162,7 +176,7 @@ function manipulateModalInfoResults(data,item){
   if(data.schedule.length > 0){
     modal.find("#referButton").attr('href','/refer/create?id='+data.id).removeClass("disableTab");
   }else{
-      modal.find("#referButton").addClass("disableTab");
+    modal.find("#referButton").addClass("disableTab");
   }
 
 
@@ -232,12 +246,12 @@ function manipulateModalPatientInfo(data){
 
 function addDiseaseList(data){
   var select = $("#disease-list");
-    $.each(data, function(index, value) {
-      select.append($('<option>', {
-            value: value.id,
-            text : value.title
-        }));
-    });
+  $.each(data, function(index, value) {
+    select.append($('<option>', {
+      value: value.id,
+      text : value.title
+    }));
+  });
 }
 
 

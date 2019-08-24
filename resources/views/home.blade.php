@@ -82,135 +82,160 @@
         </div>
       </div>
     </div>
-    <div class="row pb-5">
-      <div class="col-lg-12">
-        <div class="card">
-          <div class="card-body">
-            <h4 class="text-primary"><b>Disease</b></h4>
-            <div id="chart-div"></div>
-          </div>
-        </div>
-        <?= Lava::render('ColumnChart', 'Disease', 'chart-div') ?>
-      </div>
-      <div class="col-lg-4">
-        <div class="card">
-          <div class="card-body">
-            <h4 class="text-primary"><b>Top 5 Hospital With Most Referrals</b></h4>
 
-            <div id="piechart-div"></div>
-          </div>
-        </div>
-        <?= Lava::render('PieChart', 'doctorVhospital', 'piechart-div') ?>
-      </div>
-      <div class="col-lg-4">
-        <div class="card">
-          <div class="card-body">
-            <h4 class="text-primary"><b>Top 5 Specialization</b></h4>
+    <div class="col-lg-12">
+      <div class="card">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-lg-4">
+              <h4 class="text-primary"><b>Disease</b></h4>
+            </div>
+            <div class="col-lg-5">
 
-            <div id="piechart2-div"></div>
+            </div>
+            <div class="col-lg-2">
+              <select onchange="location='?month='+this.value" id="month-disease" class="form-control" name="month">
+                <option value="" selected disabled>Select Month</option>
+                <option value="01">January</option>
+                <option value="02">February</option>
+                <option value="03">March</option>
+                <option value="04">April</option>
+                <option value="05">May</option>
+                <option value="06">June</option>
+                <option value="07">July</option>
+                <option value="08">August</option>
+                <option value="09">September</option>
+                <option value="10">October</option>
+                <option value="11">November</option>
+                <option value="12">December</option>
+              </select>
+            </div>
           </div>
-        </div>
-        <?= Lava::render('PieChart', 'specialization', 'piechart2-div') ?>
-      </div>
-      <div class="col-lg-4">
-        <div class="card">
-          <div class="card-body">
-            <h4 class="text-primary"><b>Breakdown of Priority Levels</b></h4>
 
-            <div id="piechart3-div"></div>
-          </div>
+          <div id="chart-div"></div>
         </div>
-        <?= Lava::render('PieChart', 'priority', 'piechart3-div') ?>
       </div>
+      <?= Lava::render('ColumnChart', 'Disease', 'chart-div') ?>
     </div>
-    <!-- <div class="row pb-5">
-      <div class="col-lg-12">
-        <h5 class="section-title h1">Referral Requests</h5>
-        <div class="table-responsive">
-          <table class="table table-bordered">
-            <thead class="thead-dark">
-              <tr>
+    <div class="col-lg-4">
+      <div class="card">
+        <div class="card-body">
+          <h4 class="text-primary"><b>Top 5 Hospital With Most Referrals</b></h4>
 
-                <th scope="col">Last Name</th>
-                <th scope="col">First Name</th>
-                <th scope="col">Middle Name</th>
-                <th scope="col">Date of Birth</th>
-                <th scope="col">Contact #</th>
-                <th scope="col">View More</th>
-                <th scope="col">Accept</th>
-                <th scope="col">Decline</th>
-              </tr>
-            </thead>
-            <tbody>
-              @foreach($clients->referralRequests->where('is_accepted',0) as $client)
-              <tr>
-                <td>{{$client->patient->lastname}}</td>
-                <td>{{$client->patient->firstname}}</td>
-                <td>{{$client->patient->middlename}}</td>
-                <td>{{$client->patient->birthday}}</td>
-
-                <td>{{$client->report}}</td>
-                <td><a href="#" class="patientDetailsModal" data-id="{{$client->id}}">View More</a></td>
-                <td align="center">
-                  <form action="{{route('refer.update',['id'=>$client->id])}}" method="post">
-                    @csrf
-                    @method('PUT')
-                    <input type="hidden" name="action" value="1"/>
-
-                    <button type="submit" name="button" class="btn btn-primary">Accept</button>
-                  </form>
-                </td>
-                <td align="center">
-                  <form action="{{route('refer.update',['id'=>$client->id])}}" method="post">
-                    @csrf
-                    <input type="hidden" name="action" value="2"/>
-                    <button type="submit" name="button" class="btn btn-danger">Decline</button>
-                  </form>
-                </td>
-              </tr>
-              @endforeach
-
-            </tbody>
-          </table>
+          <div id="piechart-div"></div>
         </div>
       </div>
+      <?= Lava::render('PieChart', 'doctorVhospital', 'piechart-div') ?>
     </div>
-    <div class="row pb-5">
-      <div class="col-lg-12">
-        <h5 class="section-title h1">My Referrals</h5>
-        <div class="table-responsive">
-          <table class="table table-bordered">
-          <thead class="thead-dark">
-            <tr>
-              <th scope="col">Status</th>
-              <th scope="col">Last Name</th>
-              <th scope="col">First Name</th>
-              <th scope="col">Middle Name</th>
-              <th scope="col">Date of Birth</th>
-              <th scope="col">Contact #</th>
-              <th scope="col">View More</th>
-            </tr>
-          </thead>
-          <tbody>
-            @foreach($clients->referrals as $client)
-            <tr id="my-referrals-row" class="status-{{$client->status}}">
-              <td>{{$client->status}}</td>
-              <td>{{$client->patient->lastname}}</td>
-              <td>{{$client->patient->firstname}}</td>
-              <td>{{$client->patient->middlename}}</td>
-              <td>{{$client->patient->birthday}}</td>
-              <td>{{$client->patient->contact_number}}</td>
-              <td><a href="#"  class="patientDetailsModal"  data-id="{{$client->id}}" >View More</a></td>
-            </tr>
-            @endforeach
+    <div class="col-lg-4">
+      <div class="card">
+        <div class="card-body">
+          <h4 class="text-primary"><b>Top 5 Specialization</b></h4>
 
-          </tbody>
-        </table>
+          <div id="piechart2-div"></div>
         </div>
       </div>
-    </div> -->
+      <?= Lava::render('PieChart', 'specialization', 'piechart2-div') ?>
+    </div>
+    <div class="col-lg-4">
+      <div class="card">
+        <div class="card-body">
+          <h4 class="text-primary"><b>Breakdown of Priority Levels</b></h4>
 
+          <div id="piechart3-div"></div>
+        </div>
+      </div>
+      <?= Lava::render('PieChart', 'priority', 'piechart3-div') ?>
+    </div>
   </div>
+  <!-- <div class="row pb-5">
+  <div class="col-lg-12">
+  <h5 class="section-title h1">Referral Requests</h5>
+  <div class="table-responsive">
+  <table class="table table-bordered">
+  <thead class="thead-dark">
+  <tr>
+
+  <th scope="col">Last Name</th>
+  <th scope="col">First Name</th>
+  <th scope="col">Middle Name</th>
+  <th scope="col">Date of Birth</th>
+  <th scope="col">Contact #</th>
+  <th scope="col">View More</th>
+  <th scope="col">Accept</th>
+  <th scope="col">Decline</th>
+</tr>
+</thead>
+<tbody>
+@foreach($clients->referralRequests->where('is_accepted',0) as $client)
+<tr>
+<td>{{$client->patient->lastname}}</td>
+<td>{{$client->patient->firstname}}</td>
+<td>{{$client->patient->middlename}}</td>
+<td>{{$client->patient->birthday}}</td>
+
+<td>{{$client->report}}</td>
+<td><a href="#" class="patientDetailsModal" data-id="{{$client->id}}">View More</a></td>
+<td align="center">
+<form action="{{route('refer.update',['id'=>$client->id])}}" method="post">
+@csrf
+@method('PUT')
+<input type="hidden" name="action" value="1"/>
+
+<button type="submit" name="button" class="btn btn-primary">Accept</button>
+</form>
+</td>
+<td align="center">
+<form action="{{route('refer.update',['id'=>$client->id])}}" method="post">
+@csrf
+<input type="hidden" name="action" value="2"/>
+<button type="submit" name="button" class="btn btn-danger">Decline</button>
+</form>
+</td>
+</tr>
+@endforeach
+
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="row pb-5">
+<div class="col-lg-12">
+<h5 class="section-title h1">My Referrals</h5>
+<div class="table-responsive">
+<table class="table table-bordered">
+<thead class="thead-dark">
+<tr>
+<th scope="col">Status</th>
+<th scope="col">Last Name</th>
+<th scope="col">First Name</th>
+<th scope="col">Middle Name</th>
+<th scope="col">Date of Birth</th>
+<th scope="col">Contact #</th>
+<th scope="col">View More</th>
+</tr>
+</thead>
+<tbody>
+@foreach($clients->referrals as $client)
+<tr id="my-referrals-row" class="status-{{$client->status}}">
+<td>{{$client->status}}</td>
+<td>{{$client->patient->lastname}}</td>
+<td>{{$client->patient->firstname}}</td>
+<td>{{$client->patient->middlename}}</td>
+<td>{{$client->patient->birthday}}</td>
+<td>{{$client->patient->contact_number}}</td>
+<td><a href="#"  class="patientDetailsModal"  data-id="{{$client->id}}" >View More</a></td>
+</tr>
+@endforeach
+
+</tbody>
+</table>
+</div>
+</div>
+</div> -->
+
+</div>
 </section>
 
 <div class="modal fade bd-example-modal-lg" id="patientDetailsModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
@@ -239,8 +264,8 @@
               <hr>
               <div class="text-justify">
                 <h5 class="text-primary pb-2"><b>Attachments:</b></h5>
-                  <ul id="attachments">
-                  </ul>
+                <ul id="attachments">
+                </ul>
               </div>
             </div>
           </div>

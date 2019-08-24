@@ -7,6 +7,7 @@ use App\User;
 use App\Schedule;
 use App\Referrals;
 use Lava;
+use Carbon\Carbon;
 class HomeController extends Controller
 {
   /**
@@ -24,15 +25,21 @@ class HomeController extends Controller
   *
   * @return \Illuminate\Contracts\Support\Renderable
   */
-  public function index()
+  public function index(Request $request)
   {
     if(auth()->user()->user_type == 3){
       return redirect('/admin');
     }
+    $year = Carbon::now()->year;
+    $top10 = null;
+    if($request->month){
+      $top10 = Referrals::selectRaw("disease_id,count(id) as count")->whereMonth('created_at',$request->month)->whereYear('created_at',$year)->with('disease')->groupBy('disease_id')->orderBy('count','DESC')->limit(10)->get();
+    }else{
+      $top10 = Referrals::selectRaw("disease_id,count(id) as count")->with('disease')->groupBy('disease_id')->orderBy('count','DESC')->limit(10)->get();
+    }
 
     $id = auth()->user()->id;
     $clients = User::whereId($id)->with(['referrals.patient','referralRequests.patient'])->first();
-    $top10 = Referrals::selectRaw("disease_id,count(id) as count")->with('disease')->groupBy('disease_id')->orderBy('count','DESC')->limit(10)->get();
     $breakDown = Referrals::selectRaw("ceil(level) as priority, count(id) as count")->groupBy('priority')->orderBy('count','desc')->get();
     $specialization = User::selectRaw("specialization,count(id) as count")->groupBy('specialization')->orderBy('count','DESC')->limit(5)->get();
     $top5Hospitals = User::where('user_type',2)->whereHas('hospital')->with('hospital')->withCount("referralRequests")->orderBy('referral_requests_count','desc')->limit(5)->get();
