@@ -1,4 +1,6 @@
 $(function(){
+  initMap();
+
   var previousScroll = 0;
 
   $(window).scroll(function(){
@@ -225,6 +227,37 @@ $('#moreInfoModal').on('hidden.bs.modal', function () {
   $(this).find("#myTabContent").empty();
   $(this).find("#myTab .nav-link").removeClass("active");
 });
+
+
+function initMap() {
+  // Try HTML5 geolocation.
+  if (navigator.geolocation) {
+    var geocoder= new google.maps.Geocoder();
+
+    navigator.geolocation.getCurrentPosition(function(position) {
+      var pos = {
+        lat: position.coords.latitude,
+        lng: position.coords.longitude
+      };
+
+      geocoder.geocode({'location': pos}, function(results, status) {
+        if (status === 'OK') {
+          $('.search-link').each(function(i, obj) {
+            var href = $(this).attr('href');
+            $(this).attr('href', href+'?location='+results[0].address_components[3].long_name)
+          });
+
+
+        } else {
+          window.alert('Geocoder failed due to: ' + status);
+        }
+      });
+    });
+  }
+}
+
+
+
 
 function manipulateModalPatientInfo(data){
   var modal = $("#patientDetailsModal");

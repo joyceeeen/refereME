@@ -21,7 +21,12 @@
   <link rel="stylesheet" type="text/css" href="{{ asset('css/datatable.min.css') }}">
 
   <script src="https://kit.fontawesome.com/64f44fe6ee.js"></script>
+  <script async defer
+     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAPrAN1CQviBCLWM-fO4MwfZtE-hTl_d3s">
+  </script>
+
   <!-- Styles -->
+
 
   <link href="{{ asset('css/app.css') }}" rel="stylesheet">
   <link rel="stylesheet" href="/css/master.css">
@@ -48,10 +53,10 @@
             <!-- Authentication Links -->
 
             <li class="nav-item">
-              <a class="nav-link" href="{{ route('search.doctor') }}">{{ __('Search Doctor') }}</a>
+              <a class="nav-link search-link" href="{{ route('search.doctor') }}">{{ __('Search Doctor') }}</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{{ route('search.hospital') }}">{{ __('Search Hospital') }}</a>
+              <a class="nav-link search-link" href="{{ route('search.hospital') }}">{{ __('Search Hospital') }}</a>
             </li>
 
             @guest

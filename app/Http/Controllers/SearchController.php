@@ -11,13 +11,12 @@ class SearchController extends Controller
 
   public function hospital(Request $request){
 
-    $ip = request()->ip();
-    $location = Location::get($ip);
+    $location = $request->location;
     $nearest = null;
     $user = auth()->user();
 
-    if($location->cityName){
-      $nearest = User::where('user_type', 2)->whereHas('hospital')->where('id','<>',$user->id)->where('address','like','%'.$location->cityName.'%')->inRandomOrder('1234')->paginate(3);
+    if($location){
+      $nearest = User::where('user_type', 2)->whereHas('hospital')->where('id','<>',$user->id)->where('address','like','%'.$location.'%')->inRandomOrder('1234')->paginate(3);
     }
     $hospitals = null;
 
@@ -50,16 +49,14 @@ class SearchController extends Controller
       $doctor->where('specialization', $request->specialization);
     }
 
-    $ip = request()->ip();
-    $location = Location::get($ip);
+    $location = $request->location;
     $nearest = null;
 
-    $doctors = $doctor->inRandomOrder()->paginate(6);
+    $doctors = $doctor->inRandomOrder('1234')->paginate(6);
 
-    if($location->cityName){
-      $nearest = $doctor->where('address','like','%'.$location->cityName.'%')->inRandomOrder('1234')->paginate(3);
+    if($location){
+      $nearest = $doctor->where('address','like','%'.$location.'%')->inRandomOrder('1234')->paginate(3);
     }
-
     return view('search-doctor',compact('doctors','nearest'));
   }
 

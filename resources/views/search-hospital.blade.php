@@ -23,7 +23,7 @@
         </div>
       </div>
     </div>
-    @if($nearest)
+    @if($nearest->isNotEmpty())
     <div class="row">
       <div class="col-lg-12">
         <h5 class="text-primary font-weight-bold">NEAREST</h5>
@@ -34,6 +34,7 @@
       @foreach($nearest as $hospital)
       <!-- hospital member -->
       <div class="col-xs-12 col-sm-6 col-md-4">
+
         <div class="image-flip">
           <div class="mainflip">
             <div class="frontside hospital">
