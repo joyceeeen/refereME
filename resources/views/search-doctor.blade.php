@@ -83,7 +83,7 @@
 
     </div>
     @endif
-    @foreach($doctors->groupBy('specialization') as $key => $special)
+    @foreach($doctors as $key => $special)
     <div class="row">
       <div class="col-lg-12">
         <h5 class="text-primary font-weight-bold">{{$key}}</h5>

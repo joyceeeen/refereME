@@ -33,7 +33,7 @@ class SearchController extends Controller
   }
 
   public function doctor(Request $request){
-     $user = auth()->user();
+    $user = auth()->user();
     $doctor = User::where('id','<>',$user->id)->where('user_type', 1);
 
     if($request->firstname){
@@ -52,7 +52,7 @@ class SearchController extends Controller
     $location = $request->location;
     $nearest = null;
 
-    $doctors = $doctor->inRandomOrder('1234')->paginate(6);
+    $doctors = $doctor->inRandomOrder('1234')->get()->groupBy('specialization')->paginate(6);
 
     if($location){
       $nearest = $doctor->where('address','like','%'.$location.'%')->inRandomOrder('1234')->paginate(3);
@@ -61,7 +61,7 @@ class SearchController extends Controller
   }
 
 
- 
+
 
 
 
