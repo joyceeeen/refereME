@@ -8,7 +8,7 @@
       <div class="col-lg-12">
         <div class="card">
           <div class="card-body">
-            <form method="get" action="{{route('search.doctor')}}">
+            <form method="get" action="{{route('search.hospital')}}">
               <div class="row">
                 <div class="col searchCol">
                   <input type="text" name="hospital_query" autocomplete="off" value="{{ request()->hospital_query }}" class="form-control" placeholder="Hospital Name">
