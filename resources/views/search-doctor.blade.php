@@ -48,7 +48,7 @@
         </div>
       </div>
     </div>
-    @if($nearest->isNotEmpty())
+    @if($nearest && $nearest->isNotEmpty())
     <div class="row">
       <div class="col-lg-12">
         <h5 class="text-primary font-weight-bold">NEAREST</h5>
