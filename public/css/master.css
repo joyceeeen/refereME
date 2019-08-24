@@ -136,10 +136,7 @@ section .section-title {
   width: 100% !important;
   height: 220px !important;
 }
-.hospital .card{
-  height: 450px;
-  max-height: 500px;
-}
+
 
 .doctor .card{
   height: 350px;
