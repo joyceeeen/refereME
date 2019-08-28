@@ -14,6 +14,10 @@ use Illuminate\Http\Request;
 use Image;
 use Carbon\Carbon;
 use File;
+use Notification;
+use App\Notifications\PatientBooked;
+use PDF;
+
 class ReferralsController extends Controller
 {
   /**
@@ -195,9 +199,22 @@ class ReferralsController extends Controller
   * @param  \App\Referrals  $referrals
   * @return \Illuminate\Http\Response
   */
+  public function generatePdf($id){
+    $referral = Referrals::find($id);
+
+    $filename = time().uniqid().'.pdf';
+
+    $pdf = PDF::loadView('pdf.details', compact('referral'));
+    return $pdf->download($filename);
+  }
+
   public function update(Request $request, $id)
   {
     $referral = Referrals::find($id);
+    $patient= $referral->patient;
+    $referredTo = $referral->referredTo->user_type == 1 ? "Dr. ".$referral->referredTo->name : $referral->referredTo->hospital->hospital_name;
+    $referredBy = $referral->referredBy->user_type == 1 ? "Dr. ".$referral->referredBy->name : $referral->referredBy->hospital->hospital_name;
+
     if($request->referAgain){
       $referral->doctor_id = $request->hospital;
       $referral->is_accepted = 0;
@@ -206,6 +223,20 @@ class ReferralsController extends Controller
     }else{
       $referral->is_accepted = $request->action;
       $referral->save();
+
+      if($referral->is_accepted == 1){
+        $details = [
+          'greeting' => 'Hi, '.$patient->name,
+          'body' => "You have been successfully referred to ".$referredTo.', this referral has been made by your doctor/hospital, '.$referredBy.'.',
+          'actionText'=>'See More Details',
+          'actionURL' => route('generate.pdf', $referral->id),
+          'thanks' => 'Thank you!'
+        ];
+        Notification::send($patient, new PatientBooked($details));
+        $data = ['title' => 'Welcome to HDTuto.com'];
+
+
+      }
       return redirect()->back()->with('success',"Referral has been updated");
     }
 

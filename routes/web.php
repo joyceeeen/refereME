@@ -17,7 +17,7 @@ Route::middleware(['auth','admin'])->group(function(){
   Route::get('/admin', 'UserController@admin');
   Route::post('/delete', 'UserController@delete')->name('delete');
 });
-
+Route::get('generate-pdf/{id}','ReferralsController@generatePdf')->name('generate.pdf');
 
 Auth::routes(['verify' => true]);
 
@@ -26,6 +26,10 @@ Route::group(['middleware'=>['auth','verified']],function(){
 
   Route::get('refer', function () {
       return view('refer');
+  });
+
+  Route::get('details', function () {
+      return view('pdf.details');
   });
 
   Route::get('editProfile', function () {

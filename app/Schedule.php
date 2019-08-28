@@ -11,7 +11,7 @@ class Schedule extends Model
     'user_id', 'day','hospital','address','contact_number','schedule'
  ];
 
- protected $appends = ['to','from'];
+ protected $appends = ['to','from','day_name'];
 
 
  public function getScheduleAttribute($value)
@@ -27,5 +27,13 @@ class Schedule extends Model
  {
    return $this->schedule['to'];
  }
+
+ public function getDayNameAttribute()
+ {
+   $array = ['Monday','Tuesday', 'Wednesday','Thursday','Friday','Saturday','Sunday'];
+
+   return $array[$this->day];
+ }
+
 
 }
