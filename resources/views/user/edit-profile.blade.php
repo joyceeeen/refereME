@@ -126,19 +126,19 @@
               <div class="form-group">
                 <label class="col-lg-3 control-label">Ambulance:</label>
                 <div class="col-lg-8">
-                  <textarea name="ambulance" class="form-control" rows="8" value="" cols="80" required>{{$user->hospital ?  $user->hospital->ambulance : ''}}</textarea>
+                  <textarea name="ambulance" class="form-control" rows="8" value="" cols="80" required>{{ $user->hospital ? $user->hospital->ambulance_text : '' }}</textarea>
                 </div>
               </div>
               <div class="form-group">
                 <label class="col-lg-3 control-label">Facilities:</label>
                 <div class="col-lg-8">
-                  <textarea name="facilities" class="form-control" rows="8" value="" cols="80" required>{{$user->hospital ?  $user->hospital->facilities : ''}}</textarea>
+                  <textarea name="facilities" class="form-control" rows="8" value="" cols="80" required>{{ $user->hospital ?  $user->hospital->facilities_text : '' }}</textarea>
                 </div>
               </div>
               <div class="form-group">
                 <label class="col-lg-3 control-label">Services:</label>
                 <div class="col-lg-8">
-                  <textarea name="services" class="form-control" rows="8" value="" cols="80" required>{{$user->hospital ?  $user->hospital->services : ''}}</textarea>
+                  <textarea name="services" class="form-control" rows="8" value="" cols="80" required>{{$user->hospital ?  $user->hospital->services_text : ''}}</textarea>
                 </div>
               </div>
 

@@ -1,10 +1,10 @@
 
-<h5>Ambulance</h5>
-<p>{{$hospital->ambulance}}</p>
+<h5><b>Ambulance</b></h5>
+<p>{!! $hospital->ambulance !!}</p>
 <hr>
-<h5>Facilities</h5>
-<p>{{$hospital->facilities}}</p>
+<h5><b>Facilities</b></h5>
+<p>{!! $hospital->facilities !!}</p>
 <hr>
-<h5>Services</h5>
-<p>{{$hospital->services}}</p>
+<h5><b>Services</b></h5>
+<p>{!! $hospital->services !!}</p>
 <hr>
