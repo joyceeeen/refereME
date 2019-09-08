@@ -96,9 +96,9 @@
 
               <form action="{{route('home')}}" method="get">
                 <div class="row">
-                  <div class="col-lg-6">
+                  <div class="col-lg-3">
                   </div>
-                  <div class="col-lg-2">
+                  <div class="col-lg-3">
                     <select class="form-control" name="month">
                       <option value="" selected disabled>Select Month</option>
                       <option value="01">January</option>
@@ -115,14 +115,14 @@
                       <option value="12">December</option>
                     </select>
                   </div>
-                  <div class="col-lg-2">
+                  <div class="col-lg-3">
                     <select  class="form-control" name="user">
                       <option value="" selected disabled>Select User</option>
                       <option value="1">Doctor</option>
                       <option value="2">Hospital</option>
                     </select>
                   </div>
-                  <div class="col-lg-2">
+                  <div class="col-lg-3">
                     <button type="submit"  class="form-control" >Update Chart</button>
                   </div>
                 </form>
@@ -141,10 +141,10 @@
           <div class="card-body">
             <div class="col-lg-12">
               <div class="row">
-                <div class="col-lg-8">
+                <div class="col-lg-6">
                   <h4 class="text-primary"><b>Top 5 Hospital With Most Referrals</b></h4>
                 </div>
-                <div class="col-lg-4">
+                <div class="col-lg-6">
                   <input type="hidden" id="selected_top5" value="{{request()->top5_month}}">
 
                   <select class="form-control" name="top5_month"  id="top5_month">
@@ -175,10 +175,10 @@
           <div class="card-body">
             <div class="col-lg-12">
               <div class="row">
-                <div class="col-lg-8">
+                <div class="col-lg-6">
                   <h4 class="text-primary"><b>Top 5 Specialization</b></h4>
                 </div>
-                <div class="col-lg-4">
+                <div class="col-lg-6">
                   <input type="hidden" id="selected_specialization" value="{{request()->specialization_month}}">
 
                   <select class="form-control" name="specialization_month" id="specialization_month" >
@@ -209,10 +209,10 @@
           <div class="card-body">
             <div class="col-lg-12">
               <div class="row">
-                <div class="col-lg-8">
+                <div class="col-lg-6">
                   <h4 class="text-primary"><b>Breakdown of Priority Levels</b></h4>
                 </div>
-                <div class="col-lg-4">
+                <div class="col-lg-6">
                   <input type="hidden" id="selected_breakdown" value="{{request()->breakdown_month}}">
 
                   <select class="form-control" name="breakdown_month" id="breakdown_month">

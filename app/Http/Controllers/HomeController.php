@@ -35,16 +35,17 @@ class HomeController extends Controller
     $top10 = null;
 
     if($request->month || $request->user){
-      if($request->month){
-        $top10 = Referrals::selectRaw("disease_id,count(id) as count")->whereMonth('created_at',$request->month)->whereYear('created_at',$year)->with('disease')->groupBy('disease_id')->orderBy('count','DESC')->limit(10)->get();
-      }else if($request->user){
-        $top10 = Referrals::selectRaw("disease_id,count(id) as count")->with(['disease','referredTo'=>function($query) use($request){
+
+      if($request->month && !$request->user){
+        $top10 = Referrals::selectRaw("disease_id,count(id) as count,doctor_id")->whereMonth('created_at',$request->month)->whereYear('created_at',$year)->with('disease')->groupBy('disease_id')->orderBy('count','DESC')->limit(10)->get();
+      }else if($request->user && !$request->month){
+        $top10 = Referrals::selectRaw("disease_id,count(id) as count,doctor_id")->whereHas('referredTo',function($query) use($request){
           $query->where('user_type',$request->user);
-        }])->groupBy('disease_id')->orderBy('count','DESC')->limit(10)->get();
+        })->with(['referredTo','disease'])->groupBy('disease_id')->orderBy('count','DESC')->limit(10)->get();
       }else{
-        $top10 = Referrals::selectRaw("disease_id,count(id) as count")->whereMonth('created_at',$request->month)->whereYear('created_at',$year)->with(['disease','referredTo'=>function($query) use($request){
+        $top10 = Referrals::selectRaw("disease_id,count(id) as count,doctor_id")->whereHas('referredTo',function($query) use($request){
           $query->where('user_type',$request->user);
-        }])->groupBy('disease_id')->orderBy('count','DESC')->limit(10)->get();
+        })->whereMonth('created_at',$request->month)->whereYear('created_at',$year)->with('disease')->groupBy('disease_id')->orderBy('count','DESC')->limit(10)->get();
       }
     }
     else{
