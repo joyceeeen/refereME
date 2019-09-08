@@ -90,25 +90,43 @@
             <div class="col-lg-4">
               <h4 class="text-primary"><b>Disease</b></h4>
             </div>
-            <div class="col-lg-5">
+            <div class="col-lg-8">
+              <input type="hidden" id="selected_month" value="{{request()->month}}">
+              <input type="hidden" id="selected_user" value="{{request()->user}}">
 
-            </div>
-            <div class="col-lg-2">
-              <select onchange="location='?month='+this.value" id="month-disease" class="form-control" name="month">
-                <option value="" selected disabled>Select Month</option>
-                <option value="01">January</option>
-                <option value="02">February</option>
-                <option value="03">March</option>
-                <option value="04">April</option>
-                <option value="05">May</option>
-                <option value="06">June</option>
-                <option value="07">July</option>
-                <option value="08">August</option>
-                <option value="09">September</option>
-                <option value="10">October</option>
-                <option value="11">November</option>
-                <option value="12">December</option>
-              </select>
+              <form action="{{route('home')}}" method="get">
+                <div class="row">
+                  <div class="col-lg-6">
+                  </div>
+                  <div class="col-lg-2">
+                    <select class="form-control" name="month">
+                      <option value="" selected disabled>Select Month</option>
+                      <option value="01">January</option>
+                      <option value="02">February</option>
+                      <option value="03">March</option>
+                      <option value="04">April</option>
+                      <option value="05">May</option>
+                      <option value="06">June</option>
+                      <option value="07">July</option>
+                      <option value="08">August</option>
+                      <option value="09">September</option>
+                      <option value="10">October</option>
+                      <option value="11">November</option>
+                      <option value="12">December</option>
+                    </select>
+                  </div>
+                  <div class="col-lg-2">
+                    <select  class="form-control" name="user">
+                      <option value="" selected disabled>Select User</option>
+                      <option value="1">Doctor</option>
+                      <option value="2">Hospital</option>
+                    </select>
+                  </div>
+                  <div class="col-lg-2">
+                    <button type="submit"  class="form-control" >Update Chart</button>
+                  </div>
+                </form>
+              </div>
             </div>
           </div>
 
@@ -121,8 +139,32 @@
       <div class="col-lg-4">
         <div class="card">
           <div class="card-body">
-            <h4 class="text-primary"><b>Top 5 Hospital With Most Referrals</b></h4>
+            <div class="col-lg-12">
+              <div class="row">
+                <div class="col-lg-8">
+                  <h4 class="text-primary"><b>Top 5 Hospital With Most Referrals</b></h4>
+                </div>
+                <div class="col-lg-4">
+                  <input type="hidden" id="selected_top5" value="{{request()->top5_month}}">
 
+                  <select class="form-control" name="top5_month"  id="top5_month">
+                    <option value="" selected disabled>Select Month</option>
+                    <option value="01">January</option>
+                    <option value="02">February</option>
+                    <option value="03">March</option>
+                    <option value="04">April</option>
+                    <option value="05">May</option>
+                    <option value="06">June</option>
+                    <option value="07">July</option>
+                    <option value="08">August</option>
+                    <option value="09">September</option>
+                    <option value="10">October</option>
+                    <option value="11">November</option>
+                    <option value="12">December</option>
+                  </select>
+                </div>
+              </div>
+            </div>
             <div id="piechart-div"></div>
           </div>
         </div>
@@ -131,8 +173,32 @@
       <div class="col-lg-4">
         <div class="card">
           <div class="card-body">
-            <h4 class="text-primary"><b>Top 5 Specialization</b></h4>
+            <div class="col-lg-12">
+              <div class="row">
+                <div class="col-lg-8">
+                  <h4 class="text-primary"><b>Top 5 Specialization</b></h4>
+                </div>
+                <div class="col-lg-4">
+                  <input type="hidden" id="selected_specialization" value="{{request()->specialization_month}}">
 
+                  <select class="form-control" name="specialization_month" id="specialization_month" >
+                    <option value="" selected disabled>Select Month</option>
+                    <option value="01">January</option>
+                    <option value="02">February</option>
+                    <option value="03">March</option>
+                    <option value="04">April</option>
+                    <option value="05">May</option>
+                    <option value="06">June</option>
+                    <option value="07">July</option>
+                    <option value="08">August</option>
+                    <option value="09">September</option>
+                    <option value="10">October</option>
+                    <option value="11">November</option>
+                    <option value="12">December</option>
+                  </select>
+                </div>
+              </div>
+            </div>
             <div id="piechart2-div"></div>
           </div>
         </div>
@@ -141,7 +207,32 @@
       <div class="col-lg-4">
         <div class="card">
           <div class="card-body">
-            <h4 class="text-primary"><b>Breakdown of Priority Levels</b></h4>
+            <div class="col-lg-12">
+              <div class="row">
+                <div class="col-lg-8">
+                  <h4 class="text-primary"><b>Breakdown of Priority Levels</b></h4>
+                </div>
+                <div class="col-lg-4">
+                  <input type="hidden" id="selected_breakdown" value="{{request()->breakdown_month}}">
+
+                  <select class="form-control" name="breakdown_month" id="breakdown_month">
+                    <option value="" selected disabled>Select Month</option>
+                    <option value="01">January</option>
+                    <option value="02">February</option>
+                    <option value="03">March</option>
+                    <option value="04">April</option>
+                    <option value="05">May</option>
+                    <option value="06">June</option>
+                    <option value="07">July</option>
+                    <option value="08">August</option>
+                    <option value="09">September</option>
+                    <option value="10">October</option>
+                    <option value="11">November</option>
+                    <option value="12">December</option>
+                  </select>
+                </div>
+              </div>
+            </div>
 
             <div id="piechart3-div"></div>
           </div>

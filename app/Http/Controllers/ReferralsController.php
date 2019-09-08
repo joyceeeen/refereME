@@ -17,6 +17,8 @@ use File;
 use Notification;
 use App\Notifications\PatientBooked;
 use PDF;
+use Vinkla\Hashids\Facades\Hashids;
+
 
 class ReferralsController extends Controller
 {
@@ -47,9 +49,16 @@ class ReferralsController extends Controller
   */
   public function create(Request $request)
   {
+    $patient = null;
+
+    if($request->patientNo){
+      $id =  Hashids::decode($request->patientNo)[0];
+      $patient = Patient::findOrFail($id);
+    }
+
     $doctor = User::findOrFail($request->id);
     $reports = ReportsReference::get();
-    return view('refer',compact('doctor','reports'));
+    return view('refer',compact('doctor','reports','patient'));
   }
 
 
@@ -125,11 +134,15 @@ class ReferralsController extends Controller
     $referral->save();
 
     //ADD reports DATA
-    $reportsData = [];
-    foreach ($request->reports as $key => $value) {
-      array_push($reportsData,['reports_references_id'=>$value,'referrals_id'=>$referral->id]);
+
+    if($request->reports){
+        $reportsData = [];
+        foreach ($request->reports as $key => $value) {
+          array_push($reportsData,['reports_references_id'=>$value,'referrals_id'=>$referral->id]);
+        }
+        $reports = ReferralReports::insert($reportsData);
     }
-    $reports = ReferralReports::insert($reportsData);
+
     //END reports DATA
 
 

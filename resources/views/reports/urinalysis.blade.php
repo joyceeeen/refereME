@@ -11,36 +11,56 @@
           @csrf
           <div class="row">
             <div class="col-lg-6">
-              <div class="form-group">
-                <h5 class="text-primary pb-2"><b>Collection Date:</b></h5>
-                <input type="date" name="collection_date" required class="form-control" >
-
+              <div class="row form-group">
+                  <div class="col-lg-5">
+                    <h5 class="text-primary pb-2"><b>Collection Date:</b></h5>
+                  </div>
+                  <div class="col-lg-7">
+                    <input type="date" name="collection_date" required class="form-control">
+                  </div>
               </div>
             </div>
             <div class="col-lg-6">
-              <div class="form-group">
-                <h5 class="text-primary pb-2"><b>Time Collected:</b></h5>
-                <input type="time" name="time_collected" required class="form-control" >
+              <div class="row form-group">
+                <div class="col-lg-5">
+                    <h5 class="text-primary pb-2"><b>Time Collected:</b></h5>
+                  </div>
+                  <div class="col-lg-7">
+                    <input type="time" name="time_collected" required class="form-control" >
+                  </div>
               </div>
             </div>
             <div class="col-lg-4">
-              <div class="form-group">
-                <h5 class="text-primary pb-2"><b>Test Date:</b></h5>
-                <input type="date" name="test_date" required class="form-control" >
+              <div class="row form-group">
+                <div class="col-lg-5">
+                    <h5 class="text-primary pb-2"><b>Test Date:</b></h5>
+                  </div>
+                  <div class="col-lg-7">
+                    <input type="date" name="test_date" required class="form-control" >
+                  </div>
               </div>
             </div>
             <div class="col-lg-4">
-              <div class="form-group">
-                <h5 class="text-primary pb-2"><b>Operator ID #:</b></h5>
-                <input type="text" name="operator_id" required class="form-control" >
+              <div class="row form-group">
+                <div class="col-lg-5">
+                    <h5 class="text-primary pb-2"><b>Operator ID #:</b></h5>
+                  </div>
+                  <div class="col-lg-7">
+                    <input type="text" name="operator_id" required class="form-control" >
+                  </div>
               </div>
             </div>
             <div class="col-lg-4">
-              <div class="form-group">
-                <h5 class="text-primary pb-2"><b>Tester's Initials:</b></h5>
-                <input type="text" name="testers_initials" required class="form-control" >
+              <div class="row form-group">
+                <div class="col-lg-5">
+                    <h5 class="text-primary pb-2"><b>Tester's Initials:</b></h5>
+                  </div>
+                  <div class="col-lg-7">
+                    <input type="text" name="testers_initials" required class="form-control" >
+                  </div>
               </div>
             </div>
+
             <div class="col-lg-12">
               <hr>
               <div class="form-group">
@@ -114,66 +134,108 @@
               </div>
             </div>
             <div class="col-lg-4">
-              <div class="form-group">
-                <h5 class="text-primary pb-2"><b>Specific Gravity:</b></h5>
-                <input type="text" name="specific_gravity" required class="form-control" >
+              <div class="row form-group">
+                <div class="col-lg-5">
+                  <h5 class="text-primary pb-2"><b>Specific Gravity:</b></h5>
+                  </div>
+                  <div class="col-lg-7">
+                    <input type="text" name="specific_gravity" required class="form-control" >
+                  </div>
               </div>
             </div>
             <div class="col-lg-4">
-              <div class="form-group">
-                <h5 class="text-primary pb-2"><b>pH:</b></h5>
-                <input type="text" name="pH" required class="form-control" >
+              <div class="row form-group">
+                <div class="col-lg-5">
+                  <h5 class="text-primary pb-2"><b>pH:</b></h5>
+                  </div>
+                  <div class="col-lg-7">
+                    <input type="text" name="pH" required class="form-control" >
+                  </div>
               </div>
             </div>
             <div class="col-lg-4">
-              <div class="form-group">
-                <h5 class="text-primary pb-2"><b>Leukocytes:</b></h5>
-                <input type="text" name="leukocytes" required class="form-control" >
+              <div class="row form-group">
+                <div class="col-lg-5">
+                  <h5 class="text-primary pb-2"><b>Leukocytes:</b></h5>
+                  </div>
+                  <div class="col-lg-7">
+                    <input type="text" name="leukocytes" required class="form-control" >
+                  </div>
+              </div>
+            </div>
+
+            <div class="col-lg-4">
+              <div class="row form-group">
+                <div class="col-lg-5">
+                  <h5 class="text-primary pb-2"><b>Nitrite:</b></h5>
+                  </div>
+                  <div class="col-lg-7">
+                    <input type="text" name="nitrite" required class="form-control" >
+                  </div>
               </div>
             </div>
             <div class="col-lg-4">
-              <div class="form-group">
-                <h5 class="text-primary pb-2"><b>Nitrite:</b></h5>
-                <input type="text" name="nitrite" required class="form-control" >
+              <div class="row form-group">
+                <div class="col-lg-5">
+                  <h5 class="text-primary pb-2"><b>Protein (mg/dL):</b></h5>
+                  </div>
+                  <div class="col-lg-7">
+                    <input type="text" name="protein" required class="form-control" >
+                  </div>
               </div>
             </div>
             <div class="col-lg-4">
-              <div class="form-group">
-                <h5 class="text-primary pb-2"><b>Protein (mg/dL):</b></h5>
-                <input type="text" name="protein" required class="form-control" >
+              <div class="row form-group">
+                <div class="col-lg-5">
+                  <h5 class="text-primary pb-2"><b>Glucose (mg/dL):</b></h5>
+                  </div>
+                  <div class="col-lg-7">
+                    <input type="text" name="glucose" required class="form-control" >
+                  </div>
               </div>
             </div>
             <div class="col-lg-4">
-              <div class="form-group">
-                <h5 class="text-primary pb-2"><b>Glucose (mg/dL):</b></h5>
-                <input type="text" name="glucose" required class="form-control" >
+              <div class="row form-group">
+                <div class="col-lg-5">
+                  <h5 class="text-primary pb-2"><b>Ketones:</b></h5>
+                  </div>
+                  <div class="col-lg-7">
+                    <input type="text" name="ketones" required class="form-control" >
+                  </div>
               </div>
             </div>
             <div class="col-lg-4">
-              <div class="form-group">
-                <h5 class="text-primary pb-2"><b>Ketones:</b></h5>
-                <input type="text" name="ketones" required class="form-control" >
+              <div class="row form-group">
+                <div class="col-lg-5">
+                  <h5 class="text-primary pb-2"><b>Urobilinogen (mg/dL):</b></h5>
+                  </div>
+                  <div class="col-lg-7">
+                    <input type="text" name="urobilinogen" required class="form-control" >
+                  </div>
               </div>
             </div>
             <div class="col-lg-4">
-              <div class="form-group">
-                <h5 class="text-primary pb-2"><b>Urobilinogen (mg/dL):</b></h5>
-                <input type="text" name="urobilinogen" required class="form-control" >
+              <div class="row form-group">
+                <div class="col-lg-5">
+                  <h5 class="text-primary pb-2"><b>Bilirubin:</b></h5>
+                  </div>
+                  <div class="col-lg-7">
+                    <input type="text" name="bilirubin" required class="form-control" >
+                  </div>
               </div>
             </div>
             <div class="col-lg-4">
-              <div class="form-group">
-                <h5 class="text-primary pb-2"><b>Bilirubin:</b></h5>
-                <input type="text" name="bilirubin" required class="form-control" >
+              <div class="row form-group">
+                <div class="col-lg-5">
+                  <h5 class="text-primary"><b>Blood (Ery/uL):</b></h5>
+                  <h6 class="text-primary pb-2"><b>Hemoglobin from (Ery/uL):</b></h6>
+                  </div>
+                  <div class="col-lg-7">
+                    <input type="text" name="hemoglobin" required class="form-control" >
+                  </div>
               </div>
             </div>
-            <div class="col-lg-4">
-              <div class="form-group">
-                <h5 class="text-primary"><b>Blood (Ery/uL):</b></h5>
-                <h6 class="text-primary pb-2"><b>Hemoglobin from (Ery/uL):</b></h6>
-                <input type="text" name="hemoglobin" required class="form-control" >
-              </div>
-            </div>
+
             <div class="col-lg-12">
               <div class="form-group">
                 <h5 class="text-primary pb-2"><b>Comments:</b></h5>

@@ -23,7 +23,7 @@
                 <th scope="col">Contact #</th>
                 <th scope="col" class="noExport">View More</th>
                 <th scope="col" class="noExport">Accept</th>
-                <th scope="col" class="noExport">Decline</th>
+                <!-- <th scope="col" class="noExport">Decline</th> -->
               </tr>
             </thead>
             <tbody>
@@ -48,14 +48,14 @@
                     <button type="submit" name="button" class="btn btn-primary">Accept</button>
                   </form>
                 </td>
-                <td align="center">
+                <!-- <td align="center">
                   <form action="{{route('refer.update',['id'=>$client->id])}}" method="post">
                     @csrf
                     @method('PUT')
                     <input type="hidden" name="action" value="2"/>
                     <button type="submit" name="button" class="btn btn-danger">Decline</button>
                   </form>
-                </td>
+                </td> -->
               </tr>
               @endforeach
 

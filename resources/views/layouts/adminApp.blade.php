@@ -11,12 +11,15 @@
 
   <!-- Scripts -->
   <script src="{{ asset('js/app.js') }}" defer></script>
+  <script src="{{ asset('js/datatable.min.js') }}" defer></script>
   <script src="{{ asset('js/master.js') }}" defer></script>
   <script src="{{ asset('js/moment.min.js') }}" defer></script>
 
   <!-- Fonts -->
   <link rel="dns-prefetch" href="//fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="{{ asset('css/datatable.min.css') }}">
+
   <script src="https://kit.fontawesome.com/64f44fe6ee.js"></script>
   <!-- Styles -->
   <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -43,7 +46,7 @@
           <ul class="navbar-nav ml-auto">
             <!-- Authentication Links -->
 
-          
+
 
             @guest
             <li class="nav-item">

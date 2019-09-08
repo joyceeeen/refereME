@@ -91,7 +91,9 @@
             </li>
             <li class="nav-item dropdown">
               <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                {{ Auth::user()->name }} <span class="caret"></span>
+              <img class="img-fluid rounded-circle" style="border-radius:50%; width:30px; height:30px" src="{{auth()->user()->avatar ? '/'.auth()->user()->avatar : 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAAAAAA6fptVAAAACklEQVQI12O4AQAA2gDZumdc2gAAAABJRU5ErkJggg=='}}" alt="card image">
+
+                </i>  {{ Auth::user()->name }} <span class="caret"></span>
               </a>
 
               <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">

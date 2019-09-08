@@ -11,33 +11,53 @@
           @csrf
           <div class="row">
             <div class="col-lg-6">
-              <div class="form-group">
-                <h5 class="text-primary pb-2"><b>Collection Date:</b></h5>
-                <input type="date"  name="collection_date" required class="form-control">
+              <div class="row form-group">
+                  <div class="col-lg-5">
+                    <h5 class="text-primary pb-2"><b>Collection Date:</b></h5>
+                  </div>
+                  <div class="col-lg-7">
+                    <input type="date" name="collection_date" required class="form-control">
+                  </div>
               </div>
             </div>
             <div class="col-lg-6">
-              <div class="form-group">
-                <h5 class="text-primary pb-2"><b>Time Collected:</b></h5>
-                <input type="time" name="time_collected" required class="form-control">
+              <div class="row form-group">
+                <div class="col-lg-5">
+                    <h5 class="text-primary pb-2"><b>Time Collected:</b></h5>
+                  </div>
+                  <div class="col-lg-7">
+                    <input type="time" name="time_collected" required class="form-control" >
+                  </div>
               </div>
             </div>
             <div class="col-lg-4">
-              <div class="form-group">
-                <h5 class="text-primary pb-2"><b>Test Date:</b></h5>
-                <input type="date" name="test_date" required class="form-control">
+              <div class="row form-group">
+                <div class="col-lg-5">
+                    <h5 class="text-primary pb-2"><b>Test Date:</b></h5>
+                  </div>
+                  <div class="col-lg-7">
+                    <input type="date" name="test_date" required class="form-control" >
+                  </div>
               </div>
             </div>
             <div class="col-lg-4">
-              <div class="form-group">
-                <h5 class="text-primary pb-2"><b>Operator ID #:</b></h5>
-                <input type="text" name="operator_id" required class="form-control">
+              <div class="row form-group">
+                <div class="col-lg-5">
+                    <h5 class="text-primary pb-2"><b>Operator ID #:</b></h5>
+                  </div>
+                  <div class="col-lg-7">
+                    <input type="text" name="operator_id" required class="form-control" >
+                  </div>
               </div>
             </div>
             <div class="col-lg-4">
-              <div class="form-group">
-                <h5 class="text-primary pb-2"><b>Tester's Initials:</b></h5>
-                <input type="text" name="testers_initials" required class="form-control">
+              <div class="row form-group">
+                <div class="col-lg-5">
+                    <h5 class="text-primary pb-2"><b>Tester's Initials:</b></h5>
+                  </div>
+                  <div class="col-lg-7">
+                    <input type="text" name="testers_initials" required class="form-control" >
+                  </div>
               </div>
             </div>
             <div class="col-lg-12">
@@ -68,35 +88,56 @@
               </div>
             </div>
             <div class="col-lg-12">
-              <div class="form-group">
-                <h5 class="text-primary pb-2"><b>Consistency:</b></h5>
-                <input type="text" name="consistency" required class="form-control">
+              <div class="row form-group">
+                <div class="col-lg-5">
+                  <h5 class="text-primary pb-2"><b>Consistency:</b></h5>
+                  </div>
+                  <div class="col-lg-7">
+                    <input type="text" name="consistency" required class="form-control">
+                  </div>
               </div>
             </div>
             <div class="col-lg-12">
-              <div class="form-group">
-                <h5 class="text-primary pb-2"><b>Entamoeba Troph:</b></h5>
-                <input type="text" name="entamoeba_troph" required class="form-control">
+              <div class="row form-group">
+                <div class="col-lg-5">
+                  <h5 class="text-primary pb-2"><b>Entamoeba Troph:</b></h5>
+                  </div>
+                  <div class="col-lg-7">
+                    <input type="text" name="entamoeba_troph" required class="form-control">
+                  </div>
               </div>
             </div>
             <div class="col-lg-12">
-              <div class="form-group">
-                <h5 class="text-primary pb-2"><b>Entamoeba Cyst:</b></h5>
-                <input type="text" name="entamoeba_cyst" required class="form-control">
+              <div class="row form-group">
+                <div class="col-lg-5">
+                  <h5 class="text-primary pb-2"><b>Entamoeba Cyst:</b></h5>
+                  </div>
+                  <div class="col-lg-7">
+                    <input type="text" name="entamoeba_cyst" required class="form-control">
+                  </div>
               </div>
             </div>
             <div class="col-lg-12">
-              <div class="form-group">
-                <h5 class="text-primary pb-2"><b>R.B.C:</b></h5>
-                <input type="text" name="rbc" required class="form-control">
+              <div class="row form-group">
+                <div class="col-lg-5">
+                  <h5 class="text-primary pb-2"><b>R.B.C:</b></h5>
+                  </div>
+                  <div class="col-lg-7">
+                    <input type="text" name="rbc" required class="form-control">
+                  </div>
               </div>
             </div>
             <div class="col-lg-12">
-              <div class="form-group">
-                <h5 class="text-primary pb-2"><b>Pus Cells:</b></h5>
-                <input type="text" name="pus_cells" required class="form-control">
+              <div class="row form-group">
+                <div class="col-lg-5">
+                  <h5 class="text-primary pb-2"><b>Pus Cells:</b></h5>
+                  </div>
+                  <div class="col-lg-7">
+                    <input type="text" name="pus_cells" required class="form-control">
+                  </div>
               </div>
             </div>
+
             <div class="col-lg-12">
               <div class="form-group">
                 <button type="submit" name="button" class="btn btn-primary">Submit Report</button>

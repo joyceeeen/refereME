@@ -154,7 +154,8 @@
                   <button type="submit" class="btn btn-primary mt-2">Refer</button>
                 </form>
               </div>
-              <a href="#" id="referButton" name="button" class="btn btn-primary">Refer Client</a>
+              <a href="#" id="referButton" name="button" class="btn btn-primary">Refer Patient (NEW)</a>
+              <a href="#" id="referExisting" name="button" class="btn btn-primary"  data-toggle="modal" data-target="#myModal">Refer Patient (EXISTING)</a>
 
               <hr>
               <div class="text-justify">
@@ -199,5 +200,25 @@
     </div>
   </div>
 </div>
-
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Patient Number</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <form action="{{route('refer.create')}}" method="get">
+        <div class="modal-body">
+          <input type="hidden" name="id" id="id" value="">
+          <input type="text" name="patientNo" required class="form-control" placeholder="Patient #" >
+        </div>
+        <div class="modal-footer">
+          <center>
+            <button type="submit" class="btn btn-primary">Refer Patient</button>
+          </center>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
 @endsection

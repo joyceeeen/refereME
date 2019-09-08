@@ -4,22 +4,26 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
-
+use Vinkla\Hashids\Facades\Hashids;
 class Patient extends Model
 {
   use Notifiable;
 
 
   protected $fillable = [
-      'firstname','middlename','lastname','birthday','heart_disease','stroke','pwd','gender','email_address','contact_number'
+    'firstname','middlename','lastname','birthday','heart_disease','stroke','pwd','gender','email_address','contact_number'
   ];
-  protected $appends = ['name'];
+  protected $appends = ['name','hash'];
 
+  public function getHashAttribute()
+  {
+    return Hashids::encode($this->id);
+  }
   public function routeNotificationForMail($notification)
-   {
-       return $this->email_address;
-   }
-   
+  {
+    return $this->email_address;
+  }
+
   public function getNameAttribute()
   {
     return ucwords($this->firstname.' '.$this->lastname);

@@ -1,4 +1,6 @@
 $(function(){
+    $("#admin_table").DataTable();
+  $("input").attr("autocomplete","off");
   initMap();
 
   var previousScroll = 0;
@@ -36,6 +38,16 @@ $(function(){
   //selected specialization
   $("select[name='specialization']").val($("#specialization_selected").val())
   //END EDIT PROFILE
+
+
+  //HOME
+  $("select[name='month']").val($("#selected_month").val())
+  $("select[name='user']").val($("#selected_user").val())
+  $("select[name='top5_month']").val($("#selected_top5").val())
+  $("select[name='specialization_month']").val($("#selected_specialization").val())
+  $("select[name='breakdown_month']").val($("#selected_breakdown").val())
+
+  //ENDHOME
 
 
   //SEARCH INFO
@@ -161,7 +173,15 @@ $(function(){
     var query = $.urlParam('month');
     $("#month-disease").val(query);
   }
+
+  $("#referExisting").on('click',function(){
+    var value = $(this).data('id');
+    $("#myModal").find('form').attr('href','/refer/create?');
+    $("#myModal").find('#id').val(value);
+
+  });
 });
+
 
 function manipulateModalInfoResults(data,item){
   var modal = $("#moreInfoModal");
@@ -176,10 +196,11 @@ function manipulateModalInfoResults(data,item){
   //specialization
   if(data.schedule.length > 0){
     modal.find("#referButton").attr('href','/refer/create?id='+data.id).removeClass("disableTab");
+    modal.find("#referExisting").data('id',data.id).removeClass("disableTab");
   }else{
     modal.find("#referButton").addClass("disableTab");
+    modal.find("#referExisting").addClass("disableTab");
   }
-
 
   if (typeof item.data('client') !== 'undefined')
   {
@@ -227,6 +248,39 @@ $('#moreInfoModal').on('hidden.bs.modal', function () {
   $(this).find("#myTab .nav-link").removeClass("active");
 });
 
+$("#top5_month,#specialization_month,#breakdown_month").on("change",function(){
+  var value = $(this).val();
+  var param = $(this).attr('name');
+  location.href = URL_add_parameter(location.href, param, value);
+});
+
+
+function URL_add_parameter(url, param, value){
+    var hash       = {};
+    var parser     = document.createElement('a');
+
+    parser.href    = url;
+
+    var parameters = parser.search.split(/\?|&/);
+
+    for(var i=0; i < parameters.length; i++) {
+        if(!parameters[i])
+            continue;
+
+        var ary      = parameters[i].split('=');
+        hash[ary[0]] = ary[1];
+    }
+
+    hash[param] = value;
+
+    var list = [];
+    Object.keys(hash).forEach(function (key) {
+        list.push(key + '=' + hash[key]);
+    });
+
+    parser.search = '?' + list.join('&');
+    return parser.href;
+}
 
 function initMap() {
   // Try HTML5 geolocation.

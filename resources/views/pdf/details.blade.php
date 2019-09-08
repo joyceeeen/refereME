@@ -138,6 +138,12 @@ table{
 								<td>{{ceil($referral->level)}}</td> <!-- Priority Level -->
 							</tr>
 							<tr>
+								<td><h4 class="text-primary pb-2"><b>Patient ID:</b></h4></td>
+							</tr>
+							<tr>
+								<td>{{$referral->patient->hash}}</td> <!-- Last Name -->
+							</tr>
+							<tr>
 								<td><h4 class="text-primary pb-2"><b>Last Name:</b></h4></td>
 								<td><h4 class="text-primary pb-2"><b>First Name:</b></h4></td>
 								<td><h4 class="text-primary pb-2"><b>Middle Name:</b></h4></td>

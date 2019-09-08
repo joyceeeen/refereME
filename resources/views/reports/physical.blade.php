@@ -12,56 +12,90 @@
           @csrf
           <div class="row">
             <div class="col-lg-4">
-              <div class="form-group">
-                <h5 class="text-primary pb-2"><b>Test Date:</b></h5>
-                <input type="date" name="test_date" required class="form-control" >
+              <div class="row form-group">
+                <div class="col-lg-5">
+                  <h5 class="text-primary pb-2"><b>Test Date:</b></h5>
+                  </div>
+                  <div class="col-lg-7">
+                    <input type="date" name="test_date" required class="form-control" >
+                  </div>
               </div>
             </div>
             <div class="col-lg-4">
-              <div class="form-group">
-                <h5 class="text-primary pb-2"><b>Operator ID #:</b></h5>
-                <input type="text" name="operator_id" required class="form-control" >
+              <div class="row form-group">
+                <div class="col-lg-5">
+                  <h5 class="text-primary pb-2"><b>Operator ID #:</b></h5>
+                  </div>
+                  <div class="col-lg-7">
+                    <input type="text" name="operator_id" required class="form-control" >
+                  </div>
               </div>
             </div>
             <div class="col-lg-4">
-              <div class="form-group">
-                <h5 class="text-primary pb-2"><b>Tester's Initials:</b></h5>
-                <input type="text" name="testers_initials" required class="form-control" >
+              <div class="row form-group">
+                <div class="col-lg-5">
+                  <h5 class="text-primary pb-2"><b>Tester's Initials:</b></h5>
+                  </div>
+                  <div class="col-lg-7">
+                    <input type="text" name="testers_initials" required class="form-control" >
+                  </div>
               </div>
             </div>
+
             <div class="col-lg-12">
               <hr>
             </div>
             <div class="col-lg-12">
-              <div class="form-group">
-                <h5 class="text-primary pb-2"><b>Chief Complaint:</b></h5>
-                <input type="text" name="chief_complaint" required class="form-control" >
+              <div class="row form-group">
+                <div class="col-lg-5">
+                  <h5 class="text-primary pb-2"><b>Chief Complaint:</b></h5>
+                  </div>
+                  <div class="col-lg-7">
+                    <input type="text" name="chief_complaint" required class="form-control" >
+                  </div>
               </div>
             </div>
             <div class="col-lg-12">
-              <div class="form-group">
-                <h5 class="text-primary pb-2"><b>Present Illness:</b></h5>
-                <input type="text" name="present_illness" required class="form-control" >
+              <div class="row form-group">
+                <div class="col-lg-5">
+                  <h5 class="text-primary pb-2"><b>Present Illness:</b></h5>
+                  </div>
+                  <div class="col-lg-7">
+                    <input type="text" name="present_illness" required class="form-control" >
+                  </div>
               </div>
             </div>
             <div class="col-lg-12">
-              <div class="form-group">
-                <h5 class="text-primary pb-2"><b>Past History:</b></h5>
-                <input type="text" name="past_history" required class="form-control" >
+              <div class="row form-group">
+                <div class="col-lg-5">
+                  <h5 class="text-primary pb-2"><b>Past History:</b></h5>
+                  </div>
+                  <div class="col-lg-7">
+                    <input type="text" name="past_history" required class="form-control" >
+                  </div>
               </div>
             </div>
             <div class="col-lg-12">
-              <div class="form-group">
-                <h5 class="text-primary pb-2"><b>Family History:</b></h5>
-                <input type="text" name="family_history" required class="form-control" >
+              <div class="row form-group">
+                <div class="col-lg-5">
+                  <h5 class="text-primary pb-2"><b>Family History:</b></h5>
+                  </div>
+                  <div class="col-lg-7">
+                    <input type="text" name="family_history" required class="form-control" >
+                  </div>
               </div>
             </div>
             <div class="col-lg-12">
-              <div class="form-group">
-                <h5 class="text-primary pb-2"><b>Personal Social History:</b></h5>
-                <input type="text" name="personal_social_history" required class="form-control" >
+              <div class="row form-group">
+                <div class="col-lg-5">
+                  <h5 class="text-primary pb-2"><b>Personal Social History:</b></h5>
+                  </div>
+                  <div class="col-lg-7">
+                    <input type="text" name="personal_social_history" required class="form-control" >
+                  </div>
               </div>
             </div>
+
             <div class="col-lg-12">
               <hr>
             </div>
@@ -127,48 +161,78 @@
               <hr>
               <h5 class="text-primary pb-2"><b>Physical Exam:</b></h5>
             </div>
+
             <div class="col-lg-4">
-              <div class="form-group">
-                <h5 class="text-primary pb-2"><b>Height:</b></h5>
-                <input type="text" name="height" required class="form-control">
+              <div class="row form-group">
+                <div class="col-lg-5">
+                  <h5 class="text-primary pb-2"><b>Height:</b></h5>
+                  </div>
+                  <div class="col-lg-7">
+                    <input type="text" name="height" required class="form-control">
+                  </div>
               </div>
             </div>
             <div class="col-lg-4">
-              <div class="form-group">
-                <h5 class="text-primary pb-2"><b>Weight:</b></h5>
-                <input type="text" name="weight" required class="form-control">
+              <div class="row form-group">
+                <div class="col-lg-5">
+                  <h5 class="text-primary pb-2"><b>Weight:</b></h5>
+                  </div>
+                  <div class="col-lg-7">
+                    <input type="text" name="weight" required class="form-control">
+                  </div>
               </div>
             </div>
             <div class="col-lg-4">
-              <div class="form-group">
-                <h5 class="text-primary pb-2"><b>BMI:</b></h5>
-                <input type="text" name="bmi" required class="form-control">
+              <div class="row form-group">
+                <div class="col-lg-5">
+                  <h5 class="text-primary pb-2"><b>BMI:</b></h5>
+                  </div>
+                  <div class="col-lg-7">
+                    <input type="text" name="bmi" required class="form-control">
+                  </div>
               </div>
             </div>
             <div class="col-lg-4">
-              <div class="form-group">
-                <h5 class="text-primary pb-2"><b>BP:</b></h5>
-                <input type="text" name="bp" required class="form-control">
+              <div class="row form-group">
+                <div class="col-lg-5">
+                  <h5 class="text-primary pb-2"><b>BP:</b></h5>
+                  </div>
+                  <div class="col-lg-7">
+                    <input type="text" name="bp" required class="form-control">
+                  </div>
               </div>
             </div>
             <div class="col-lg-4">
-              <div class="form-group">
-                <h5 class="text-primary pb-2"><b>PR:</b></h5>
-                <input type="text" name="pr" required class="form-control">
+              <div class="row form-group">
+                <div class="col-lg-5">
+                  <h5 class="text-primary pb-2"><b>PR:</b></h5>
+                  </div>
+                  <div class="col-lg-7">
+                    <input type="text" name="pr" required class="form-control">
+                  </div>
               </div>
             </div>
             <div class="col-lg-4">
-              <div class="form-group">
-                <h5 class="text-primary pb-2"><b>RR:</b></h5>
-                <input type="text" name="rr" required class="form-control">
+              <div class="row form-group">
+                <div class="col-lg-5">
+                  <h5 class="text-primary pb-2"><b>RR:</b></h5>
+                  </div>
+                  <div class="col-lg-7">
+                    <input type="text" name="rr" required class="form-control">
+                  </div>
               </div>
             </div>
             <div class="col-lg-4">
-              <div class="form-group">
-                <h5 class="text-primary pb-2"><b>Temp:</b></h5>
-                <input type="text" name="temp" required class="form-control">
+              <div class="row form-group">
+                <div class="col-lg-5">
+                  <h5 class="text-primary pb-2"><b>Temp:</b></h5>
+                  </div>
+                  <div class="col-lg-7">
+                    <input type="text" name="temp" required class="form-control">
+                  </div>
               </div>
             </div>
+
             <div class="col-lg-12">
               <hr>
             </div>

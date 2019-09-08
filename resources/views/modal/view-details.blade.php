@@ -35,7 +35,18 @@
     </div>
     <div class="card">
       <div class="card-body">
-
+        <div class="row">
+          <div class="col-lg-4">
+            <div class="form-group">
+              <h4 class="text-primary pb-2"><b>Patient ID:</b></h4>
+              {{$referral->patient->hash}}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-body">
         <div class="row">
           <div class="col-lg-4">
             <div class="form-group">
