@@ -13,7 +13,9 @@
               <tr>
                 <th scope="col">#</th>
                 <th scope="col">Priority Level</th>
+                <th scope="col">License No.</th>
                 <th scope="col">Referred To</th>
+                <th scope="col">Hospital Name</th>
                 <th scope="col">Status</th>
                 <th scope="col">Last Name</th>
                 <th scope="col">First Name</th>
@@ -28,7 +30,9 @@
               <tr id="my-referrals-row" class="status-{{$client->status}}">
                 <td>{{$key + 1}}</td>
                 <td>{{ceil($client->level)}}</td>
+                <td>{{$client->referredTo->license_number}}</td>
                 <td>{{$client->referredTo->name}}</td>
+                <td>{{$client->referredTo->user_type == 2 ? ($client->referredTo->hospital ? $client->referredTo->hospital->hospital_name : 'No added hospital yet.') : ($client->referredTo->schedule ? $client->referredTo->schedule->first()['hospital'] : 'No added hospital yet.') }}</td>
                 <td>{{$client->status}}</td>
                 <td>{{$client->patient->lastname}}</td>
                 <td>{{$client->patient->firstname}}</td>

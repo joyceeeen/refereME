@@ -154,8 +154,11 @@
                   <button type="submit" class="btn btn-primary mt-2">Refer</button>
                 </form>
               </div>
-              <a href="#" id="referButton" name="button" class="btn btn-primary">Refer Patient (NEW)</a>
-              <a href="#" id="referExisting" name="button" class="btn btn-primary"  data-toggle="modal" data-target="#myModal">Refer Patient (EXISTING)</a>
+              <hr>
+              <center><h5><b>Refer Patient</b></h5></center>
+
+              <a href="#" id="referButton" name="button" class="btn btn-primary">NEW</a>
+              <a href="#" id="referExisting" name="button" class="btn btn-primary"  data-toggle="modal" data-target="#myModal">EXISTING</a>
 
               <hr>
               <div class="text-justify">
