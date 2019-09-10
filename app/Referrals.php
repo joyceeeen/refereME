@@ -17,11 +17,11 @@ class Referrals extends Model
   }
 
   public function referredTo(){
-    return $this->hasOne('App\User','id','doctor_id');
+    return $this->hasOne('App\User','id','doctor_id')->withTrashed();
   }
 
   public function referredBy(){
-    return $this->hasOne('App\User','id','referrer_id');
+    return $this->hasOne('App\User','id','referrer_id')->withTrashed();
   }
 
   public function disease(){

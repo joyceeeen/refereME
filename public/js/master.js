@@ -176,9 +176,8 @@ $(function(){
 
   $("#referExisting").on('click',function(){
     var value = $(this).data('id');
-    $("#myModal").find('form').attr('href','/refer/create?');
+    $("#myModal").find('form').attr('href','/refer/create?id='+value);
     $("#myModal").find('#id').val(value);
-
   });
 });
 
