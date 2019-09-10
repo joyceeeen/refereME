@@ -158,7 +158,7 @@
               <center><h5><b>Refer Patient</b></h5></center>
 
               <a href="#" id="referButton" name="button" class="btn btn-primary">NEW</a>
-              <a href="#" id="referExisting" name="button" class="btn btn-primary"  data-toggle="modal" data-target="#myModal">EXISTING</a>
+              <a href="#" id="referExisting" name="button" class="btn btn-primary referExisting"  data-toggle="modal" data-target="#myModal">EXISTING</a>
 
               <hr>
               <div class="text-justify">

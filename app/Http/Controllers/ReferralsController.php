@@ -52,7 +52,7 @@ class ReferralsController extends Controller
     $patient = null;
 
     if($request->patientNo){
-      $id =  Hashids::decode($request->patientNo)[0];
+      $id =  Hashids::decode($request->patientNo) ? Hashids::decode($request->patientNo)[0] : abort(404);
       $patient = Patient::findOrFail($id);
     }
 

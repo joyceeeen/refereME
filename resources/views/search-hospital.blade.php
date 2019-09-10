@@ -62,7 +62,7 @@
                   @else
 
                   <a href="{{route('refer.create',['id'=>$hospital->id])}}" name="button" class="btn btn-primary">NEW</a>
-                  <a href="#" id="referExisting" name="button" class="btn btn-primary" data-id="{{$hospital->id}}" data-toggle="modal" data-target="#myModal">EXISTING</a>
+                  <a href="#" id="referExisting" name="button" class="btn btn-primary referExisting" data-id="{{$hospital->id}}" data-toggle="modal" data-target="#myModal">EXISTING</a>
                   @endif
                 </div>
               </div>
@@ -110,7 +110,7 @@
                   @else
 
                   <a href="{{route('refer.create',['id'=>$hospital->id])}}" name="button" class="btn btn-primary">NEW</a>
-                  <a href="#" id="referExisting" name="button" class="btn btn-primary" data-id="{{$hospital->id}}" data-toggle="modal" data-target="#myModal">EXISTING</a>
+                  <a href="#" id="referExisting" name="button" class="btn btn-primary referExisting" data-id="{{$hospital->id}}" data-toggle="modal" data-target="#myModal">EXISTING</a>
                   @endif
                 </div>
               </div>
