@@ -31,20 +31,20 @@ class Patient extends Model
 
   public function getGenderAttribute($value)
   {
-    return $value == 0 ? "Male" : "Female";
+    return $value == 1 ? "Male" : "Female";
   }
 
   public function getHeartDiseaseAttribute($value)
   {
-    return $value == 0 ? "No" : "Yes";
+    return $value == 1 ? "No" : "Yes";
   }
 
   public function getStrokeAttribute($value)
   {
-    return $value == 0 ? "No" : "Yes";
+    return $value == 1 ? "No" : "Yes";
   }
   public function getPwdAttribute($value)
   {
-    return $value == 0 ? "No" : "Yes";
+    return $value == 1 ? "No" : "Yes";
   }
 }

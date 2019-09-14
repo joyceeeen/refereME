@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use App\Schedule;
+use App\Referrals;
 use Location;
 class SearchController extends Controller
 {
@@ -16,19 +17,19 @@ class SearchController extends Controller
     $user = auth()->user();
 
     if($location){
-      $nearest = User::where('user_type', 2)->whereHas('hospital')->where('id','<>',$user->id)->where('address','like','%'.$location.'%')->inRandomOrder('1234')->paginate(3);
+      $nearest = User::where('user_type', 2)->whereHas('hospital')->withCount('refCount')->where('id','<>',$user->id)->where('address','like','%'.$location.'%')->inRandomOrder('1234')->paginate(3);
     }
     $hospitals = null;
 
     if($request->hospital_query){
-      $hospitals = User::where('user_type', 2)->whereHas('hospital', function($query) use($request){
+      $hospitals = User::where('user_type', 2)->withCount('refCount')->whereHas('hospital', function($query) use($request){
         $query->where('hospital_name','like','%'.$request->hospital_query.'%');
       });
     }else{
-      $hospitals = User::where('user_type', 2)->whereHas('hospital');
+      $hospitals = User::where('user_type', 2)->withCount('refCount')->whereHas('hospital');
     }
-
     $hospitals = $hospitals->where('id','<>',$user->id)->inRandomOrder('1234')->paginate(9);
+
     return view('search-hospital',compact('hospitals','nearest'));
   }
 

@@ -7,10 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 class HospitalDetails extends Model
 {
   protected $fillable = [
-    'user_id','hospital_name','ambulance','facilities','location','services'
+    'user_id','hospital_name','ambulance','facilities','location','services','bedrooms'
   ];
 
-  protected $appends = ['ambulance_text','facilities_text','services_text'];
+  protected $appends = ['ambulance_text','facilities_text','services_text','count'];
 
   public function getAmbulanceTextAttribute()
   {
@@ -26,5 +26,4 @@ class HospitalDetails extends Model
   {
     return str_replace("<br />","\r\n",$this->services);
   }
-
 }

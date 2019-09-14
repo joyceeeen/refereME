@@ -207,13 +207,13 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title">Patient Number</h4>
+        <h4 class="modal-title">Patient ID</h4>
         <button type="button" class="close" data-dismiss="modal">&times;</button>
       </div>
       <form action="{{route('refer.create')}}" method="get">
         <div class="modal-body">
           <input type="hidden" name="id" id="id" value="">
-          <input type="text" name="patientNo" required class="form-control" placeholder="Patient #" >
+          <input type="text" name="patientNo" required class="form-control" placeholder="Patient ID" >
         </div>
         <div class="modal-footer">
           <center>

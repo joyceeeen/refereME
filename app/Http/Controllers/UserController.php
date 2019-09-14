@@ -161,6 +161,8 @@ class UserController extends Controller
         $hospital->ambulance = nl2br($request->ambulance);
         $hospital->facilities = nl2br($request->facilities);
         $hospital->services = nl2br($request->services);
+        $hospital->bedrooms = $request->bedrooms;
+
         $hospital->location = $request->location;
 
         $hospital->save();

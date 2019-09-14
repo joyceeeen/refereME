@@ -8,3 +8,6 @@
 <h5><b>Services</b></h5>
 <p>{!! $hospital->services !!}</p>
 <hr>
+<h5><b>Available Bedrooms</b></h5>
+<p>{!! $hospital->bedrooms - $user->ref_count_count  !!}</p>
+<hr>

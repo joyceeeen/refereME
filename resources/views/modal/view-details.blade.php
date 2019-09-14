@@ -96,16 +96,16 @@
           </div>
           <div class="col-lg-4">
             <div class="form-group">
-              <h5 class="text-primary pb-2"><b>Heart Disease?</b></h5>
+              <h5 class="text-primary pb-2"><b>Pregnant?</b></h5>
               {{$referral->patient->heart_disease}}
             </div>
           </div>
-          <div class="col-lg-4">
+          <!-- <div class="col-lg-4">
             <div class="form-group">
               <h5 class="text-primary pb-2"><b>Stroke?</b></h5>
               {{$referral->patient->stroke}}
             </div>
-          </div>
+          </div> -->
           <div class="col-lg-4">
             <div class="form-group">
               <h5 class="text-primary pb-2"><b>PWD:</b></h5>

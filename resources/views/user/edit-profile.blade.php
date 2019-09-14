@@ -114,9 +114,9 @@
                 <div class="col-lg-8">
                   <input class="form-control" name="hospital_name" type="text" value="{{$user->hospital ?  $user->hospital->hospital_name :''}}" required>
                   <input class="form-control" name="hospital_id" type="hidden" value="{{$user->hospital ?  $user->hospital->id :''}}">
-
                 </div>
               </div>
+
               <div class="form-group">
                 <label class="col-lg-4 control-label">Location:</label>
                 <div class="col-lg-8">
@@ -139,6 +139,13 @@
                 <label class="col-lg-3 control-label">Services:</label>
                 <div class="col-lg-8">
                   <textarea name="services" class="form-control" rows="8" value="" cols="80" required>{{$user->hospital ?  $user->hospital->services_text : ''}}</textarea>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="col-lg-4 control-label">Number of Bedrooms:</label>
+                <div class="col-lg-8">
+                  <input class="form-control" name="bedrooms" type="number" value="{{$user->hospital ?  $user->hospital->bedrooms :''}}" required>
                 </div>
               </div>
 

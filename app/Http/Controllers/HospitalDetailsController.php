@@ -46,9 +46,9 @@ class HospitalDetailsController extends Controller
      */
     public function show($id)
     {
-        $user = User::with('hospital')->find($id);
+        $user = User::withCount('refCount')->with('hospital')->find($id);
         $hospital = $user->hospital;
-        return view('modal.hospital-more-details',compact('hospital'));
+        return view('modal.hospital-more-details',compact('user','hospital'));
     }
 
     /**

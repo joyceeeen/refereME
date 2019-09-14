@@ -19,6 +19,7 @@ class CreateHospitalDetailsTable extends Migration
             $table->string('hospital_name');
             $table->string('ambulance');
             $table->text('facilities');
+            $table->integer('bedrooms');
             $table->string('location');
             $table->text('services');
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));

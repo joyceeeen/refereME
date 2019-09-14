@@ -53,6 +53,7 @@ class User extends Authenticatable implements MustVerifyEmail
       return $this->hasMany('App\Referrals','referrer_id','id');
     }
 
+
     public function hospital(){
       return $this->hasOne('App\HospitalDetails','user_id','id');
     }
@@ -60,6 +61,10 @@ class User extends Authenticatable implements MustVerifyEmail
     //REFERED TO ME
     public function referralRequests(){
       return $this->hasMany('App\Referrals','doctor_id','id');
+    }
+
+    public function refCount(){
+      return $this->hasMany('App\Referrals','doctor_id','id')->where('is_accepted',1);
     }
 
     public function schedToday(){

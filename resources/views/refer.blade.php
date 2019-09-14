@@ -112,11 +112,11 @@
 
                 <h5 class="text-primary pb-2"><b>PWD:</b></h5>
                 <div class="custom-control custom-radio custom-control-inline">
-                  <input type="radio" class="custom-control-input" id="pwd_yes" @if($patient) {{$patient->pwd == 1 ? 'checked' : ''}} @endif  name="pwd" value="1">
+                  <input type="radio" class="custom-control-input" id="pwd_yes" @if($patient) {{$patient->pwd == 0 ? 'checked' : ''}} @endif  name="pwd" value="0">
                   <label class="custom-control-label" for="pwd_yes">Yes</label>
                 </div>
                 <div class="custom-control custom-radio custom-control-inline">
-                  <input type="radio" class="custom-control-input" id="pwd_no" @if($patient) {{$patient->pwd == 0 ? 'checked' : ''}} @endif name="pwd" value="0">
+                  <input type="radio" class="custom-control-input" id="pwd_no" @if($patient) {{$patient->pwd == 1 ? 'checked' : ''}} @endif name="pwd" value="1">
                   <label class="custom-control-label" for="pwd_no">No</label>
                 </div>
               </div>
@@ -144,26 +144,25 @@
 
                 <h5 class="text-primary pb-2"><b>Pregnant?:</b></h5>
                 <div class="custom-control custom-radio custom-control-inline">
-                  <input type="radio" class="custom-control-input" id="heart_yes" @if($patient) {{$patient->heart_disease == 1 ? 'checked' : ''}} @endif name="heart" value="1">
+                  <input type="radio" class="custom-control-input" id="heart_yes" @if($patient) {{$patient->heart_disease == 0 ? 'checked' : ''}} @endif name="heart" value="0">
                   <label class="custom-control-label" for="heart_yes">Yes</label>
                 </div>
                 <div class="custom-control custom-radio custom-control-inline">
-                  <input type="radio" class="custom-control-input" id="heart_no"  @if($patient) {{$patient->heart_disease == 0 ? 'checked' : ''}} @endif name="heart" value="0">
+                  <input type="radio" class="custom-control-input" id="heart_no"  @if($patient) {{$patient->heart_disease == 1 ? 'checked' : ''}} @endif name="heart" value="1">
                   <label class="custom-control-label" for="heart_no">No</label>
                 </div>
               </div>
             </div>
 
-            <div class="col-lg-4">
+            <div class="col-lg-4" style="display:hidden">
               <div class="form-group">
-
                 <h5 class="text-primary pb-2"><b>Stroke:</b></h5>
                 <div class="custom-control custom-radio custom-control-inline">
-                  <input type="radio" class="custom-control-input" id="stroke_yes" @if($patient) {{$patient->stroke == 1 ? 'checked' : ''}} @endif name="stroke" value="1">
+                  <input type="radio" class="custom-control-input" id="stroke_yes" checked name="stroke" value="0">
                   <label class="custom-control-label" for="stroke_yes">Yes</label>
                 </div>
                 <div class="custom-control custom-radio custom-control-inline">
-                  <input type="radio" class="custom-control-input" id="stroke_no" @if($patient) {{$patient->stroke == 0 ? 'checked' : ''}} @endif name="stroke" value="0">
+                  <input type="radio" class="custom-control-input" id="stroke_no" @if($patient) {{$patient->stroke == 1 ? 'checked' : ''}} @endif name="stroke" value="1">
                   <label class="custom-control-label" for="stroke_no">No</label>
                 </div>
               </div>

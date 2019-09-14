@@ -109,8 +109,15 @@
                   </form>
                   @else
 
-                  <a href="{{route('refer.create',['id'=>$hospital->id])}}" name="button" class="btn btn-primary">NEW</a>
-                  <a href="#" id="referExisting" name="button" class="btn btn-primary referExisting" data-id="{{$hospital->id}}" data-toggle="modal" data-target="#myModal">EXISTING</a>
+                    @if($hospital->ref_count_count >= $hospital->hospital->bedrooms || $hospital->hospital->bedrooms == 0)
+                    <center><i>No Available Bedrooms</i> </center>
+                    <a href="{{route('refer.create',['id'=>$hospital->id])}}" style="pointer-events: none; cursor:default; opacity: 0.6" title="" name="button" class="btn btn-primary">NEW</a>
+                    <a href="#" id="referExisting" name="button" style="pointer-events: none; cursor:default;opacity: 0.6" title="No Available Bedrooms"  class="btn btn-primary referExisting" data-id="{{$hospital->id}}" data-toggle="modal" data-target="#myModal">EXISTING</a>
+
+                    @else
+                    <a href="{{route('refer.create',['id'=>$hospital->id])}}"  name="button" class="btn btn-primary">NEW</a>
+                    <a href="#" id="referExisting" name="button"   class="btn btn-primary referExisting" data-id="{{$hospital->id}}" data-toggle="modal" data-target="#myModal">EXISTING</a>
+                    @endif
                   @endif
                 </div>
               </div>
@@ -150,13 +157,13 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h4 class="modal-title">Patient Number</h4>
+          <h4 class="modal-title">Patient ID</h4>
           <button type="button" class="close" data-dismiss="modal">&times;</button>
         </div>
         <form action="{{route('refer.create')}}" method="get">
           <div class="modal-body">
             <input type="hidden" name="id" id="id" value="">
-            <input type="text" name="patientNo" required class="form-control" placeholder="Patient #" >
+            <input type="text" name="patientNo" required class="form-control" placeholder="Patient ID" >
           </div>
           <div class="modal-footer">
             <center>
