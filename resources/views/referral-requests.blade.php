@@ -22,6 +22,7 @@
                 <th scope="col">Middle Name</th>
                 <th scope="col">Date of Birth</th>
                 <th scope="col">Contact #</th>
+                <th scope="col">Date Referred</th>
                 <th scope="col" class="noExport">View More</th>
                 <th scope="col" class="noExport">Accept</th>
                 <!-- <th scope="col" class="noExport">Decline</th> -->
@@ -41,6 +42,8 @@
                 <td>{{$client->patient->birthday}}</td>
 
                 <td>{{$client->patient->contact_number}}</td>
+                <td>{{$client->created_at}}</td>
+
                 <td><a href="#" data-toggle="modal"  class="patientDetailsModal" data-id="{{$client->id}}">View More</a></td>
                 <td align="center">
                   <form action="{{route('refer.update',['id'=>$client->id])}}" method="post">

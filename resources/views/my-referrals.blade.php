@@ -22,6 +22,8 @@
                 <th scope="col">Middle Name</th>
                 <th scope="col">Date of Birth</th>
                 <th scope="col">Contact #</th>
+                <th scope="col">Date Referred</th>
+
                 <th scope="col" class="noExport">View More</th>
               </tr>
             </thead>
@@ -39,6 +41,8 @@
                 <td>{{$client->patient->middlename}}</td>
                 <td>{{$client->patient->birthday}}</td>
                 <td>{{$client->patient->contact_number}}</td>
+                <td>{{$client->created_at}}</td>
+
                 <td>
                   <a href="#" data-toggle="modal" class="patientDetailsModal btn btn-primary"  data-id="{{$client->id}}" >View More</a>
                   @if($client->is_accepted == 2)

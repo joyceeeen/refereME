@@ -20,7 +20,7 @@
               @if($referral->referredTo->user_type == 2)
               {{$referral->referredTo->hospital->hospital_name}}
               @else
-              {{$referral->referredTo ->name}}
+              {{$referral->referredTo->name}}
               @endif
             </div>
           </div>
@@ -40,6 +40,12 @@
             <div class="form-group">
               <h4 class="text-primary pb-2"><b>Patient ID:</b></h4>
               {{$referral->patient->hash}}
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="form-group">
+              <h4 class="text-primary pb-2"><b>Date Referred:</b></h4>
+              {{$referral->created_at}}
             </div>
           </div>
         </div>

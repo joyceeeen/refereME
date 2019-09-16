@@ -13,7 +13,6 @@ class AttachmentsController extends Controller
      */
     public function index()
     {
-        //
     }
 
     /**
@@ -34,7 +33,7 @@ class AttachmentsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
     }
 
     /**
@@ -45,9 +44,10 @@ class AttachmentsController extends Controller
      */
     public function show($id)
     {
-        $download = Attachments::find($id)->first();
+
+        $download = Attachments::find($id);
         $path = public_path($download->path);
-        return response()->download($path, $download->filename);
+        return response()->download($path);
     }
 
     /**

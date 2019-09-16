@@ -165,13 +165,11 @@ table{
 							</tr>
 							<tr>
 								<td><h4 class="text-primary pb-2"><b>Sex:</b></h4></td>
-								<td><h4 class="text-primary pb-2"><b>Heart Disease?:</b></h4></td>
-								<td><h4 class="text-primary pb-2"><b>Stroke?:</b></h4></td>
+								<td><h4 class="text-primary pb-2"><b>Pregnant?:</b></h4></td>
 							</tr>
 							<tr>
 								<td>{{$referral->patient->gender}}</td> <!-- Sex -->
 								<td>{{$referral->patient->heart_disease == 0 ? "No" : "Yes"}}</td> <!-- Heart Disease? -->
-								<td>{{$referral->patient->stroke == 0 ? "No" : "Yes"}}</td> <!-- Stroke -->
 							</tr>
 							<tr>
 								<td><h4 class="text-primary pb-2"><b>PWD:</b></h4></td>

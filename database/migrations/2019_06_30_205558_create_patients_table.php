@@ -20,7 +20,7 @@ class CreatePatientsTable extends Migration
             $table->string('middlename');
             $table->boolean('heart_disease')->nullable();
             $table->boolean('stroke')->nullable();
-            $table->boolean('PWD')->nullable();
+            $table->boolean('pwd')->nullable();
             $table->string('contact_number');
             $table->string('email_address');
             $table->date('birthday');

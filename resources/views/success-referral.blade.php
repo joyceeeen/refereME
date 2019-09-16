@@ -45,6 +45,12 @@
               {{$referral->patient->hash}}
             </div>
           </div>
+          <div class="col-lg-4">
+            <div class="form-group">
+              <h4 class="text-primary pb-2"><b>Date Referred:</b></h4>
+              {{$referral->created_at}}
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -141,7 +147,7 @@
           <h5 class="text-primary pb-2"><b>Attachments:</b></h5>
           <ul>
             @foreach($referral->reports as $key=>$report)
-            <li><a href="/attachment/{{$report->id}}">Attachment #{{$key + 1}}</a></li>
+            <li><a href="{{route('attachment.show',['id'=>$report->id])}}" target="_blank">Attachment #{{$key + 1}}</a></li>
             @endforeach
           </ul>
         </div>
