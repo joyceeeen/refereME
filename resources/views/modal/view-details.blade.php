@@ -10,7 +10,7 @@
               @if($referral->referredBy->user_type == 2)
               {{$referral->referredBy->hospital->hospital_name}}
               @else
-              {{$referral->referredBy->name}}
+              (Dr.) {{$referral->referredBy->name}}
               @endif
             </div>
           </div>
@@ -20,7 +20,7 @@
               @if($referral->referredTo->user_type == 2)
               {{$referral->referredTo->hospital->hospital_name}}
               @else
-              {{$referral->referredTo->name}}
+              (Dr.) {{$referral->referredTo->name}}
               @endif
             </div>
           </div>

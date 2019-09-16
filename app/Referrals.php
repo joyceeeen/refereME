@@ -3,7 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-
+use Carbon\Carbon;
 class Referrals extends Model
 {
   protected $fillable = [
@@ -24,6 +24,10 @@ class Referrals extends Model
     return $this->hasOne('App\User','id','referrer_id')->withTrashed();
   }
 
+  public function getCreatedAtAttribute($value)
+  {
+    return Carbon::parse($value)->format('Y-m-d h:s A');
+  }
   public function disease(){
     return $this->hasOne('App\Diseases','id','disease_id');
   }
