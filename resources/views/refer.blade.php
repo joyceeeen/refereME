@@ -54,19 +54,19 @@
             <div class="col-lg-4">
               <div class="form-group">
                 <h4 class="text-primary pb-2"><b>Last Name:</b></h4>
-                <input type="text" name="lastname" required class="form-control" value="{{$patient ? $patient->lastname : ''}}" placeholder="Aridedon" id="lName">
+                <input type="text" name="lastname" required class="form-control"  pattern="(^[^\s][a-zA-Z Ññ]+(-[a-zA-Z Ññ]+)*$)" value="{{$patient ? $patient->lastname : ''}}" placeholder="Aridedon" id="lName">
               </div>
             </div>
             <div class="col-lg-4">
               <div class="form-group">
                 <h5 class="text-primary pb-2"><b>First Name:</b></h5>
-                <input type="text"  name="firstname" required  class="form-control" value="{{$patient ? $patient->firstname : ''}}" placeholder="Yancy" id="fName">
+                <input type="text"  name="firstname" required   pattern="(^[^\s][a-zA-Z Ññ]+(-[a-zA-Z Ññ]+)*$)" class="form-control" value="{{$patient ? $patient->firstname : ''}}" placeholder="Yancy" id="fName">
               </div>
             </div>
             <div class="col-lg-4">
               <div class="form-group">
                 <h5 class="text-primary pb-2"><b>Middle Name:</b></h5>
-                <input type="text" name="middlename" required class="form-control" value="{{$patient ? $patient->middlename : ''}}" placeholder="Yans" id="mName">
+                <input type="text" name="middlename" required  pattern="(^[^\s][a-zA-Z Ññ]+(-[a-zA-Z Ññ]+)*$)" class="form-control" value="{{$patient ? $patient->middlename : ''}}" placeholder="Yans" id="mName">
               </div>
             </div>
           </div>
@@ -84,7 +84,7 @@
             <div class="col-lg-4">
               <div class="form-group">
                 <h5 class="text-primary pb-2"><b>Contact Number:</b></h5>
-                <input type="text" name="contact_number" required class="form-control" value="{{$patient ? $patient->contact_number : ''}}" id="contactNo" placeholder="09172390989">
+                <input type="text" name="contact_number" oninput="this.value=this.value.replace(/[^0-9]/g,'');" pattern="^(9)\d{9}$" required class="form-control" value="{{$patient ? $patient->contact_number : ''}}" id="contactNo" placeholder="09172390989">
               </div>
             </div>
             <div class="col-lg-4">

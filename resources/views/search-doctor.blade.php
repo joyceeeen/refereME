@@ -50,8 +50,18 @@
     </div>
     @if($nearest && $nearest->isNotEmpty())
     <div class="row">
-      <div class="col-lg-12">
-        <h5 class="text-primary font-weight-bold">NEAREST</h5>
+      <div class="col-lg-4" style="padding-right:0px;">
+        <form class="" action="{{route('search.doctor')}}" method="get">
+          <div class="form-group">
+            <h5 class="text-primary font-weight-bold" style="display:inline">NEAREST</h5>
+            <input type="text" name="location" autocomplete="off" value="{{ request()->firstname }}" class="form-control" placeholder="Location" style="width:78%;display:inline;">
+          </div>
+        </div>
+        <div class="col-lg-3 searchCol">
+          <div class="form-group">
+            <button type="submit" name="button" class="btn btn-primary">Search Location</button>
+          </div>
+        </form>
       </div>
     </div>
     <div class="row">
