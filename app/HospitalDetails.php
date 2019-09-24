@@ -14,17 +14,17 @@ class HospitalDetails extends Model
 
   public function getAmbulanceTextAttribute()
   {
-    return str_replace("<br />","\r\n",$this->ambulance);
+    return str_replace("<br />","",$this->ambulance);
   }
 
   public function getFacilitiesTextAttribute()
   {
-    return str_replace("<br />","\r\n",$this->facilities);
+    return str_replace("<br />","",$this->facilities);
   }
 
   public function getServicesTextAttribute()
   {
-    return str_replace("<br />","\r\n",$this->services);
+    return str_replace("<br />","",$this->services);
   }
 
   public function photos(){

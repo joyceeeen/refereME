@@ -4,13 +4,7 @@ $(function(){
 
   $("#admin_table").DataTable();
   $("input").attr("autocomplete","off");
-  initMap();
-  if($("#pac-card").length){
-    initMap2();
-  }
-  if($("#pac-card2").length){
-    initMap3();
-  }
+
   var previousScroll = 0;
 
   $(window).scroll(function(){
@@ -118,7 +112,7 @@ $(function(){
   });
 
 
-  $(".moreDetailsModal").on('click',function(e){
+  $(document).on('click',".moreDetailsModal",function(e){
     var id = $(this).data('id');
     var modal = $("#moreDetailsModal");
 
@@ -197,6 +191,15 @@ $(function(){
     $("#myModal").find('form').attr('href','/refer/create?id='+value);
     $("#myModal").find('#id').val(value);
   });
+
+
+    initMap();
+    if($("#pac-card").length){
+      initMap2();
+    }
+    if($("#pac-card2").length){
+      initMap3();
+    }
 });
 
 

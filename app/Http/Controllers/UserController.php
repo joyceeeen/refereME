@@ -22,6 +22,7 @@ class UserController extends Controller
     if($request->has('password')){
       return view('user.change-password',compact('user'));
     }else{
+      //dd($user->hospital->facilities);
       return view('user.edit-profile',compact('user'));
     }
   }
