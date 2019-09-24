@@ -22,7 +22,7 @@
 
   <script src="https://kit.fontawesome.com/64f44fe6ee.js"></script>
   <script async defer
-     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAPrAN1CQviBCLWM-fO4MwfZtE-hTl_d3s">
+     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAPrAN1CQviBCLWM-fO4MwfZtE-hTl_d3s&libraries=places">
   </script>
 
   <!-- Styles -->

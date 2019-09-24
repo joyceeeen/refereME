@@ -20,7 +20,7 @@
 
         <!-- edit form column -->
         <div class="col-md-10">
-            @include('partials.flash-message')
+          @include('partials.flash-message')
           <div class="row">
             <div class="col-md personal-info">
 
@@ -124,48 +124,102 @@
                 </div>
               </div>
               <div class="form-group">
-                <label class="col-lg-3 control-label">Ambulance:</label>
-                <div class="col-lg-8">
-                  <textarea name="ambulance" class="form-control" rows="8" value="" cols="80" required>{{ $user->hospital ? $user->hospital->ambulance_text : '' }}</textarea>
-                </div>
-              </div>
-              <div class="form-group">
-                <label class="col-lg-3 control-label">Facilities:</label>
-                <div class="col-lg-8">
-                  <textarea name="facilities" class="form-control" rows="8" value="" cols="80" required>{{ $user->hospital ?  $user->hospital->facilities_text : '' }}</textarea>
-                </div>
-              </div>
-              <div class="form-group">
-                <label class="col-lg-3 control-label">Services:</label>
-                <div class="col-lg-8">
-                  <textarea name="services" class="form-control" rows="8" value="" cols="80" required>{{$user->hospital ?  $user->hospital->services_text : ''}}</textarea>
+                <div class="col-md-12">
+                  <div class="pac-card" id="pac-card">
+                    <div>
+                      <div id="title">
+                        Pin Location
+                      </div>
+                    </div>
+                    <div id="pac-container">
+                      <input id="pac-input" class="form-control" type="text"
+                      placeholder="Enter a location">
+                    </div>
+                  </div>
+                  <div id="map"></div>
+                  <div id="infowindow-content">
+                    <img src="" width="16" height="16" id="place-icon">
+                    <span id="place-name"  class="title"></span><br>
+                    <span id="place-address"></span>
+                  </div>
+                  <input type="hidden" name="lat" id="lat-span">
+                  <input type="hidden" name="lng" id="lon-span">
                 </div>
               </div>
 
-              <div class="form-group">
-                <label class="col-lg-4 control-label">Number of Bedrooms:</label>
-                <div class="col-lg-8">
-                  <input class="form-control" name="bedrooms" type="number" value="{{$user->hospital ?  $user->hospital->bedrooms :''}}" required>
-                </div>
-              </div>
 
-            </div>
-            @endif
-          </div>
-          <div class="form-group">
-            <label class="col-md-3 control-label"></label>
-            <div class="col-md-8">
-              <input type="submit" class="btn btn-primary" value="Save Changes">
-              <span></span>
-              <input type="reset" class="btn btn-default" value="Cancel">
+              <!-- <div class="form-group">
+
+              <div class="col-lg-8">
+              <hr>
+              <b>Pin your location in our Map</b>
+              <div class="input-group mb-3">
+              <input type="text"  id="city_country" name="loc" class="form-control" placeholder="Address" onfocus="initAutocomplete2()"  aria-describedby="basic-addon2">
+              <div class="input-group-append">
+              <button class="btn btn-outline-secondary" onclick="codeAddress()" type="button">Find Location</button>
             </div>
           </div>
         </div>
-
+        <div id="infoPanel" style="display:none;">
+        <b>Marker status:</b>
+        <div id="markerStatus"><i>Click and drag the marker.</i></div>
+        <b>Current position:</b>
+        <input type="hidden" id="latitude">
+        <input type="hidden" id="longitude">
       </div>
-    </form>
+    </div> -->
+
+
+
+    <div class="form-group">
+      <label class="col-lg-3 control-label">Ambulance:</label>
+      <div class="col-lg-8">
+        <textarea name="ambulance" class="form-control" rows="8" value="" cols="80" required>{{ $user->hospital ? $user->hospital->ambulance_text : '' }}</textarea>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="col-lg-3 control-label">Facilities:</label>
+      <div class="col-lg-8">
+        <textarea name="facilities" class="form-control" rows="8" value="" cols="80" required>{{ $user->hospital ?  $user->hospital->facilities_text : '' }}</textarea>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-lg-8">
+        <input type="file" multiple accept="image/*" name="photos[]" class="form-control">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="col-lg-3 control-label">Services:</label>
+      <div class="col-lg-8">
+        <textarea name="services" class="form-control" rows="8" value="" cols="80" required>{{$user->hospital ?  $user->hospital->services_text : ''}}</textarea>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="col-lg-4 control-label">Number of Bedrooms:</label>
+      <div class="col-lg-8">
+        <input class="form-control" name="bedrooms" type="number" value="{{$user->hospital ?  $user->hospital->bedrooms :''}}" required>
+      </div>
+    </div>
+
   </div>
-  <hr>
+  @endif
+</div>
+<div class="form-group">
+  <label class="col-md-3 control-label"></label>
+  <div class="col-md-8">
+    <input type="submit" class="btn btn-primary" value="Save Changes">
+    <span></span>
+    <input type="reset" class="btn btn-default" value="Cancel">
+  </div>
+</div>
+</div>
+
+</div>
+</form>
+</div>
+<hr>
 </section>
 
 @endsection

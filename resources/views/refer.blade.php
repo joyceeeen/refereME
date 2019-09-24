@@ -154,7 +154,7 @@
               </div>
             </div>
 
-            <div class="col-lg-4" style="display:hidden">
+            <div class="col-lg-4" style="display:none">
               <div class="form-group">
                 <h5 class="text-primary pb-2"><b>Stroke:</b></h5>
                 <div class="custom-control custom-radio custom-control-inline">

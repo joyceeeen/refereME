@@ -7,6 +7,7 @@ use App\User;
 use App\Schedule;
 use App\Referrals;
 use Location;
+use App\HospitalDetails;
 class SearchController extends Controller
 {
 
@@ -17,7 +18,10 @@ class SearchController extends Controller
     $user = auth()->user();
 
     if($location){
-      $nearest = User::where('user_type', 2)->whereHas('hospital')->withCount('refCount')->where('id','<>',$user->id)->where('address','like','%'.$location.'%')->inRandomOrder('1234')->paginate(3);
+      $nearest = HospitalDetails::whereNotNull('latLng')->where('location','like','%'.$location.'%')->get()->toJson();
+      // $nearest = User::where('user_type', 2)->whereHas('hospital')->withCount('refCount')->where('id','<>',$user->id)->where('address','like','%'.$location.'%')->inRandomOrder('1234')->paginate(3);
+    }else{
+      $nearest = HospitalDetails::whereNotNull('latLng')->get()->toJson();
     }
     $hospitals = null;
 
@@ -28,8 +32,8 @@ class SearchController extends Controller
     }else{
       $hospitals = User::where('user_type', 2)->withCount('refCount')->whereHas('hospital');
     }
-    $hospitals = $hospitals->where('id','<>',$user->id)->inRandomOrder('1234')->paginate(9);
 
+    $hospitals = $hospitals->where('id','<>',$user->id)->inRandomOrder('1234')->paginate(9);
     return view('search-hospital',compact('hospitals','nearest'));
   }
 

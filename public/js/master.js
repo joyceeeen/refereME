@@ -1,8 +1,16 @@
 $(function(){
-    $("#admin_table").DataTable();
+
+
+
+  $("#admin_table").DataTable();
   $("input").attr("autocomplete","off");
   initMap();
-
+  if($("#pac-card").length){
+    initMap2();
+  }
+  if($("#pac-card2").length){
+    initMap3();
+  }
   var previousScroll = 0;
 
   $(window).scroll(function(){
@@ -113,6 +121,16 @@ $(function(){
   $(".moreDetailsModal").on('click',function(e){
     var id = $(this).data('id');
     var modal = $("#moreDetailsModal");
+
+    var href = "/hospital/"+id;
+
+    modal.find('.modal-body').load(href);
+    modal.modal('show');
+  });
+
+  $(".hospitalDetailsModal").on('click',function(e){
+    var id = $(this).data('id');
+    var modal = $("#hospitalDetailsModal");
 
     var href = "/hospital/"+id;
 
@@ -255,30 +273,30 @@ $("#top5_month,#specialization_month,#breakdown_month").on("change",function(){
 
 
 function URL_add_parameter(url, param, value){
-    var hash       = {};
-    var parser     = document.createElement('a');
+  var hash       = {};
+  var parser     = document.createElement('a');
 
-    parser.href    = url;
+  parser.href    = url;
 
-    var parameters = parser.search.split(/\?|&/);
+  var parameters = parser.search.split(/\?|&/);
 
-    for(var i=0; i < parameters.length; i++) {
-        if(!parameters[i])
-            continue;
+  for(var i=0; i < parameters.length; i++) {
+    if(!parameters[i])
+    continue;
 
-        var ary      = parameters[i].split('=');
-        hash[ary[0]] = ary[1];
-    }
+    var ary      = parameters[i].split('=');
+    hash[ary[0]] = ary[1];
+  }
 
-    hash[param] = value;
+  hash[param] = value;
 
-    var list = [];
-    Object.keys(hash).forEach(function (key) {
-        list.push(key + '=' + hash[key]);
-    });
+  var list = [];
+  Object.keys(hash).forEach(function (key) {
+    list.push(key + '=' + hash[key]);
+  });
 
-    parser.search = '?' + list.join('&');
-    return parser.href;
+  parser.search = '?' + list.join('&');
+  return parser.href;
 }
 
 function initMap() {
@@ -308,54 +326,210 @@ function initMap() {
   }
 }
 
+function initMap3() {
 
+  var locations = $("#nearestLatLng").data('value');
 
-
-function manipulateModalPatientInfo(data){
-  var modal = $("#patientDetailsModal");
-
-  modal.find("#nameTxt").html(data.patient.name);
-  modal.find("#birthdayTxt").html(data.patient.birthday);
-  modal.find("#mobileNumberTxt").html(data.patient.mobile_number);
-  modal.find("#emailTxt").html(data.patient.email_address);
-  modal.find("#descriptionTxt").html(data.report);
-
-  $("#attachments").empty();
-
-  var div = $("#attachments");
-
-  for(var i = 0; i< data.attachments.length; i++){
-    div.append($("<li/>").html('<a href="/attachment/'+data.attachments[i].id+'">Attachment #'+(i+1)+'</a>'));
-  }
-}
-
-function addDiseaseList(data){
-  var select = $("#disease-list");
-  $.each(data, function(index, value) {
-    select.append($('<option>', {
-      value: value.id,
-      text : value.title
-    }));
-  });
-}
-
-
-function hideNav() {
-  $(".main-navigation-scroll").removeClass("is-visible").addClass("is-hidden");
-}
-function showNav() {
-  $(".main-navigation-scroll").removeClass("is-hidden").addClass("is-visible");
-  $(".main-navigation-scroll").addClass("shadow");
-}
-
-$("#radio_others").click(function() {
-  if ($("#otherForm").attr('disabled')) {
-    $("#otherForm").removeAttr('disabled');
-  }
-});
-$(".radio_common").click(function() {
-  $("#otherForm").attr({
-    'disabled': 'disabled'
+  var map = new google.maps.Map(document.getElementById('map2'), {
+    center: {lat: 14.607515274944758, lng: 120.98696608203124},
+    zoom: 13,
+    mapTypeControl: false
   });
 
-});
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(function (position) {
+      initialLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+      map.setCenter(initialLocation);
+    });
+  }
+
+  var card = document.getElementById('pac-card2');
+  var input = document.getElementById('pac-input2');
+  var types = document.getElementById('type-selector2');
+  var strictBounds = document.getElementById('strict-bounds-selector2');
+
+  map.controls[google.maps.ControlPosition.TOP_RIGHT].push(card);
+  var options = {
+   types: ['(cities)'],
+   componentRestrictions: {country: "ph"}
+  };
+  var autocomplete = new google.maps.places.Autocomplete(input,options);
+
+  // Bind the map's bounds (viewport) property to the autocomplete object,
+  // so that the autocomplete requests use the current map bounds for the
+  // bounds option in the request.
+  autocomplete.bindTo('bounds', map);
+
+  // Set the data fields to return when the user selects a place.
+  autocomplete.setFields(
+    ['address_components', 'geometry', 'icon', 'name']);
+
+    var infowindow = new google.maps.InfoWindow();
+    var infowindowContent = document.getElementById('infowindow-content2');
+    infowindow.setContent(infowindowContent);
+    var marker, i;
+
+    for (i = 0; i < locations.length; i++) {
+      var latLng = locations[i].latLng.split(',');
+      marker = new google.maps.Marker({
+        map: map,
+        position: new google.maps.LatLng( latLng[0], latLng[1]),
+      });
+
+      google.maps.event.addListener(marker, 'click', (function(marker, i) {
+        return function() {
+          var id = locations[i].user_id;
+          var modal = $("#hospitalDetailsModal");
+
+          var href = "/search/hospital/"+id;
+
+          modal.find('.modal-body').load(href);
+          modal.modal('show');
+        }
+      })(marker, i));
+    }
+
+    autocomplete.addListener('place_changed', function() {
+      var place = autocomplete.getPlace();
+      //console.log(place.name);
+      location.href = URL_add_parameter(location.href, 'location', place.name);
+    });
+  }
+
+  function initMap2() {
+    var map = new google.maps.Map(document.getElementById('map'), {
+      center: {lat: 14.607515274944758, lng: 120.98696608203124},
+      zoom: 13,
+      mapTypeControl: false
+    });
+
+    var card = document.getElementById('pac-card');
+    var input = document.getElementById('pac-input');
+    var types = document.getElementById('type-selector');
+    var strictBounds = document.getElementById('strict-bounds-selector');
+
+    map.controls[google.maps.ControlPosition.TOP_RIGHT].push(card);
+
+    var autocomplete = new google.maps.places.Autocomplete(input);
+
+    // Bind the map's bounds (viewport) property to the autocomplete object,
+    // so that the autocomplete requests use the current map bounds for the
+    // bounds option in the request.
+    autocomplete.bindTo('bounds', map);
+
+    // Set the data fields to return when the user selects a place.
+    autocomplete.setFields(
+      ['address_components', 'geometry', 'icon', 'name']);
+
+      var infowindow = new google.maps.InfoWindow();
+      var infowindowContent = document.getElementById('infowindow-content');
+      infowindow.setContent(infowindowContent);
+
+      var marker = new google.maps.Marker({
+        map: map,
+        anchorPoint: new google.maps.Point(0, -29),
+        draggable: true
+      });
+
+      if(marker){
+        google.maps.event.addListener(marker, 'dragend', function(marker) {
+          var latLng = marker.latLng;
+          document.getElementById('lat-span').value = latLng.lat();
+          document.getElementById('lon-span').value = latLng.lng();
+        });
+      }
+
+
+      autocomplete.addListener('place_changed', function() {
+        infowindow.close();
+        marker.setVisible(false);
+        var place = autocomplete.getPlace();
+        if (!place.geometry) {
+          // User entered the name of a Place that was not suggested and
+          // pressed the Enter key, or the Place Details request failed.
+          window.alert("No details available for input: '" + place.name + "'");
+          return;
+        }
+
+        // If the place has a geometry, then present it on a map.
+        if (place.geometry.viewport) {
+          map.fitBounds(place.geometry.viewport);
+        } else {
+          map.setCenter(place.geometry.location);
+          map.setZoom(17);  // Why 17? Because it looks good.
+        }
+        marker.setPosition(place.geometry.location);
+        marker.setVisible(true);
+
+        document.getElementById('lat-span').value = place.geometry.location.lat();
+        document.getElementById('lon-span').value = place.geometry.location.lng();
+
+        var address = '';
+        if (place.address_components) {
+          address = [
+            (place.address_components[0] && place.address_components[0].short_name || ''),
+            (place.address_components[1] && place.address_components[1].short_name || ''),
+            (place.address_components[2] && place.address_components[2].short_name || '')
+          ].join(' ');
+        }
+
+        infowindowContent.children['place-icon'].src = place.icon;
+        infowindowContent.children['place-name'].textContent = place.name;
+        infowindowContent.children['place-address'].textContent = address;
+        infowindow.open(map, marker);
+      });
+
+
+
+    }
+
+    function manipulateModalPatientInfo(data){
+      var modal = $("#patientDetailsModal");
+
+      modal.find("#nameTxt").html(data.patient.name);
+      modal.find("#birthdayTxt").html(data.patient.birthday);
+      modal.find("#mobileNumberTxt").html(data.patient.mobile_number);
+      modal.find("#emailTxt").html(data.patient.email_address);
+      modal.find("#descriptionTxt").html(data.report);
+
+      $("#attachments").empty();
+
+      var div = $("#attachments");
+
+      for(var i = 0; i< data.attachments.length; i++){
+        div.append($("<li/>").html('<a href="/attachment/'+data.attachments[i].id+'">Attachment #'+(i+1)+'</a>'));
+      }
+    }
+
+    function addDiseaseList(data){
+      var select = $("#disease-list");
+      $.each(data, function(index, value) {
+        select.append($('<option>', {
+          value: value.id,
+          text : value.title
+        }));
+      });
+    }
+
+
+
+
+    function hideNav() {
+      $(".main-navigation-scroll").removeClass("is-visible").addClass("is-hidden");
+    }
+    function showNav() {
+      $(".main-navigation-scroll").removeClass("is-hidden").addClass("is-visible");
+      $(".main-navigation-scroll").addClass("shadow");
+    }
+
+    $("#radio_others").click(function() {
+      if ($("#otherForm").attr('disabled')) {
+        $("#otherForm").removeAttr('disabled');
+      }
+    });
+    $(".radio_common").click(function() {
+      $("#otherForm").attr({
+        'disabled': 'disabled'
+      });
+
+    });

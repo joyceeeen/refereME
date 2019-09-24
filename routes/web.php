@@ -47,7 +47,7 @@ Route::group(['middleware'=>['auth','verified']],function(){
   Route::get('/search/hospital','SearchController@hospital')->name('search.hospital');
   Route::get('/search/doctor', 'SearchController@doctor')->name('search.doctor');
   Route::get('/search/{id}', 'SearchController@details')->name('search.info');
-
+  Route::get('/search/hospital/{id}','UserController@hospital')->name('details.hospital');
 
   Route::resource('report-forms','ReferralReportsController');
   Route::resource('disease','DiseasesController');

@@ -8,6 +8,7 @@ use Image;
 use File;
 use Hash;
 use App\HospitalDetails;
+use App\HospitalPhotos;
 class UserController extends Controller
 {
   /**
@@ -23,6 +24,12 @@ class UserController extends Controller
     }else{
       return view('user.edit-profile',compact('user'));
     }
+  }
+
+  public function hospital(Request $request,$id){
+    $hospital = User::whereId($id)->withCount('refCount')->first();
+
+    return view('modal.hospital',compact('hospital'));
   }
 
   /**
@@ -162,13 +169,33 @@ class UserController extends Controller
         $hospital->facilities = nl2br($request->facilities);
         $hospital->services = nl2br($request->services);
         $hospital->bedrooms = $request->bedrooms;
+        if($request->lat && $request->lng){
+          $hospital->latLng = $request->lat.",".$request->lng;
+        }
 
         $hospital->location = $request->location;
 
         $hospital->save();
       }
-    }
 
+      if($request->hasFile('photos')){
+        $photos = [];
+        $files = $request->file('photos');
+        foreach ($files as $file) {
+          $thumbnail = Image::make($file);
+          $origlPath = 'images/facilities/'.$user->id.'/';
+
+          if (!File::exists($origlPath)) {
+            File::makeDirectory($origlPath, 0775, true, true);
+          }
+
+          $fname = $origlPath.time().uniqid().'.'.$file->getClientOriginalExtension();
+          $thumbnail->save($fname);
+          array_push($photos,['hospital_id'=>$hospital->id,'path'=>$fname]);
+        }
+        HospitalPhotos::insert($photos);
+      }
+    }
 
     $user->save();
 
